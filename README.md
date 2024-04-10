@@ -1,13 +1,15 @@
-# Nome do projeto
+# COINCARE
 
-Escreva um ou dois parágrafo resumindo o objetivo do seu projeto.
+O projeto consiste na criação de um site para controle de finanças e gastos voltados para quem ainda não possui um controle eficiênte
 
 ## Alunos integrantes da equipe
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
+* Fernando Lopes Siqueira
+* Francielle Moura Limonge
+* Gustavo Henrique Dos Santos Riegert
+* Italo Vitorino Batista Silva
+* Thalles Luiz Neves Soares
+
 
 ## Professores responsáveis
 
