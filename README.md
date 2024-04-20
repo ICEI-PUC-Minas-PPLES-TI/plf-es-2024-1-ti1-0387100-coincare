@@ -1,6 +1,6 @@
 # COINCARE
 
-O projeto consiste na criação de um site para controle de finanças e gastos voltados para quem ainda não possui um controle eficiênte
+O projeto consiste na criação de um site para controle de finanças e gastos, voltados para quem ainda não possui uma gestão eficaz do seu dinheiro.
 
 ## Alunos integrantes da equipe
 
@@ -13,8 +13,8 @@ O projeto consiste na criação de um site para controle de finanças e gastos v
 
 ## Professores responsáveis
 
-* Nome completo do professor 1
-* Nome completo do professor 2
+* Cleiton Silva Tavares
+* Rommel Vieira Carneiro
 
 ## Instruções de utilização
 
