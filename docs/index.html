@@ -234,7 +234,7 @@
               <section>
                 <h5>Requisitos</h5>
                 <p>As tabelas que se seguem apresentam os requisitos funcionais e não funcionais que detalham o escopo do projeto.
-                  <button type="button" class="btn btn-light btn-sm float-right" data-toggle="collapse" href="#collapseRequisitos">Info</button>
+                  <!-- <button type="button" class="btn btn-light btn-sm float-right" data-toggle="collapse" href="#collapseRequisitos">Info</button> -->
                 </p>
                 <div class="alert alert-warning collapse" role="alert" id="collapseRequisitos">
                   <p>Com base nas Histórias de Usuário, enumere os requisitos da sua
@@ -252,7 +252,7 @@
                 <table class="table">
                   <thead>
                       <tr>
-                          <th scope="col">ID</th>
+                          <th style="width: 5rem;" scope="col">ID</th>
                           <th scope="col">Descrição do Requisito</th>
                           <th scope="col">Prioridade</th>
                       </tr>
@@ -260,14 +260,55 @@
                   <tbody>
                       <tr>
                           <th scope="row">RF-001</th>
-                          <td>Permitir que o usuário cadastre tarefas<span class="exemplo">EXEMPLO</span></td>
+                          <td>O sistema deve conter interface para permitir que os usuários registrem suas despesas manualmente, inserindo detalhes como valor e categoria.</td>
                           <td>ALTA</td>
                       </tr>
                       <tr>
                           <th scope="row">RF-002</th>
-                          <td>Emitir um relatório de tarefas no mês<span class="exemplo">EXEMPLO</span></td>
+                          <td>O sistema deve conter uma página para exibir os orçamentos mostrando o progresso atual e permitindo edições quando necessário.</td>
                           <td>MÉDIA</td>
                       </tr>
+                      <tr>
+                        <th scope="row">RF-003</th>
+                        <td>O sistema deve ser capaz de implementar gráficos e visualizações para apresentar aos usuários uma análise visual de seus padrões de gastos ao longo do tempo.</td>
+                        <td>MÉDIA</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">RF-004</th>
+                      <td>O sistema deve fornecer recursos que orientem os usuários na definição de metas financeiras e na criação de planos de ação para alcançá-las.</td>
+                      <td>MÉDIA</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">RF-005</th>
+                      <td>O sistema deve integrar seções de recursos educacionais, como dicas financeiras, para ajudar os usuários a melhorar sua compreensão financeira.</td>
+                      <td>ALTA</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">RF-006</th>
+                      <td>O sistema deve permitir que os usuários personalizem a interface de acordo com suas preferências, como temas de cores.</td>
+                      <td>MÉDIA</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">RF-007</th>
+                      <td>O sistema deve sugerir gastos por categoria financeira dos usuários.</td>
+                      <td>BAIXO</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">RF-008</th>
+                      <td>O sistema deve permitir os usuários criarem categorias para seus gastos.</td>
+                      <td>BAIXO</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">RF-009</th>
+                      <td>O sistema deve permitir que o usuário gere relatórios de acordo o período desejado.</td>
+                      <td>MÉDIA</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">RF-010</th>
+                      <td>O sistema deve alertar o usuário de despesas próximas do vencimento.</td>
+                      <td>MÉDIA</td>
+                    </tr>
+                  </tr>
                   </tbody>
                 </table>
 
@@ -275,7 +316,7 @@
                 <table class="table">
                   <thead>
                       <tr>
-                          <th scope="col">ID</th>
+                          <th style="width: 5.6rem;" scope="col">ID</th>
                           <th scope="col">Descrição do Requisito</th>
                           <th scope="col">Prioridade</th>
                       </tr>
@@ -283,14 +324,19 @@
                   <tbody>
                       <tr>
                           <th scope="row">RNF-001</th>
-                          <td>O sistema deve ser responsivo para rodar em um dispositivos móvel<span class="exemplo">EXEMPLO</span></td>
-                          <td>MÉDIA</td>
+                          <td>Garantir que a interface seja responsiva em telas mobile e desktop.</td>
+                          <td>ALTA</td>
                       </tr>
                       <tr>
                           <th scope="row">RNF-002</th>
-                          <td>Deve processar requisições do usuário em no máximo 3s<span class="exemplo">EXEMPLO</span></td>
-                          <td>BAIXA</td>
+                          <td>Assegurar que a aplicação seja compatível com uma ampla variedade de navegadores e dispositivos móveis.</td>
+                          <td>ALTA</td>
                       </tr>
+                      <tr>
+                        <th scope="row">RNF-003</th>
+                        <td>Desenvolver o código de forma modular e bem documentada, facilitando a manutenção contínua e a implementação de novos recursos ou atualizações no futuro.</td>
+                        <td>ALTA</td>
+                    </tr>
                   </tbody>
                 </table>
               </section>
