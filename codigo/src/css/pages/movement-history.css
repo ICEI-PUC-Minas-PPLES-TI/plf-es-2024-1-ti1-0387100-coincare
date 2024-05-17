@@ -1,4 +1,4 @@
-@import url(palet_colors.css);
+@import url(../utils/palet_colors.css);
 
 body {
   display: flex;
@@ -43,4 +43,8 @@ body {
   align-items: center;
   display: flex;
   gap: .5rem;
+}
+
+.main__table {
+  margin-top: 3rem;
 }
