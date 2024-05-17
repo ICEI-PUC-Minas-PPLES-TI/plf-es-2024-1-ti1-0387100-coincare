@@ -1,0 +1,74 @@
+{
+  "movements": [
+    {
+      "id": 1,
+      "descricao": "Salário",
+      "tipo": "R",
+      "valor": 2000.00,
+      "data_transacao": "2024-01-08"
+    },
+    {
+      "id": 2,
+      "descricao": "Aluguel",
+      "tipo": "D",
+      "valor": 1500.00,
+      "data_transacao": "2024-01-01"
+    },
+    {
+      "id": 3,
+      "descricao": "Supermercado",
+      "tipo": "D",
+      "valor": 300.00,
+      "data_transacao": "2024-01-03"
+    },
+    {
+      "id": 4,
+      "descricao": "Internet",
+      "tipo": "D",
+      "valor": 100.00,
+      "data_transacao": "2024-01-05"
+    },
+    {
+      "id": 5,
+      "descricao": "Salário",
+      "tipo": "R",
+      "valor": 2000.00,
+      "data_transacao": "2024-02-08"
+    },
+    {
+      "id": 6,
+      "descricao": "Aluguel",
+      "tipo": "D",
+      "valor": 1500.00,
+      "data_transacao": "2024-02-01"
+    },
+    {
+      "id": 7,
+      "descricao": "Supermercado",
+      "tipo": "D",
+      "valor": 320.00,
+      "data_transacao": "2024-02-03"
+    },
+    {
+      "id": 8,
+      "descricao": "Internet",
+      "tipo": "D",
+      "valor": 100.00,
+      "data_transacao": "2024-02-05"
+    },
+    {
+      "id": 9,
+      "descricao": "Freelance",
+      "tipo": "R",
+      "valor": 500.00,
+      "data_transacao": "2024-02-15"
+    },
+    {
+      "id": 10,
+      "descricao": "Aluguel",
+      "tipo": "D",
+      "valor": 1500.00,
+      "data_transacao": "2024-03-01"
+    }
+  ]
+}
