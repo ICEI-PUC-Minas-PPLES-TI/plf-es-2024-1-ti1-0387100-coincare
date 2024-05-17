@@ -18,8 +18,37 @@
     <a href="#" class="c-header__coincare">CoinCare</a>
     <a href="#" class="c-header__logout">Sair</a>
   </header>
+  <main class="main">
+    <p class="main__text main__text--your-history">Seu histórico</p>
+    <p class="main__text">Selecione o período desejado:</p>
+    <div class="main__quick-filters-container">
+      <button class="c-button">Hoje</button>
+      <button class="c-button">Semana</button>
+      <button class="c-button">Mês</button>
+      <button class="c-button">Ano</button>
+    </div>
+    <div class="main__search-container">
+      <div class="main__date-filter-container">
+        <input class="c-input-date" type="date">
+        <span>até</span>
+        <input class="c-input-date" type="date">
+        <button class="c-button c-button--disabled">Pesquisar</button>
+      </div>
+      <div class="main__order-by-container">
+        <p class="main__text">Ordenar por: </p>
+        <select class="c-select" name="order-by" id="order-by">
+          <option value="transaction-date">Data da transação</option>
+          <option value="highest-value">Maior valor</option>
+          <option value="lower-value">Menor valor</option>
+          <option value="description">Descrição</option>
+        </select>
+      </div>
+    </div>
+  </main>
   <footer class="c-footer">
-    <p class="c-footer__text">© 2024 Coin Care. Todos os direitos reservados. | Política de Privacidade | Termos de Uso</p>
+    <p class="c-footer__text">
+      © 2024 Coin Care. Todos os direitos reservados. | Política de Privacidade | Termos de Uso
+    </p>
   </footer>
 </body>
 

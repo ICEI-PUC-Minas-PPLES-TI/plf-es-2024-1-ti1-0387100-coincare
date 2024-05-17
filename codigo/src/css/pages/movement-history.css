@@ -1,5 +1,46 @@
 @import url(palet_colors.css);
 
-.c-header {
-  
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.main {
+  flex: 1 1 0;
+  font-family: Inter;
+  padding: 0 3rem;
+}
+
+.main__text {
+  color: var(--color-gray-10);
+}
+
+.main__text--your-history {
+  font-size: 18pt;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.main__quick-filters-container,
+.main__date-filter-container {
+  margin: .5rem 0;
+}
+
+.main__date-filter-container {
+  align-items: center;
+  display: flex;
+  gap: .5rem;
+}
+
+.main__search-container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.main__order-by-container {
+  align-items: center;
+  display: flex;
+  gap: .5rem;
 }

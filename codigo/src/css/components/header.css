@@ -6,13 +6,13 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 2rem;
+  padding: 1.5rem 3rem;
 }
 
 .c-header a {
   color: var(--color-green-01);
   font-family: Inter;
   font-weight: bold;
-  padding: 1.5rem 3rem;
   text-decoration: none;
 }
 
