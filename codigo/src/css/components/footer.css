@@ -1,0 +1,14 @@
+@import url(../utils/palet_colors.css);
+
+.c-footer {
+  background-color: rgb(222, 222, 222, 0.2);
+  margin-top: 1.5rem;
+}
+
+.c-footer__text {
+  color: var(--color-gray-05);
+  font-family: Inter;
+  font-size: 10pt;
+  padding: 1.2rem 0;
+  text-align: center;
+}
