@@ -1,10 +1,12 @@
 // TODO
 // Buscar dados - OK
-// Validar datas
+// Validar datas - OK
 // Filtrar entre datas
 // Filtragem rápida
 // Ordenar
 
+const inputsDateElement = document.querySelectorAll('.c-input-date');
+const searchBtn = document.querySelector('.c-button--search');
 const tbodyElement = document.querySelector('tbody');
 
 const URL_BASE = 'http://localhost:3000/movimentacoes';
@@ -32,6 +34,12 @@ function populateTable(movements) {
   });
 }
 
+function dateIsValid(date) {
+  const dateValue = date.value;
+  const parsedDate = dateFns.parseISO(dateValue);
+  return dateFns.isValid(parsedDate);
+}
+
 async function getAll() {
 
   try {
@@ -51,4 +59,11 @@ async function getAll() {
   }
 }
 
-getAll();
+searchBtn.addEventListener("click", () => {
+  const allDatesAreValid = Array.from(inputsDateElement).every(date => dateIsValid(date));
+  if (allDatesAreValid) {
+    getAll();
+  } else {
+    alert('Data(s) inválidas!');
+  }
+});
