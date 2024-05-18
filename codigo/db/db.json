@@ -1,74 +1,94 @@
 {
-  "movements": [
+  "movimentacoes": [
     {
       "id": 1,
       "descricao": "Salário",
-      "tipo": "R",
       "valor": 2000.00,
-      "data_transacao": "2024-01-08"
+      "categoria": "Renda",
+      "dia": "01",
+      "mes_ano": "2024-01",
+      "tipo": "G"
     },
     {
       "id": 2,
       "descricao": "Aluguel",
-      "tipo": "D",
       "valor": 1500.00,
-      "data_transacao": "2024-01-01"
+      "categoria": "Moradia",
+      "dia": "05",
+      "mes_ano": "2024-01",
+      "tipo": "D"
     },
     {
       "id": 3,
       "descricao": "Supermercado",
-      "tipo": "D",
-      "valor": 300.00,
-      "data_transacao": "2024-01-03"
+      "valor": 450.00,
+      "categoria": "Alimentação",
+      "dia": "10",
+      "mes_ano": "2024-01",
+      "tipo": "D"
     },
     {
       "id": 4,
-      "descricao": "Internet",
-      "tipo": "D",
-      "valor": 100.00,
-      "data_transacao": "2024-01-05"
+      "descricao": "Transporte",
+      "valor": 120.00,
+      "categoria": "Transporte",
+      "dia": "15",
+      "mes_ano": "2024-01",
+      "tipo": "D"
     },
     {
       "id": 5,
-      "descricao": "Salário",
-      "tipo": "R",
-      "valor": 2000.00,
-      "data_transacao": "2024-02-08"
+      "descricao": "Freelance",
+      "valor": 800.00,
+      "categoria": "Renda Extra",
+      "dia": "20",
+      "mes_ano": "2024-01",
+      "tipo": "G"
     },
     {
       "id": 6,
-      "descricao": "Aluguel",
-      "tipo": "D",
-      "valor": 1500.00,
-      "data_transacao": "2024-02-01"
+      "descricao": "Cinema",
+      "valor": 60.00,
+      "categoria": "Lazer",
+      "dia": "25",
+      "mes_ano": "2024-01",
+      "tipo": "D"
     },
     {
       "id": 7,
-      "descricao": "Supermercado",
-      "tipo": "D",
-      "valor": 320.00,
-      "data_transacao": "2024-02-03"
+      "descricao": "Conta de Luz",
+      "valor": 100.00,
+      "categoria": "Serviços",
+      "dia": "28",
+      "mes_ano": "2024-01",
+      "tipo": "D"
     },
     {
       "id": 8,
       "descricao": "Internet",
-      "tipo": "D",
-      "valor": 100.00,
-      "data_transacao": "2024-02-05"
+      "valor": 80.00,
+      "categoria": "Serviços",
+      "dia": "03",
+      "mes_ano": "2024-01",
+      "tipo": "D"
     },
     {
       "id": 9,
-      "descricao": "Freelance",
-      "tipo": "R",
-      "valor": 500.00,
-      "data_transacao": "2024-02-15"
+      "descricao": "Academia",
+      "valor": 100.00,
+      "categoria": "Saúde",
+      "dia": "07",
+      "mes_ano": "2024-01",
+      "tipo": "D"
     },
     {
       "id": 10,
-      "descricao": "Aluguel",
-      "tipo": "D",
-      "valor": 1500.00,
-      "data_transacao": "2024-03-01"
+      "descricao": "Venda de Produtos",
+      "valor": 250.00,
+      "categoria": "Renda Extra",
+      "dia": "18",
+      "mes_ano": "2024-01",
+      "tipo": "G"
     }
   ]
 }
