@@ -3,11 +3,11 @@
 // Validar datas - OK
 // Filtrar entre datas - OK
 // Filtragem rápida - OK
-// Ordenar
+// Ordenar - OK
 // Exibir mensagem caso não for encontrado nenhum registro - OK
 // Esconder tabela antes do usuário pesquisar
 // Totalizador
-// Exibir os dados formatados (valor e data)
+// Exibir os dados formatados (valor e data) - OK
 
 const quickFiltersBtn = document.querySelectorAll('.c-button--quick-filter');
 const inputsDateElement = document.querySelectorAll('.c-input-date');
@@ -63,8 +63,8 @@ function populateTable(movements) {
     createAndAppendTd(tr, item.tipo === 'G' ? 'Receita' : 'Despesa');
     createAndAppendTd(tr, item.descricao);
     createAndAppendTd(tr, item.categoria);
-    createAndAppendTd(tr, item.valor.toFixed(2));
-    createAndAppendTd(tr, `${item.mes_ano}-${item.dia}`)
+    createAndAppendTd(tr, item.valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }));
+    createAndAppendTd(tr, dateFns.format(new Date(`${item.mes_ano}-${item.dia}`), 'dd/MM/yyyy'));
 
     tbodyElement.appendChild(tr);
   });
