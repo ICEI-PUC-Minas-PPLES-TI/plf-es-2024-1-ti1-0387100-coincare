@@ -89,6 +89,15 @@
       "dia": "18",
       "mes_ano": "2024-01",
       "tipo": "G"
+    },
+    {
+      "id": 11,
+      "descricao": "Internet",
+      "valor": 80.00,
+      "categoria": "Serviços",
+      "dia": "03",
+      "mes_ano": "2024-02",
+      "tipo": "D"
     }
   ]
 }

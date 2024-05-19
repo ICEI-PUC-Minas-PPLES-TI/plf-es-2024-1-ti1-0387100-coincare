@@ -1,9 +1,12 @@
 // TODO
 // Buscar dados - OK
 // Validar datas - OK
-// Filtrar entre datas
+// Filtrar entre datas - OK
 // Filtragem rápida
 // Ordenar
+// Exibir mensagem caso não for encontrado nenhum registro
+// Esconder tabela antes do usuário pesquisar
+// Totalizador
 
 const inputsDateElement = document.querySelectorAll('.c-input-date');
 const searchBtn = document.querySelector('.c-button--search');
@@ -18,6 +21,8 @@ function createAndAppendTd(parent, text) {
 }
 
 function populateTable(movements) {
+
+  tbodyElement.innerText = '';
 
   movements.forEach(item => {
 
@@ -40,6 +45,15 @@ function dateIsValid(date) {
   return dateFns.isValid(parsedDate);
 }
 
+function filterData(data) {
+  const initialDate = inputsDateElement[0].value;
+  const finalDate = inputsDateElement[1].value;
+
+  const filteredData = data.filter((data) => `${data.mes_ano}-${data.dia}` >= initialDate && `${data.mes_ano}-${data.dia}` <= finalDate);
+
+  populateTable(filteredData);
+}
+
 async function getAll() {
 
   try {
@@ -50,7 +64,7 @@ async function getAll() {
 
     const movements = await response.json();
 
-    populateTable(movements);
+    filterData(movements);
 
   } catch (error) {
 
