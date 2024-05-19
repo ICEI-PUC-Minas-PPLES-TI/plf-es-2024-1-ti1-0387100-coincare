@@ -54,3 +54,7 @@ body {
 .main__table {
   margin-top: 3rem;
 }
+
+.main__table thead {
+  visibility: hidden;
+}

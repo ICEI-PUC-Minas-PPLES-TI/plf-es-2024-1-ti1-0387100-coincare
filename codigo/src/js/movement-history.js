@@ -5,7 +5,7 @@
 // Filtragem rápida - OK
 // Ordenar - OK
 // Exibir mensagem caso não for encontrado nenhum registro - OK
-// Esconder tabela antes do usuário pesquisar
+// Esconder tabela antes do usuário pesquisar - OK
 // Totalizador
 // Exibir os dados formatados (valor e data) - OK
 
@@ -13,10 +13,14 @@ const quickFiltersBtn = document.querySelectorAll('.c-button--quick-filter');
 const inputsDateElement = document.querySelectorAll('.c-input-date');
 const searchBtn = document.querySelector('.c-button--search');
 const dataNotFound = document.querySelector('.main__data-not-found');
+const theadElement = document.querySelector('thead');
 const tbodyElement = document.querySelector('tbody');
 const orderBy = document.querySelector('#order-by');
 
 const URL_BASE = 'http://localhost:3000/movimentacoes';
+
+theadElement.style.visibility = 'hidden';
+dataNotFound.style.display = 'none';
 
 function getCurrentDateInUTC() {
   const currentDate = new Date();
@@ -56,6 +60,16 @@ function createAndAppendTd(parent, text) {
 function populateTable(movements) {
   tbodyElement.innerText = '';
 
+  if (!movements || movements.length === 0) {
+    theadElement.style.visibility = 'hidden';
+    dataNotFound.style.display = 'block';
+    dataNotFound.innerText = 'Não foi encontrado resultados para essa pesquisa';
+    return;
+  }
+
+  theadElement.style.visibility = 'visible';
+  dataNotFound.style.display = 'none';
+
   movements.forEach(item => {
     const tr = document.createElement('tr');
 
@@ -80,11 +94,13 @@ function filterData(data) {
   const initialDate = inputsDateElement[0].value;
   const finalDate = inputsDateElement[1].value;
 
-  const filteredData = data.filter((data) => `${data.mes_ano}-${data.dia}` >= initialDate && `${data.mes_ano}-${data.dia}` <= finalDate);
+  const filteredData = data.filter(item => {
+    const itemDate = `${item.mes_ano}-${item.dia}`;
+    return itemDate >= initialDate && itemDate <= finalDate;
+  });
 
-  if (filteredData.length == 0) {
-    dataNotFound.innerText = 'Não foi encontrado resultados para essa pesquisa';
-    return;
+  if (filteredData.length === 0) {
+    return [];
   }
 
   return filteredData;
@@ -151,7 +167,7 @@ orderBy.addEventListener('change', async () => {
   const data = await getAll();
   const filteredData = filterData(data);
 
-  if (data) {
+  if (filteredData) {
     orderByF(orderBy.value, filteredData);
   }
-})
+});
