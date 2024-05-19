@@ -176,6 +176,12 @@ async function getAll() {
 
 searchBtn.addEventListener('click', async () => {
   orderBy.options[0].selected = true;
+
+  if (inputsDateElement[0].value > inputsDateElement[1].value) {
+    alert('A data inicial deve ser inferior que a data final!');
+    return;
+  }
+
   const allDatesAreValid = Array.from(inputsDateElement).every(date => dateIsValid(date));
   if (allDatesAreValid) {
     const data = await getAll();
