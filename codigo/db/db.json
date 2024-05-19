@@ -5,8 +5,8 @@
       "descricao": "Salário",
       "valor": 2000.00,
       "categoria": "Renda",
-      "dia": "01",
-      "mes_ano": "2024-01",
+      "dia": "18",
+      "mes_ano": "2024-05",
       "tipo": "G"
     },
     {
@@ -32,8 +32,8 @@
       "descricao": "Transporte",
       "valor": 120.00,
       "categoria": "Transporte",
-      "dia": "15",
-      "mes_ano": "2024-01",
+      "dia": "19",
+      "mes_ano": "2024-05",
       "tipo": "D"
     },
     {

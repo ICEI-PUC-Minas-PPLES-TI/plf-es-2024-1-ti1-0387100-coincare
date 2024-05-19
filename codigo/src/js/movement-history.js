@@ -2,18 +2,46 @@
 // Buscar dados - OK
 // Validar datas - OK
 // Filtrar entre datas - OK
-// Filtragem rápida
+// Filtragem rápida - OK
 // Ordenar
 // Exibir mensagem caso não for encontrado nenhum registro - OK
 // Esconder tabela antes do usuário pesquisar
 // Totalizador
 
+const quickFiltersBtn = document.querySelectorAll('.c-button--quick-filter');
 const inputsDateElement = document.querySelectorAll('.c-input-date');
 const searchBtn = document.querySelector('.c-button--search');
 const dataNotFound = document.querySelector('.main__data-not-found');
 const tbodyElement = document.querySelector('tbody');
 
 const URL_BASE = 'http://localhost:3000/movimentacoes';
+
+function getCurrentDateInUTC() {
+  const currentDate = new Date();
+  return new Date(Date.UTC(
+    currentDate.getUTCFullYear(),
+    currentDate.getUTCMonth(),
+    currentDate.getUTCDate(),
+    currentDate.getUTCHours(),
+    currentDate.getUTCMinutes(),
+    currentDate.getUTCSeconds()
+  ));
+}
+
+function setDateInputsAndFetch(startDate, endDate) {
+  inputsDateElement[0].value = dateFns.format(startDate, 'yyyy-MM-dd');
+  inputsDateElement[1].value = dateFns.format(endDate, 'yyyy-MM-dd');
+  getAll();
+}
+
+function addQuickFilterEvent(button, startDateFn, endDateFn) {
+  button.addEventListener('click', () => {
+    const utcCurrentDate = getCurrentDateInUTC();
+    const startDate = startDateFn(utcCurrentDate);
+    const endDate = endDateFn(utcCurrentDate);
+    setDateInputsAndFetch(startDate, endDate);
+  });
+}
 
 function createAndAppendTd(parent, text) {
   const td = document.createElement('td');
@@ -87,3 +115,8 @@ searchBtn.addEventListener("click", () => {
     alert('Data(s) inválidas!');
   }
 });
+
+addQuickFilterEvent(quickFiltersBtn[0], date => date, date => date);
+addQuickFilterEvent(quickFiltersBtn[1], dateFns.startOfWeek, dateFns.endOfWeek);
+addQuickFilterEvent(quickFiltersBtn[2], dateFns.startOfMonth, dateFns.endOfMonth);
+addQuickFilterEvent(quickFiltersBtn[3], dateFns.startOfYear, dateFns.endOfYear);
