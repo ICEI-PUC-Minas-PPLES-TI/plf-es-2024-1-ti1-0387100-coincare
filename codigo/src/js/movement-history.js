@@ -8,7 +8,7 @@
 // Esconder tabela antes do usuário pesquisar - OK
 // Totalizador - OK
 // Exibir os dados formatados (valor e data) - OK
-// Resetar ordenação quando utilizar alguma filtragem rápida
+// Resetar ordenação quando utilizar alguma filtragem rápida - OK
 
 const quickFiltersBtn = document.querySelectorAll('.c-button--quick-filter');
 const inputsDateElement = document.querySelectorAll('.c-input-date');
@@ -49,6 +49,7 @@ async function setDateInputsAndFetch(startDate, endDate) {
 
 function addQuickFilterEvent(button, startDateFn, endDateFn) {
   button.addEventListener('click', () => {
+    orderBy.options[0].selected = true;
     const utcCurrentDate = getCurrentDateInUTC();
     const startDate = startDateFn(utcCurrentDate);
     const endDate = endDateFn(utcCurrentDate);
@@ -174,6 +175,7 @@ async function getAll() {
 }
 
 searchBtn.addEventListener('click', async () => {
+  orderBy.options[0].selected = true;
   const allDatesAreValid = Array.from(inputsDateElement).every(date => dateIsValid(date));
   if (allDatesAreValid) {
     const data = await getAll();
