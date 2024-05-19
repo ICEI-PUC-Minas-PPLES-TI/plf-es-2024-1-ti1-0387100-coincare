@@ -58,3 +58,31 @@ body {
 .main__table thead {
   visibility: hidden;
 }
+
+.main__total-container {
+  color: var(--color-gray-10);
+  display: flex;
+  justify-content: flex-end;
+  text-align: right;
+  visibility: hidden;
+}
+
+.main__total-title {
+  font-size: 14pt;
+  font-weight: bold;
+}
+
+.main__total-value--revenue {
+  color: var(--color-green-15);
+  font-weight: bold;
+}
+
+.main__total-value--expense {
+  color: var(--color-red-01);
+  font-weight: bold;
+}
+
+.main__total-item,
+.main__total-container button {
+  margin-top: .4rem;
+}

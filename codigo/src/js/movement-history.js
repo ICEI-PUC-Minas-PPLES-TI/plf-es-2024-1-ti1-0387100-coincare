@@ -6,8 +6,9 @@
 // Ordenar - OK
 // Exibir mensagem caso não for encontrado nenhum registro - OK
 // Esconder tabela antes do usuário pesquisar - OK
-// Totalizador
+// Totalizador - OK
 // Exibir os dados formatados (valor e data) - OK
+// Resetar ordenação quando utilizar alguma filtragem rápida
 
 const quickFiltersBtn = document.querySelectorAll('.c-button--quick-filter');
 const inputsDateElement = document.querySelectorAll('.c-input-date');
@@ -16,11 +17,15 @@ const dataNotFound = document.querySelector('.main__data-not-found');
 const theadElement = document.querySelector('thead');
 const tbodyElement = document.querySelector('tbody');
 const orderBy = document.querySelector('#order-by');
+const containerTotalizer = document.querySelector('.main__total-container');
+const spanRevenueTotalizer = document.querySelector('.main__total-value--revenue');
+const spanExpenseTotalizer = document.querySelector('.main__total-value--expense');
 
 const URL_BASE = 'http://localhost:3000/movimentacoes';
 
 theadElement.style.visibility = 'hidden';
 dataNotFound.style.display = 'none';
+containerTotalizer.style.visibility = 'hidden';
 
 function getCurrentDateInUTC() {
   const currentDate = new Date();
@@ -57,12 +62,31 @@ function createAndAppendTd(parent, text) {
   parent.appendChild(td);
 }
 
+function populateTotalizer(movements) {
+  containerTotalizer.style.visibility = 'visible';
+
+  let revenueTotalizer  = 0;
+  let expenseTotalizer = 0;
+
+  movements.forEach(item => {
+    if (item.tipo === 'G') {
+      revenueTotalizer += item.valor;
+    } else {
+      expenseTotalizer += item.valor;
+    }
+  });
+
+  spanRevenueTotalizer.innerText = revenueTotalizer.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  spanExpenseTotalizer.innerText = expenseTotalizer.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+}
+
 function populateTable(movements) {
   tbodyElement.innerText = '';
 
   if (!movements || movements.length === 0) {
     theadElement.style.visibility = 'hidden';
     dataNotFound.style.display = 'block';
+    containerTotalizer.style.visibility = 'hidden';
     dataNotFound.innerText = 'Não foi encontrado resultados para essa pesquisa';
     return;
   }
@@ -82,6 +106,8 @@ function populateTable(movements) {
 
     tbodyElement.appendChild(tr);
   });
+
+  populateTotalizer(movements);
 }
 
 function dateIsValid(date) {
