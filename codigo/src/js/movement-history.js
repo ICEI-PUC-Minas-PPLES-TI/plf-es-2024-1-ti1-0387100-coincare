@@ -4,12 +4,13 @@
 // Filtrar entre datas - OK
 // Filtragem rápida
 // Ordenar
-// Exibir mensagem caso não for encontrado nenhum registro
+// Exibir mensagem caso não for encontrado nenhum registro - OK
 // Esconder tabela antes do usuário pesquisar
 // Totalizador
 
 const inputsDateElement = document.querySelectorAll('.c-input-date');
 const searchBtn = document.querySelector('.c-button--search');
+const dataNotFound = document.querySelector('.main__data-not-found');
 const tbodyElement = document.querySelector('tbody');
 
 const URL_BASE = 'http://localhost:3000/movimentacoes';
@@ -50,6 +51,11 @@ function filterData(data) {
   const finalDate = inputsDateElement[1].value;
 
   const filteredData = data.filter((data) => `${data.mes_ano}-${data.dia}` >= initialDate && `${data.mes_ano}-${data.dia}` <= finalDate);
+
+  if (filteredData.length == 0) {
+    dataNotFound.innerText = 'Não foi encontrado resultados para essa pesquisa';
+    return;
+  }
 
   populateTable(filteredData);
 }

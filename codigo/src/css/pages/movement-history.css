@@ -45,6 +45,12 @@ body {
   gap: .5rem;
 }
 
+.main__data-not-found {
+  color: var(--color-gray-10);
+  margin-top: 3rem;
+  text-align: center;
+}
+
 .main__table {
   margin-top: 3rem;
 }
