@@ -19,3 +19,9 @@
 .c-header__coincare {
   font-size: 18pt;
 }
+
+@media only screen and (max-width: 576px) {
+  .c-header {
+    padding: 1rem 1.5rem;
+  }
+}

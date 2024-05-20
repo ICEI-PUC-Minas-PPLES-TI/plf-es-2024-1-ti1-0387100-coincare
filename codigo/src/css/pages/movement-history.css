@@ -61,7 +61,7 @@ body {
 }
 
 .main__table thead {
-  visibility: hidden;
+  display: none;
 }
 
 .main__total-container {

@@ -12,7 +12,7 @@ const spanExpenseTotalizer = document.querySelector('.main__total-value--expense
 
 const URL_BASE = 'https://json-server-db-orcin.vercel.app/movimentacoes';
 
-theadElement.style.visibility = 'hidden';
+theadElement.style.display = 'none';
 loadingMessage.style.display = 'none';
 dataNotFound.style.display = 'none';
 containerTotalizer.style.visibility = 'hidden';
@@ -74,17 +74,17 @@ function populateTotalizer(movements) {
 
 function populateTable(movements) {
   tbodyElement.innerText = '';
-  loadingMessage.style.display = 'none';
+  loadingMessage.style.display = 'block';
 
   if (!movements || movements.length === 0) {
-    theadElement.style.visibility = 'hidden';
+    theadElement.style.display = 'none';
     dataNotFound.style.display = 'block';
     containerTotalizer.style.visibility = 'hidden';
     dataNotFound.innerText = 'Não foi encontrado resultados para essa pesquisa';
     return;
   }
 
-  theadElement.style.visibility = 'visible';
+  theadElement.style.display = 'table-header-group';
   dataNotFound.style.display = 'none';
 
   movements.forEach(item => {
@@ -100,6 +100,7 @@ function populateTable(movements) {
     tbodyElement.appendChild(tr);
   });
 
+  loadingMessage.style.display = 'none';
   populateTotalizer(movements);
 }
 
@@ -167,7 +168,6 @@ async function getAll() {
 }
 
 searchBtn.addEventListener('click', async () => {
-  loadingMessage.style.display = 'block';
   orderBy.options[0].selected = true;
 
   if (inputsDateElement[0].value > inputsDateElement[1].value) {
