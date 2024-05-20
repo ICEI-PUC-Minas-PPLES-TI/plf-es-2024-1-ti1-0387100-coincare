@@ -1,18 +1,7 @@
-// TODO
-// Buscar dados - OK
-// Validar datas - OK
-// Filtrar entre datas - OK
-// Filtragem rápida - OK
-// Ordenar - OK
-// Exibir mensagem caso não for encontrado nenhum registro - OK
-// Esconder tabela antes do usuário pesquisar - OK
-// Totalizador - OK
-// Exibir os dados formatados (valor e data) - OK
-// Resetar ordenação quando utilizar alguma filtragem rápida - OK
-
 const quickFiltersBtn = document.querySelectorAll('.c-button--quick-filter');
 const inputsDateElement = document.querySelectorAll('.c-input-date');
 const searchBtn = document.querySelector('.c-button--search');
+const loadingMessage = document.querySelector('.main__loading');
 const dataNotFound = document.querySelector('.main__data-not-found');
 const theadElement = document.querySelector('thead');
 const tbodyElement = document.querySelector('tbody');
@@ -21,9 +10,10 @@ const containerTotalizer = document.querySelector('.main__total-container');
 const spanRevenueTotalizer = document.querySelector('.main__total-value--revenue');
 const spanExpenseTotalizer = document.querySelector('.main__total-value--expense');
 
-const URL_BASE = 'http://localhost:3000/movimentacoes';
+const URL_BASE = 'https://json-server-db-orcin.vercel.app/movimentacoes';
 
 theadElement.style.visibility = 'hidden';
+loadingMessage.style.display = 'none';
 dataNotFound.style.display = 'none';
 containerTotalizer.style.visibility = 'hidden';
 
@@ -49,6 +39,7 @@ async function setDateInputsAndFetch(startDate, endDate) {
 
 function addQuickFilterEvent(button, startDateFn, endDateFn) {
   button.addEventListener('click', () => {
+    loadingMessage.style.display = 'block';
     orderBy.options[0].selected = true;
     const utcCurrentDate = getCurrentDateInUTC();
     const startDate = startDateFn(utcCurrentDate);
@@ -83,6 +74,7 @@ function populateTotalizer(movements) {
 
 function populateTable(movements) {
   tbodyElement.innerText = '';
+  loadingMessage.style.display = 'none';
 
   if (!movements || movements.length === 0) {
     theadElement.style.visibility = 'hidden';
@@ -175,6 +167,7 @@ async function getAll() {
 }
 
 searchBtn.addEventListener('click', async () => {
+  loadingMessage.style.display = 'block';
   orderBy.options[0].selected = true;
 
   if (inputsDateElement[0].value > inputsDateElement[1].value) {

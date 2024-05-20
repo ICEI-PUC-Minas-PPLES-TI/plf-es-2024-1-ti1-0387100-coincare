@@ -98,6 +98,357 @@
       "dia": "03",
       "mes_ano": "2024-02",
       "tipo": "D"
+    },
+    {
+      "id": 12,
+      "descricao": "Compra de Livro",
+      "valor": 20.00,
+      "categoria": "Educação",
+      "dia": "15",
+      "mes_ano": "2024-05",
+      "tipo": "D"
+    },
+    {
+      "id": 13,
+      "descricao": "Jantar Fora",
+      "valor": 70.00,
+      "categoria": "Alimentação",
+      "dia": "22",
+      "mes_ano": "2024-03",
+      "tipo": "D"
+    },
+    {
+      "id": 14,
+      "descricao": "Presente",
+      "valor": 30.00,
+      "categoria": "Outros",
+      "dia": "10",
+      "mes_ano": "2024-04",
+      "tipo": "D"
+    },
+    {
+      "id": 15,
+      "descricao": "Concerto de Carro",
+      "valor": 200.00,
+      "categoria": "Veículo",
+      "dia": "05",
+      "mes_ano": "2024-02",
+      "tipo": "D"
+    },
+    {
+      "id": 16,
+      "descricao": "Salário",
+      "valor": 2200.00,
+      "categoria": "Renda",
+      "dia": "18",
+      "mes_ano": "2024-06",
+      "tipo": "G"
+    },
+    {
+      "id": 17,
+      "descricao": "Lanche",
+      "valor": 15.00,
+      "categoria": "Alimentação",
+      "dia": "08",
+      "mes_ano": "2024-03",
+      "tipo": "D"
+    },
+    {
+      "id": 18,
+      "descricao": "Presente de Aniversário",
+      "valor": 50.00,
+      "categoria": "Outros",
+      "dia": "15",
+      "mes_ano": "2024-04",
+      "tipo": "D"
+    },
+    {
+      "id": 19,
+      "descricao": "Roupas",
+      "valor": 120.00,
+      "categoria": "Vestuário",
+      "dia": "20",
+      "mes_ano": "2024-03",
+      "tipo": "D"
+    },
+    {
+      "id": 20,
+      "descricao": "Freelance",
+      "valor": 500.00,
+      "categoria": "Renda Extra",
+      "dia": "10",
+      "mes_ano": "2024-02",
+      "tipo": "G"
+    },
+    {
+      "id": 21,
+      "descricao": "Jogos de Tabuleiro",
+      "valor": 40.00,
+      "categoria": "Lazer",
+      "dia": "12",
+      "mes_ano": "2024-03",
+      "tipo": "D"
+    },
+    {
+      "id": 22,
+      "descricao": "Café da Manhã",
+      "valor": 25.00,
+      "categoria": "Alimentação",
+      "dia": "01",
+      "mes_ano": "2024-02",
+      "tipo": "D"
+    },
+    {
+      "id": 23,
+      "descricao": "Presente de Casamento",
+      "valor": 100.00,
+      "categoria": "Outros",
+      "dia": "20",
+      "mes_ano": "2024-05",
+      "tipo": "D"
+    },
+    {
+      "id": 24,
+      "descricao": "Taxa Bancária",
+      "valor": 10.00,
+      "categoria": "Serviços Financeiros",
+      "dia": "05",
+      "mes_ano": "2024-02",
+      "tipo": "D"
+    },
+    {
+      "id": 25,
+      "descricao": "Presente de Natal",
+      "valor": 80.00,
+      "categoria": "Outros",
+      "dia": "25",
+      "mes_ano": "2024-12",
+      "tipo": "D"
+    },
+    {
+      "id": 26,
+      "descricao": "Gasolina",
+      "valor": 70.00,
+      "categoria": "Veículo",
+      "dia": "15",
+      "mes_ano": "2024-06",
+      "tipo": "D"
+    },
+    {
+      "id": 27,
+      "descricao": "Cinema",
+      "valor": 50.00,
+      "categoria": "Lazer",
+      "dia": "10",
+      "mes_ano": "2024-04",
+      "tipo": "D"
+    },
+    {
+      "id": 28,
+      "descricao": "Telefone",
+      "valor": 60.00,
+      "categoria": "Serviços",
+      "dia": "20",
+      "mes_ano": "2024-03",
+      "tipo": "D"
+    },
+    {
+      "id": 29,
+      "descricao": "Almoço",
+      "valor": 20.00,
+      "categoria": "Alimentação",
+      "dia": "12",
+      "mes_ano": "2024-02",
+      "tipo": "D"
+    },
+    {
+      "id": 30,
+      "descricao": "Presente de Amigo Secreto",
+      "valor": 25.00,
+      "categoria": "Outros",
+      "dia": "15",
+      "mes_ano": "2024-12",
+      "tipo": "D"
+    },
+    {
+      "id": 31,
+      "descricao": "Assinatura de Revista",
+      "valor": 15.00,
+      "categoria": "Entretenimento",
+      "dia": "08",
+      "mes_ano": "2024-03",
+      "tipo": "D"
+    },
+    {
+      "id": 32,
+      "descricao": "Taxa de Estacionamento",
+      "valor": 8.00,
+      "categoria": "Veículo",
+      "dia": "03",
+      "mes_ano": "2024-02",
+      "tipo": "D"
+    },
+    {
+      "id": 33,
+      "descricao": "Café",
+      "valor": 5.00,
+      "categoria": "Alimentação",
+      "dia": "01",
+      "mes_ano": "2024-06",
+      "tipo": "D"
+    },
+    {
+      "id": 34,
+      "descricao": "Cinema",
+      "valor": 40.00,
+      "categoria": "Lazer",
+      "dia": "05",
+      "mes_ano": "2024-02",
+      "tipo": "D"
+    },
+    {
+      "id": 35,
+      "descricao": "Compra de CD",
+      "valor": 12.00,
+      "categoria": "Entretenimento",
+      "dia": "18",
+      "mes_ano": "2024-03",
+      "tipo": "D"
+    },
+    {
+      "id": 36,
+      "descricao": "Lanche",
+      "valor": 4.50,
+      "categoria": "Alimentação",
+      "dia": "02",
+      "mes_ano": "2024-05",
+      "tipo": "D"
+    },
+    {
+      "id": 37,
+      "descricao": "Ingresso para Museu",
+      "valor": 7.00,
+      "categoria": "Cultura",
+      "dia": "10",
+      "mes_ano": "2024-04",
+      "tipo": "D"
+    },
+    {
+      "id": 38,
+      "descricao": "Assinatura de Jornal",
+      "valor": 30.00,
+      "categoria": "Entretenimento",
+      "dia": "20",
+      "mes_ano": "2024-02",
+      "tipo": "D"
+    },
+    {
+      "id": 39,
+      "descricao": "Taxa de Serviço",
+      "valor": 8.50,
+      "categoria": "Serviços",
+      "dia": "12",
+      "mes_ano": "2024-06",
+      "tipo": "D"
+    },
+    {
+      "id": 40,
+      "descricao": "Compras Online",
+      "valor": 90.00,
+      "categoria": "Compras",
+      "dia": "25",
+      "mes_ano": "2024-02",
+      "tipo": "D"
+    },
+    {
+      "id": 41,
+      "descricao": "Concerto de Bicicleta",
+      "valor": 35.00,
+      "categoria": "Transporte",
+      "dia": "18",
+      "mes_ano": "2024-03",
+      "tipo": "D"
+    },
+    {
+      "id": 42,
+      "descricao": "Concerto de Computador",
+      "valor": 150.00,
+      "categoria": "Tecnologia",
+      "dia": "22",
+      "mes_ano": "2024-04",
+      "tipo": "D"
+    },
+    {
+      "id": 43,
+      "descricao": "Taxa de Condomínio",
+      "valor": 200.00,
+      "categoria": "Moradia",
+      "dia": "28",
+      "mes_ano": "2024-05",
+      "tipo": "D"
+    },
+    {
+      "id": 44,
+      "descricao": "Bilhete de Trem",
+      "valor": 25.00,
+      "categoria": "Transporte",
+      "dia": "10",
+      "mes_ano": "2024-06",
+      "tipo": "D"
+    },
+    {
+      "id": 45,
+      "descricao": "Taxa de Estacionamento",
+      "valor": 6.00,
+      "categoria": "Veículo",
+      "dia": "15",
+      "mes_ano": "2024-02",
+      "tipo": "D"
+    },
+    {
+      "id": 46,
+      "descricao": "Compra de Presentes",
+      "valor": 120.00,
+      "categoria": "Outros",
+      "dia": "20",
+      "mes_ano": "2024-12",
+      "tipo": "D"
+    },
+    {
+      "id": 47,
+      "descricao": "Assinatura de Streaming",
+      "valor": 12.99,
+      "categoria": "Entretenimento",
+      "dia": "05",
+      "mes_ano": "2024-07",
+      "tipo": "D"
+    },
+    {
+      "id": 48,
+      "descricao": "Café da Manhã",
+      "valor": 8.00,
+      "categoria": "Alimentação",
+      "dia": "12",
+      "mes_ano": "2024-08",
+      "tipo": "D"
+    },
+    {
+      "id": 49,
+      "descricao": "Taxa de Serviço",
+      "valor": 18.50,
+      "categoria": "Serviços",
+      "dia": "22",
+      "mes_ano": "2024-09",
+      "tipo": "D"
+    },
+    {
+      "id": 50,
+      "descricao": "Presente de Aniversário",
+      "valor": 40.00,
+      "categoria": "Outros",
+      "dia": "03",
+      "mes_ano": "2024-10",
+      "tipo": "D"
     }
   ]
 }
