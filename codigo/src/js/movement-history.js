@@ -39,7 +39,6 @@ async function setDateInputsAndFetch(startDate, endDate) {
 
 function addQuickFilterEvent(button, startDateFn, endDateFn) {
   button.addEventListener('click', () => {
-    loadingMessage.style.display = 'block';
     orderBy.options[0].selected = true;
     const utcCurrentDate = getCurrentDateInUTC();
     const startDate = startDateFn(utcCurrentDate);
@@ -74,9 +73,9 @@ function populateTotalizer(movements) {
 
 function populateTable(movements) {
   tbodyElement.innerText = '';
-  loadingMessage.style.display = 'block';
 
   if (!movements || movements.length === 0) {
+    loadingMessage.style.display = 'none';
     theadElement.style.display = 'none';
     dataNotFound.style.display = 'block';
     containerTotalizer.style.visibility = 'hidden';
@@ -154,6 +153,8 @@ function orderByF(typeOrder, data) {
 }
 
 async function getAll() {
+  loadingMessage.style.display = 'block';
+
   try {
     const response = await fetch(URL_BASE);
 
