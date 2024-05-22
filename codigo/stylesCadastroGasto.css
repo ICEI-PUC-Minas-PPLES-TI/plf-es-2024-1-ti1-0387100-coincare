@@ -6,25 +6,13 @@
 
 html, body {
     height: 100%;
+    width: 100%;
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
-    display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.container {
-    width: 100%;
-    max-width: 1200px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    overflow-y: auto;
-}
 
 header {
     display: flex;
@@ -32,8 +20,6 @@ header {
     align-items: center;
     background-color: #a7dbd8;
     padding: 10px 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
 }
 
 header h1 {
@@ -48,6 +34,7 @@ header nav a {
 }
 
 main {
+    padding: 10px 20px;
     flex: 1;
 }
 
@@ -147,8 +134,8 @@ footer {
     text-align: center;
     font-size: 14px;
     color: #aaa;
-    margin-top: 20px;
-    padding-top: 10px;
+    margin: 20px;
+    padding: 10px;
 }
 
 /* Modal */
