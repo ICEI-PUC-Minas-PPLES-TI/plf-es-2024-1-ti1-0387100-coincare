@@ -93,8 +93,16 @@ async function updateGrafico() {
         const saldoTotal = ganhosTotal - gastosTotal;
 
         saldoTotalElement.textContent = `SALDO TOTAL: R$${saldoTotal.toFixed(2)}`;
-        ganhosTotalElement.textContent = `GANHOS: R$${ganhosTotal.toFixed(2)}`;
-        gastosTotalElement.textContent = `GASTOS: R$${gastosTotal.toFixed(2)}`;
+
+        const ganhosTotalSpan = document.createElement('span');
+        ganhosTotalSpan.textContent = `GANHOS: R$${ganhosTotal.toFixed(2)}`;
+        ganhosTotalElement.innerHTML = '<span class="legenda-cor" style="background-color: #69d2e7;"></span>';
+        ganhosTotalElement.appendChild(ganhosTotalSpan);
+
+        const gastosTotalSpan = document.createElement('span');
+        gastosTotalSpan.textContent = `GASTOS: R$${gastosTotal.toFixed(2)}`;
+        gastosTotalElement.innerHTML = '<span class="legenda-cor" style="background-color: #e0e4cc;"></span>';
+        gastosTotalElement.appendChild(gastosTotalSpan);
 
         renderGrafico(ganhosTotal, gastosTotal);
     } catch (error) {
@@ -149,13 +157,70 @@ async function handleVerMaisClick() {
             if (item.tipo === tipo) {
                 const itemElement = document.createElement('div');
                 itemElement.classList.add('item');
+                itemElement.dataset.item = JSON.stringify(item);
 
-                const itemText = document.createElement('span');
-                itemText.textContent = `${item.nome} - R$${item.valor.toFixed(2)} - ${item.categoria} - Dia: ${item.dia}`;
-                itemElement.appendChild(itemText);
+                const nomeGroup = document.createElement('div');
+                nomeGroup.classList.add('input-group');
+                const nomeLabel = document.createElement('label');
+                nomeLabel.textContent = 'Nome';
+                const nomeInput = document.createElement('input');
+                nomeInput.type = 'text';
+                nomeInput.classList.add('input-field');
+                nomeInput.value = item.nome;
+                nomeInput.disabled = true; 
+                nomeGroup.appendChild(nomeLabel);
+                nomeGroup.appendChild(nomeInput);
+                itemElement.appendChild(nomeGroup);
+
+                const valorGroup = document.createElement('div');
+                valorGroup.classList.add('input-group');
+                const valorLabel = document.createElement('label');
+                valorLabel.textContent = 'Valor';
+                const valorInput = document.createElement('input');
+                valorInput.type = 'text';
+                valorInput.classList.add('input-field');
+                valorInput.value = item.valor;
+                valorInput.disabled = true;  
+                valorGroup.appendChild(valorLabel);
+                valorGroup.appendChild(valorInput);
+                itemElement.appendChild(valorGroup);
+
+                const categoriaGroup = document.createElement('div');
+                categoriaGroup.classList.add('input-group');
+                const categoriaLabel = document.createElement('label');
+                categoriaLabel.textContent = 'Categoria';
+                const categoriaInput = document.createElement('input');
+                categoriaInput.type = 'text';
+                categoriaInput.classList.add('input-field');
+                categoriaInput.value = item.categoria;
+                categoriaInput.disabled = true;  
+                categoriaGroup.appendChild(categoriaLabel);
+                categoriaGroup.appendChild(categoriaInput);
+                itemElement.appendChild(categoriaGroup);
+
+                const diaGroup = document.createElement('div');
+                diaGroup.classList.add('input-group');
+                const diaLabel = document.createElement('label');
+                diaLabel.textContent = 'Dia';
+                const diaInput = document.createElement('input');
+                diaInput.type = 'text';
+                diaInput.classList.add('input-field');
+                diaInput.value = item.dia;
+                diaInput.disabled = true;
+                diaGroup.appendChild(diaLabel);
+                diaGroup.appendChild(diaInput);
+                itemElement.appendChild(diaGroup);
+
+                const editButton = document.createElement('button');
+                editButton.textContent = 'Editar';
+                editButton.classList.add('edit-button');
+                editButton.dataset.id = item.id;
+                editButton.addEventListener('click', () => enableEditMode(itemElement, item.id));
+                itemElement.appendChild(editButton);
 
                 const deleteButton = document.createElement('button');
                 deleteButton.textContent = 'Excluir';
+                deleteButton.classList.add('delete-button');
                 deleteButton.dataset.id = item.id;
                 deleteButton.addEventListener('click', () => deleteItem(item.id));
                 itemElement.appendChild(deleteButton);
@@ -166,6 +231,53 @@ async function handleVerMaisClick() {
         modal.style.display = 'block';
     } catch (error) {
         console.error('Error:', error);
+    }
+}
+
+function enableEditMode(itemElement, itemId) {
+    const inputs = itemElement.querySelectorAll('.input-field');
+    inputs.forEach(input => input.disabled = false);
+
+    const editButton = itemElement.querySelector('.edit-button');
+    editButton.textContent = 'Salvar';
+    editButton.removeEventListener('click', () => enableEditMode(itemElement, itemId));
+    editButton.addEventListener('click', () => saveItemEdit(itemElement, itemId));
+}
+
+async function saveItemEdit(itemElement, itemId) {
+    const inputs = itemElement.querySelectorAll('.input-field');
+    const originalItem = JSON.parse(itemElement.dataset.item);
+
+    const updatedItem = {
+        id: itemId,
+        nome: inputs[0].value,
+        valor: parseFloat(inputs[1].value),
+        categoria: inputs[2].value,
+        dia: parseInt(inputs[3].value, 10),
+        mesAno: originalItem.mesAno,
+        tipo: originalItem.tipo
+    };
+
+    try {
+        const response = await fetch(`${apiUrl}/${itemId}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(updatedItem)
+        });
+        if (response.ok) {
+            showPopup('Item atualizado com sucesso!', 'success');
+            inputs.forEach(input => input.disabled = true);
+
+            const editButton = itemElement.querySelector('.edit-button');
+            editButton.textContent = 'Editar';
+            editButton.removeEventListener('click', () => saveItemEdit(itemElement, itemId));
+            editButton.addEventListener('click', () => enableEditMode(itemElement, itemId));
+        } else {
+            showPopup('Erro ao atualizar item.', 'error');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        showPopup('Erro ao atualizar item.', 'error');
     }
 }
 

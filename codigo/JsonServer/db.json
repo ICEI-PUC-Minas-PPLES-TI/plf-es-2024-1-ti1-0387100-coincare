@@ -1,31 +1,13 @@
 {
   "items": [
     {
-      "id": "2dbf",
-      "nome": "1",
-      "valor": 1,
-      "categoria": "1",
-      "dia": 1,
-      "mesAno": "2024-02",
+      "id": "zk7fy4duy",
+      "nome": "Futebol de terca",
+      "valor": 20,
+      "categoria": "Esporte",
+      "dia": 12,
+      "mesAno": "2024-01",
       "tipo": "ganhos"
-    },
-    {
-      "id": "2dbf",
-      "nome": "1",
-      "valor": 1,
-      "categoria": "1",
-      "dia": 1,
-      "mesAno": "2024-02",
-      "tipo": "despesas_variaveis"
-    },
-    {
-      "id": "2dbf",
-      "nome": "1",
-      "valor": 1,
-      "categoria": "1",
-      "dia": 1,
-      "mesAno": "2024-02",
-      "tipo": "despesas_fixas"
     }
   ]
 }
