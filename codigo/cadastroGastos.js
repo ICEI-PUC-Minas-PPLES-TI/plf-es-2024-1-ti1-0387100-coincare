@@ -27,7 +27,6 @@ closeModal.addEventListener('click', (e) => {
     modal.style.display = 'none';
 });
 window.addEventListener('click', (event) => {
-    event.preventDefault();
     if (event.target == modal) {
         modal.style.display = 'none';
     }
@@ -35,7 +34,6 @@ window.addEventListener('click', (event) => {
 
 function handleAdicionarClick(event) {
     event.preventDefault();
-    const myTimeout = setTimeout(() => {}, 7000);
 
     if (!mesAnoInput.value) {
         showPopup('Por favor, selecione o mês e ano.', 'error');
@@ -54,7 +52,7 @@ function handleAdicionarClick(event) {
     }
 
     const tipo = this.dataset.tipo;
-    const data = { nome, valor, categoria, dia, mesAno: mesAnoInput.value, tipo };
+    const data = { id: generateId(), nome, valor, categoria, dia, mesAno: mesAnoInput.value, tipo };
 
     saveItem(data);
 }
@@ -66,13 +64,20 @@ async function saveItem(data) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         });
-        const item = await response.json();
-        updateGrafico();
-        showPopup('Item adicionado com sucesso!', 'success');
+        if (response.ok) {
+            updateGrafico();
+            showPopup('Item adicionado com sucesso!', 'success');
+        } else {
+            showPopup('Erro ao adicionar item.', 'error');
+        }
     } catch (error) {
         showPopup('Erro ao adicionar item.', 'error');
         console.error('Error:', error);
     }
+}
+
+function generateId() {
+    return Math.random().toString(36).substr(2, 9);
 }
 
 async function updateGrafico() {
@@ -91,7 +96,6 @@ async function updateGrafico() {
         ganhosTotalElement.textContent = `GANHOS: R$${ganhosTotal.toFixed(2)}`;
         gastosTotalElement.textContent = `GASTOS: R$${gastosTotal.toFixed(2)}`;
 
-        console.log('NNNNNNNNNNNNNNNNNN')
         renderGrafico(ganhosTotal, gastosTotal);
     } catch (error) {
         console.error('Error:', error);
@@ -106,9 +110,9 @@ function renderGrafico(ganhos, gastos) {
     const ganhosLargeArc = ganhosPercent > 180 ? 1 : 0;
     const ganhosEndX = 100 + 100 * Math.cos((ganhosPercent - 90) * Math.PI / 180);
     const ganhosEndY = 100 + 100 * Math.sin((ganhosPercent - 90) * Math.PI / 180);
-    console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
 
     ganhosPath.setAttribute('d', `M100 100 L100 0 A100 100 0 ${ganhosLargeArc} 1 ${ganhosEndX} ${ganhosEndY} Z`);
+    ganhosPath.setAttribute('fill', '#69d2e7');
 
     if (gastos > 0) {
         const gastosLargeArc = gastosPercent > 180 ? 1 : 0;
@@ -116,6 +120,7 @@ function renderGrafico(ganhos, gastos) {
         const gastosEndY = 100 + 100 * Math.sin((ganhosPercent + gastosPercent - 90) * Math.PI / 180);
 
         gastosPath.setAttribute('d', `M100 100 L${ganhosEndX} ${ganhosEndY} A100 100 0 ${gastosLargeArc} 1 ${gastosEndX} ${gastosEndY} Z`);
+        gastosPath.setAttribute('fill', '#e0e4cc');
     } else {
         gastosPath.setAttribute('d', '');
     }

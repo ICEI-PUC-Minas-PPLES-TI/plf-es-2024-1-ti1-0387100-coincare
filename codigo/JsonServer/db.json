@@ -1,58 +1,31 @@
 {
   "items": [
     {
-      "id": "d8d7",
-      "nome": "Esporte",
-      "valor": 12,
-      "categoria": "Esporte",
-      "dia": 12,
+      "id": "2dbf",
+      "nome": "1",
+      "valor": 1,
+      "categoria": "1",
+      "dia": 1,
       "mesAno": "2024-02",
       "tipo": "ganhos"
     },
     {
-      "id": "102e",
-      "nome": "Gustavo",
-      "valor": 12,
-      "categoria": "Esporte",
-      "dia": 12,
+      "id": "2dbf",
+      "nome": "1",
+      "valor": 1,
+      "categoria": "1",
+      "dia": 1,
       "mesAno": "2024-02",
-      "tipo": "ganhos"
+      "tipo": "despesas_variaveis"
     },
     {
-      "id": "aa1c",
-      "nome": "Esporte",
-      "valor": 12,
-      "categoria": "A",
+      "id": "2dbf",
+      "nome": "1",
+      "valor": 1,
+      "categoria": "1",
       "dia": 1,
       "mesAno": "2024-02",
       "tipo": "despesas_fixas"
-    },
-    {
-      "id": "8d3e",
-      "nome": "Gustavo",
-      "valor": 500,
-      "categoria": "Esporte",
-      "dia": 12,
-      "mesAno": "2024-02",
-      "tipo": "ganhos"
-    },
-    {
-      "id": "5ee2",
-      "nome": "Esporte",
-      "valor": 123,
-      "categoria": "teste",
-      "dia": 12,
-      "mesAno": "2024-02",
-      "tipo": "ganhos"
-    },
-    {
-      "id": "ccb9",
-      "nome": "Gustavo",
-      "valor": 12,
-      "categoria": "Esporte",
-      "dia": 2,
-      "mesAno": "2024-02",
-      "tipo": "ganhos"
     }
   ]
 }
