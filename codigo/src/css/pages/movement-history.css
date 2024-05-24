@@ -82,7 +82,8 @@ body {
   font-weight: bold;
 }
 
-.main__total-value--expense {
+.main__total-value--expense-fixed,
+.main__total-value--variable-expense{
   color: var(--color-red-01);
   font-weight: bold;
 }

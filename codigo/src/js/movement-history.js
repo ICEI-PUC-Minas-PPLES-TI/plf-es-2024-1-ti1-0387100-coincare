@@ -8,9 +8,10 @@ const tbodyElement = document.querySelector('tbody');
 const orderBy = document.querySelector('#order-by');
 const containerTotalizer = document.querySelector('.main__total-container');
 const spanRevenueTotalizer = document.querySelector('.main__total-value--revenue');
-const spanExpenseTotalizer = document.querySelector('.main__total-value--expense');
+const spanExpenseFixedTotalizer = document.querySelector('.main__total-value--expense-fixed');
+const spanVariableExpenseTotalizer = document.querySelector('.main__total-value--variable-expense');
 
-const URL_BASE = 'https://json-server-db-orcin.vercel.app/movimentacoes';
+const URL_BASE = 'http://localhost:3000/items';
 
 theadElement.style.display = 'none';
 loadingMessage.style.display = 'none';
@@ -57,18 +58,22 @@ function populateTotalizer(movements) {
   containerTotalizer.style.visibility = 'visible';
 
   let revenueTotalizer  = 0;
-  let expenseTotalizer = 0;
+  let expenseFixedTotalizer = 0;
+  let variableExpenseFixedTotalizer = 0;
 
   movements.forEach(item => {
-    if (item.tipo === 'G') {
+    if (item.tipo === 'ganhos') {
       revenueTotalizer += item.valor;
+    } else if (item.tipo === 'despesas_fixas'){
+      expenseFixedTotalizer += item.valor;
     } else {
-      expenseTotalizer += item.valor;
+      variableExpenseFixedTotalizer += item.valor;
     }
   });
 
   spanRevenueTotalizer.innerText = revenueTotalizer.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-  spanExpenseTotalizer.innerText = expenseTotalizer.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  spanExpenseFixedTotalizer.innerText = expenseFixedTotalizer.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  spanVariableExpenseTotalizer.innerText = variableExpenseFixedTotalizer.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }
 
 function populateTable(movements) {
@@ -90,11 +95,11 @@ function populateTable(movements) {
     const tr = document.createElement('tr');
 
     createAndAppendTd(tr, item.id);
-    createAndAppendTd(tr, item.tipo === 'G' ? 'Receita' : 'Despesa');
-    createAndAppendTd(tr, item.descricao);
+    createAndAppendTd(tr, item.tipo === 'ganhos' ? 'Receita' : item.tipo === 'despesas_fixas' ? 'Despesa fixa' : 'Despesa variável');
+    createAndAppendTd(tr, item.nome);
     createAndAppendTd(tr, item.categoria);
     createAndAppendTd(tr, item.valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }));
-    createAndAppendTd(tr, dateFns.format(new Date(`${item.mes_ano}-${item.dia}`), 'dd/MM/yyyy'));
+    createAndAppendTd(tr, dateFns.format(new Date(`${item.mesAno}-${item.dia}`), 'dd/MM/yyyy'));
 
     tbodyElement.appendChild(tr);
   });
@@ -114,7 +119,7 @@ function filterData(data) {
   const finalDate = inputsDateElement[1].value;
 
   const filteredData = data.filter(item => {
-    const itemDate = `${item.mes_ano}-${item.dia}`;
+    const itemDate = `${item.mesAno}-${item.dia}`;
     return itemDate >= initialDate && itemDate <= finalDate;
   });
 
@@ -129,8 +134,8 @@ function orderByF(typeOrder, data) {
   switch (typeOrder) {
     case 'transaction-date':
       data.sort((a, b) => {
-        const dateA = new Date(`${a.mes_ano}-${a.dia}`);
-        const dateB = new Date(`${b.mes_ano}-${b.dia}`);
+        const dateA = new Date(`${a.mesAno}-${a.dia}`);
+        const dateB = new Date(`${b.mesAno}-${b.dia}`);
         return dateB - dateA;
       });
       break;
@@ -144,7 +149,7 @@ function orderByF(typeOrder, data) {
       break;
 
     case 'description':
-      data.sort((a, b) => a.descricao.localeCompare(b.descricao));
+      data.sort((a, b) => a.nome.localeCompare(b.nome));
       break;
     default:
   }
