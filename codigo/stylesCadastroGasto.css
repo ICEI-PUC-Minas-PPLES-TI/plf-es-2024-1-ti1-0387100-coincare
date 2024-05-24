@@ -8,7 +8,7 @@ html, body {
     height: 100%;
     width: 100%;
     font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+    background-color: #FFFFFF;
     justify-content: center;
     align-items: center;
 }
@@ -18,18 +18,18 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #a7dbd8;
+    background-color: #7FC396;
     padding: 10px 20px;
 }
 
 header h1 {
     margin: 0;
-    color: #fff;
+    color: #FFFFFF;
 }
 
 header nav a {
     margin-left: 20px;
-    color: #fff;
+    color: #FFFFFF;
     text-decoration: none;
 }
 
@@ -72,7 +72,7 @@ input[type="text"] {
 .section {
     flex: 1;
     min-width: 280px;
-    background-color: #f0f0f0;
+    background-color: #F5F5F5;
     padding: 20px;
     border-radius: 8px;
 }
@@ -92,9 +92,9 @@ h3 {
 .input-group button {
     padding: 10px;
     font-size: 14px;
-    background-color: #a7dbd8;
+    background-color: #7FC396;
     border: none;
-    color: #fff;
+    color: #FFFFFF;
     cursor: pointer;
     border-radius: 4px;
     margin-top: 10px;
@@ -102,9 +102,9 @@ h3 {
 }
 
 .ver-mais {
-    background-color: #eee;
+    background-color: #FFFFFF;
     border: none;
-    color: #333;
+    color: #000000;
     padding: 10px;
     cursor: pointer;
     border-radius: 4px;
@@ -157,12 +157,11 @@ footer {
     width: 100%; 
     height: 100%; 
     overflow: auto; 
-    background-color: rgb(0,0,0); 
-    background-color: rgba(0,0,0,0.4); 
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-content {
-    background-color: #fefefe;
+    background-color: #FFFFFF;
     margin: 15% auto; 
     padding: 20px;
     border: 1px solid #888;
@@ -172,17 +171,27 @@ footer {
 }
 
 .close {
-    color: #aaa;
+    background-color: #E2504C; /* Cor de fundo do círculo */
+    color: #FFFFFF; /* Cor do ícone "×" */
     float: right;
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
+    border: none;
+    border-radius: 50%; /* Tornar o botão circular */
+    width: 30px; /* Largura do círculo */
+    height: 30px; /* Altura do círculo */
+    display: flex;
+    justify-content: center;
+    margin-left: 17px; /* Ajustar a posição vertical */
 }
 
 .close:hover,
 .close:focus {
-    color: black;
+    background-color: #E2504C; /* Cor de fundo no hover */
+    color: #FFFFFF;
     text-decoration: none;
+    cursor: pointer;
 }
 
 /* Gráfico de Pizza */
@@ -221,58 +230,22 @@ path:hover {
 }
 
 .popup.success {
-    background-color:#4caf50;
+    background-color:#7FC396;
     color: #FFFFFF;
 }
 
 .popup.error {
-    background-color:#e81c0d;
+    background-color:#E2504C;
     color: #FFFFFF;
 }
 
 .popup.info {
-    background-color:#0d27e8;
-    color: #FFFFFF;
+    background-color:#D4EAFE;
+    color: #000000;
 }
 
 body {
     font-family: Arial, sans-serif;
-}
-
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-}
-
-.modal-content {
-    background-color: #fefefe;
-    margin: 10% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 90%;
-    max-width: 700px;
-    border-radius: 8px;
-}
-
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
 }
 
 .items-list {
@@ -283,11 +256,11 @@ body {
 
 .item {
     display: flex;
-    align-items: flex-start; /* Align items to the top */
+    align-items: center; /* Align items to the top */
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #eee;
     border-radius: 8px;
-    background-color: #f9f9f9;
+    background-color: #eee;
     flex-wrap: wrap; /* Allow wrapping */
 }
 
@@ -299,7 +272,6 @@ body {
 }
 
 .input-group label {
-    margin-bottom: 5px;
     font-weight: bold;
 }
 
@@ -316,20 +288,20 @@ body {
 
 .edit-button,
 .delete-button {
-    padding: 5px 10px;
+    padding: 10px 12px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin-top: 20px; /* Align buttons with inputs */
+    margin-top: 16px; /* Align buttons with inputs */
 }
 
 .edit-button {
-    background-color: #4CAF50;
+    background-color: #7FC396;
     color: white;
     margin-right: 10px;
 }
 
 .delete-button {
-    background-color: #f44336;
+    background-color: #E2504C;
     color: white;
 }

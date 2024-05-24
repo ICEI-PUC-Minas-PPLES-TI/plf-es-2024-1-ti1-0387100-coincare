@@ -2,10 +2,118 @@
   "items": [
     {
       "id": "zk7fy4duy",
-      "nome": "Futebol de terca",
-      "valor": 20,
+      "nome": "FUTEBAS",
+      "valor": 50,
       "categoria": "Esporte",
       "dia": 12,
+      "mesAno": "2024-01",
+      "tipo": "ganhos"
+    },
+    {
+      "id": "7yn1z0kf1",
+      "nome": "Esporte",
+      "valor": 12,
+      "categoria": "Esporte",
+      "dia": 1,
+      "mesAno": "2024-01",
+      "tipo": "ganhos"
+    },
+    {
+      "id": "wrzjtgv2m",
+      "nome": "Esporte",
+      "valor": 20,
+      "categoria": "abc",
+      "dia": 1,
+      "mesAno": "2024-01",
+      "tipo": "despesas_variaveis"
+    },
+    {
+      "id": "rclwughn7",
+      "nome": "Esporte",
+      "valor": 10,
+      "categoria": "abc",
+      "dia": 1,
+      "mesAno": "2024-01",
+      "tipo": "despesas_fixas"
+    },
+    {
+      "id": "80iicen65",
+      "nome": "Esporte",
+      "valor": 12,
+      "categoria": "Esporte",
+      "dia": 1,
+      "mesAno": "2024-01",
+      "tipo": "ganhos"
+    },
+    {
+      "id": "4pa50k8pf",
+      "nome": "Esporte",
+      "valor": 12,
+      "categoria": "Esporte",
+      "dia": 1,
+      "mesAno": "2024-01",
+      "tipo": "ganhos"
+    },
+    {
+      "id": "9vnfqn48s",
+      "nome": "Esporte",
+      "valor": 12,
+      "categoria": "Esporte",
+      "dia": 1,
+      "mesAno": "2024-01",
+      "tipo": "ganhos"
+    },
+    {
+      "id": "ygr65s6md",
+      "nome": "Esporte",
+      "valor": 12,
+      "categoria": "Esporte",
+      "dia": 1,
+      "mesAno": "2024-01",
+      "tipo": "ganhos"
+    },
+    {
+      "id": "zxoggufbm",
+      "nome": "Esporte",
+      "valor": 12,
+      "categoria": "Esporte",
+      "dia": 1,
+      "mesAno": "2024-01",
+      "tipo": "ganhos"
+    },
+    {
+      "id": "2dswual65",
+      "nome": "Esporte",
+      "valor": 12,
+      "categoria": "Esporte",
+      "dia": 1,
+      "mesAno": "2024-01",
+      "tipo": "ganhos"
+    },
+    {
+      "id": "uhnwqail5",
+      "nome": "Esporte",
+      "valor": 12,
+      "categoria": "Esporte",
+      "dia": 1,
+      "mesAno": "2024-01",
+      "tipo": "ganhos"
+    },
+    {
+      "id": "nknjdzk0y",
+      "nome": "Esporte",
+      "valor": 12,
+      "categoria": "Esporte",
+      "dia": 1,
+      "mesAno": "2024-01",
+      "tipo": "ganhos"
+    },
+    {
+      "id": "h3dj48pqb",
+      "nome": "Esporte",
+      "valor": 12,
+      "categoria": "Esporte",
+      "dia": 1,
       "mesAno": "2024-01",
       "tipo": "ganhos"
     }
