@@ -55,6 +55,11 @@ function handleAdicionarClick(event) {
     const data = { id: generateId(), nome, valor, categoria, dia, mesAno: mesAnoInput.value, tipo };
 
     saveItem(data);
+    clearInputFields(inputGroup);
+}
+
+function clearInputFields(inputGroup) {
+    inputGroup.querySelectorAll('input').forEach(input => input.value = '');
 }
 
 async function saveItem(data) {
@@ -266,6 +271,7 @@ async function saveItemEdit(itemElement, itemId) {
         });
         if (response.ok) {
             showPopup('Item atualizado com sucesso!', 'success');
+            updateGrafico();
             inputs.forEach(input => input.disabled = true);
 
             const editButton = itemElement.querySelector('.edit-button');
@@ -285,10 +291,10 @@ async function deleteItem(itemId) {
     try {
         const response = await fetch(`${apiUrl}/${itemId}`, { method: 'DELETE' });
         if (response.ok) {
-            updateGrafico();
             showPopup('Item excluído com sucesso!', 'success');
             const itemToDelete = document.querySelector(`button[data-id="${itemId}"]`).closest('.item');
             itemToDelete.remove();
+            updateGrafico();
         } else {
             showPopup('Erro ao excluir item.', 'error');
         }
