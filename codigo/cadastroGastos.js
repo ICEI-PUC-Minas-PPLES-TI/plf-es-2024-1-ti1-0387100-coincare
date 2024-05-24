@@ -55,6 +55,11 @@ function handleAdicionarClick(event) {
     const data = { id: generateId(), nome, valor, categoria, dia, mesAno: mesAnoInput.value, tipo };
 
     saveItem(data);
+    clearInputFields(inputGroup);
+}
+
+function clearInputFields(inputGroup) {
+    inputGroup.querySelectorAll('input').forEach(input => input.value = '');
 }
 
 async function saveItem(data) {
@@ -96,12 +101,12 @@ async function updateGrafico() {
 
         const ganhosTotalSpan = document.createElement('span');
         ganhosTotalSpan.textContent = `GANHOS: R$${ganhosTotal.toFixed(2)}`;
-        ganhosTotalElement.innerHTML = '<span class="legenda-cor" style="background-color: #69d2e7;"></span>';
+        ganhosTotalElement.innerHTML = '<span class="legenda-cor" style="background-color: #7FC396;"></span>';
         ganhosTotalElement.appendChild(ganhosTotalSpan);
 
         const gastosTotalSpan = document.createElement('span');
         gastosTotalSpan.textContent = `GASTOS: R$${gastosTotal.toFixed(2)}`;
-        gastosTotalElement.innerHTML = '<span class="legenda-cor" style="background-color: #e0e4cc;"></span>';
+        gastosTotalElement.innerHTML = '<span class="legenda-cor" style="background-color: #E2504C;"></span>';
         gastosTotalElement.appendChild(gastosTotalSpan);
 
         renderGrafico(ganhosTotal, gastosTotal);
@@ -120,7 +125,7 @@ function renderGrafico(ganhos, gastos) {
     const ganhosEndY = 100 + 100 * Math.sin((ganhosPercent - 90) * Math.PI / 180);
 
     ganhosPath.setAttribute('d', `M100 100 L100 0 A100 100 0 ${ganhosLargeArc} 1 ${ganhosEndX} ${ganhosEndY} Z`);
-    ganhosPath.setAttribute('fill', '#69d2e7');
+    ganhosPath.setAttribute('fill', '#7FC396');
 
     if (gastos > 0) {
         const gastosLargeArc = gastosPercent > 180 ? 1 : 0;
@@ -128,7 +133,7 @@ function renderGrafico(ganhos, gastos) {
         const gastosEndY = 100 + 100 * Math.sin((ganhosPercent + gastosPercent - 90) * Math.PI / 180);
 
         gastosPath.setAttribute('d', `M100 100 L${ganhosEndX} ${ganhosEndY} A100 100 0 ${gastosLargeArc} 1 ${gastosEndX} ${gastosEndY} Z`);
-        gastosPath.setAttribute('fill', '#e0e4cc');
+        gastosPath.setAttribute('fill', '#E2504C');
     } else {
         gastosPath.setAttribute('d', '');
     }
@@ -266,6 +271,7 @@ async function saveItemEdit(itemElement, itemId) {
         });
         if (response.ok) {
             showPopup('Item atualizado com sucesso!', 'success');
+            updateGrafico();
             inputs.forEach(input => input.disabled = true);
 
             const editButton = itemElement.querySelector('.edit-button');
@@ -285,10 +291,10 @@ async function deleteItem(itemId) {
     try {
         const response = await fetch(`${apiUrl}/${itemId}`, { method: 'DELETE' });
         if (response.ok) {
-            updateGrafico();
             showPopup('Item excluído com sucesso!', 'success');
             const itemToDelete = document.querySelector(`button[data-id="${itemId}"]`).closest('.item');
             itemToDelete.remove();
+            updateGrafico();
         } else {
             showPopup('Erro ao excluir item.', 'error');
         }

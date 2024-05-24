@@ -1,13 +1,31 @@
 {
   "items": [
     {
-      "id": "zk7fy4duy",
-      "nome": "Futebol de terca",
+      "id": "kgnak53c5",
+      "nome": "Salário",
       "valor": 20,
-      "categoria": "Esporte",
-      "dia": 12,
+      "categoria": "Trabalho",
+      "dia": 1,
       "mesAno": "2024-01",
       "tipo": "ganhos"
+    },
+    {
+      "id": "7s8iyuhj7",
+      "nome": "Cartão",
+      "valor": 10,
+      "categoria": "Gasto",
+      "dia": 1,
+      "mesAno": "2024-01",
+      "tipo": "despesas_variaveis"
+    },
+    {
+      "id": "305y8y50p",
+      "nome": "Aluguel do irmão",
+      "valor": 0,
+      "categoria": "Casa",
+      "dia": 10,
+      "mesAno": "2024-01",
+      "tipo": "despesas_fixas"
     }
   ]
 }
