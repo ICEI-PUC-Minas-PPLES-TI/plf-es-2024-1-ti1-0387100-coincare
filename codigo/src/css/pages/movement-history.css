@@ -1,0 +1,147 @@
+@import url(../utils/palet_colors.css);
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.main {
+  flex: 1 1 0;
+  font-family: Inter;
+  padding: 0 3rem;
+}
+
+.main__text {
+  color: var(--color-gray-10);
+}
+
+.main__text--your-history {
+  font-size: 18pt;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.main__quick-filters-container,
+.main__date-filter-container {
+  margin: .5rem 0;
+}
+
+.main__date-filter-container {
+  align-items: center;
+  display: flex;
+  gap: .5rem;
+}
+
+.main__search-container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.main__order-by-container {
+  align-items: center;
+  display: flex;
+  gap: .5rem;
+}
+
+.main__loading {
+  text-align: center;
+  display: none;
+}
+
+.main__data-not-found {
+  color: var(--color-gray-10);
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.main__table {
+  margin-top: 3rem;
+}
+
+.main__table thead {
+  display: none;
+}
+
+.main__total-container {
+  color: var(--color-gray-10);
+  display: flex;
+  justify-content: flex-end;
+  text-align: right;
+  visibility: hidden;
+}
+
+.main__total-title {
+  font-size: 14pt;
+  font-weight: bold;
+}
+
+.main__total-value--revenue {
+  color: var(--color-green-15);
+  font-weight: bold;
+}
+
+.main__total-value--expense {
+  color: var(--color-red-01);
+  font-weight: bold;
+}
+
+.main__total-item,
+.main__total-container button {
+  margin-top: .4rem;
+}
+
+@media only screen and (max-width: 576px) {
+  .main {
+    padding: 0 1.5rem;
+  }
+
+  .main__quick-filters-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .c-button--quick-filter {
+    margin: 0 .5rem .5rem 0;
+  }
+
+  .main__search-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .main__date-filter-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5rem;
+  }
+
+  .c-input-date {
+    padding: .5rem 6.5rem;
+  }
+
+  .c-button--search {
+    width: 100%;
+  }
+
+  .main__order-by-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .5rem;
+    width: 100%;
+  }
+
+  .main__order-by-container p {
+    margin: 0;
+  }
+
+  .c-select {
+    width: 100%;
+  }
+}

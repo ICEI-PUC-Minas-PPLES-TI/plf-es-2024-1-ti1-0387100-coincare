@@ -1,0 +1,50 @@
+:root {
+  --color-green-01: #FAFFFC;
+  --color-green-02: #F2FFF7;
+  --color-green-03: #E7FFEF;
+  --color-green-04: #D9FFE6;
+  --color-green-05: #C6FFD9;
+  --color-green-06: #BCF2CE;
+  --color-green-07: #ABEFC2;
+  --color-green-08: #9BDFB2;
+  --color-green-09: #8FD3A6;
+  --color-green-10: #7FC396;
+  --color-green-11: #72B589;
+  --color-green-12: #66A57C;
+  --color-green-13: #5A9A70;
+  --color-green-14: #4E8A62;
+  --color-green-15: #417A54;
+  --color-green-16: #366E49;
+
+  --color-dark-green-01: #DCF4E6;
+  --color-dark-green-02: #CFE5D8;
+  --color-dark-green-03: #BFD9C9;
+  --color-dark-green-04: #AFCCBB;
+  --color-dark-green-05: #A1BFAD;
+  --color-dark-green-06: #92B29F;
+  --color-dark-green-07: #85A692;
+  --color-dark-green-08: #779985;
+  --color-dark-green-09: #6B8C78;
+  --color-dark-green-10: #5E806C;
+  --color-dark-green-11: #53735F;
+  --color-dark-green-12: #3D5948;
+  --color-dark-green-13: #324D3D;
+  --color-dark-green-14: #294032;
+  --color-dark-green-15: #203327;
+  --color-dark-green-16: #16251C;
+
+  --color-gray-01: #F5F5F5;
+  --color-gray-02: #EDEDED;
+  --color-gray-03: #DEDEDE;
+  --color-gray-04: #CCCCCC;
+  --color-gray-05: #B2B2B2;
+  --color-gray-06: #9C9C9C;
+  --color-gray-07: #717171;
+  --color-gray-08: #595959;
+  --color-gray-09: #404040;
+  --color-gray-10: #2E2E2E;
+  --color-gray-11: #1A1A1A;
+  --color-gray-12: #0E0E0E;
+
+  --color-red-01: #C63637;
+}

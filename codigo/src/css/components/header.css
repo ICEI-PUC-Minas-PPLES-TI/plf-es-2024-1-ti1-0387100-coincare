@@ -1,0 +1,27 @@
+@import url(../utils/palet_colors.css);
+
+.c-header {
+  align-items: center;
+  background-color: var(--color-green-10);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  padding: 1.5rem 3rem;
+}
+
+.c-header a {
+  color: var(--color-green-01);
+  font-family: Inter;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.c-header__coincare {
+  font-size: 18pt;
+}
+
+@media only screen and (max-width: 576px) {
+  .c-header {
+    padding: 1rem 1.5rem;
+  }
+}
