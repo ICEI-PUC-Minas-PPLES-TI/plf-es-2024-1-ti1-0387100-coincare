@@ -1,0 +1,84 @@
+@import url(../utils/palet_colors.css);
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.main {
+  flex: 1 1 0;
+  font-family: Inter;
+  padding: 0 3rem;
+}
+
+.c-card {
+  background-color: var(--color-gray-01);
+  border-radius: 1.25rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 1rem 2rem;
+  width: 38.75rem;
+}
+
+.c-card__header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.c-card__title {
+  color: var(--color-gray-10);
+  font-size: 18pt;
+  font-weight: bold;
+}
+
+.c-card__description {
+  color: var(--color-gray-07);
+  font-size: 10pt;
+  font-weight: bold;
+}
+
+.c-card__status-text {
+  color: var(--color-gray-10);
+  font-size: 12pt;
+  font-weight: bold;
+}
+
+.c-card__goal,
+.c-card__target,
+.c-card__monthly {
+  margin-bottom: 1rem;
+}
+
+.c-card__goal-label,
+.c-card__target-label,
+.c-card__monthly-label {
+  color: var(--color-gray-07);
+  font-size: 12pt;
+  font-weight: bold;
+}
+
+.c-card__goal-amount,
+.c-card__target-date,
+.c-card__monthly-amount {
+  color: var(--color-gray-10);
+  font-size: 12pt;
+  font-weight: bold;
+}
+
+.c-card__button {
+  background-color: inherit;
+  border: none;
+  font-size: 12pt;
+  font-weight: bold;
+  padding: 0;
+  margin-right: 2rem;
+}
+
+.c-card__button--delete {
+  color: var(--color-red-01);
+}
+
+.c-card__button--edit {
+  color: var(--color-green-10);
+}

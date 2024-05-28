@@ -1,7 +1,6 @@
 /* Reset CSS */
 @import url(utils/reset.css);
 
-
 /* Componentes */
 @import url(components/header.css);
 @import url(components/footer.css);
@@ -11,3 +10,4 @@
 
 /* CSS das páginas */
 @import url(pages/movement-history.css);
+@import url(pages/metas.css);
