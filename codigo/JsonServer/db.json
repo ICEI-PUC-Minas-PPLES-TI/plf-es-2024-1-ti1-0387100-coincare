@@ -12,8 +12,8 @@
     {
       "id": "7s8iyuhj7",
       "nome": "Cartão",
-      "valor": 10,
-      "categoria": "Gasto",
+      "valor": 3,
+      "categoria": "Poupança e Investimentos",
       "dia": 1,
       "mesAno": "2024-01",
       "tipo": "despesas_variaveis"
@@ -21,7 +21,7 @@
     {
       "id": "305y8y50p",
       "nome": "Aluguel do irmão",
-      "valor": 0,
+      "valor": 10,
       "categoria": "Casa",
       "dia": 10,
       "mesAno": "2024-01",

@@ -1,0 +1,132 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #7FC396;
+  padding: 10px 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+header h1 {
+  margin: 0;
+  color: #FFFFFF;
+}
+
+header nav a {
+  margin-left: 20px;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chart-container.large {
+  max-width: 1200px;
+  width: 550px;
+  margin-bottom: 20px;
+}
+
+.chart-container.large canvas {
+  width: 100% !important;
+}
+
+.chart-container {
+  width: 20%;
+  margin-bottom: 20px;
+}
+
+
+.picklist {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #555;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+}
+
+.charts-grid {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.chart-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+footer {
+  text-align: center;
+  font-size: 14px;
+  color: #aaa;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .chart-container.large canvas {
+    height: 300px !important;
+  }
+
+  .chart-container {
+    width: 100%;
+  }
+
+  .charts-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.popup {
+  display: none;
+  position: fixed;    
+  left: 50%; 
+  top: 10%; 
+  transform: translate(-50%, -50%);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 1000;
+  max-width: 300px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.popup.success {
+  background-color:#7FC396;
+  color: #FFFFFF;
+}
+
+.popup.error {
+  background-color:#E2504C;
+  color: #FFFFFF;
+}
+
+.popup.info {
+  background-color:#D4EAFE;
+  color: #000000;
+}
