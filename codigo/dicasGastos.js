@@ -1,28 +1,31 @@
-// URL do JSON Server
 const apiUrl = 'http://localhost:3000/items';
+const popupMessage = document.getElementById('popup-message');
 
-// Função para obter dados do JSON Server
 async function fetchData() {
-  const response = await fetch(apiUrl);
-  const data = await response.json();
-  return data;
+  try {
+    const response = await fetch(apiUrl);
+    if (!response.ok) {
+      throw new Error('Erro ao carregar dados');
+    }
+    return await response.json();
+  } catch (error) {
+    alert('Erro ao carregar dados.');
+    return [];
+  }
 }
 
-// Função para calcular as despesas e criar os gráficos
-async function createCharts() {
-  const items = await fetchData();
-  
+function calcularValores(items) {
   const ganhos = items.filter(item => item.tipo === 'ganhos').reduce((acc, curr) => acc + curr.valor, 0);
   const despesasFixas = items.filter(item => item.tipo === 'despesas_fixas').reduce((acc, curr) => acc + curr.valor, 0);
   const despesasVariaveis = items.filter(item => item.tipo === 'despesas_variaveis');
+  return { ganhos, despesasFixas, despesasVariaveis };
+}
 
-  const restante = ganhos - despesasFixas;
+function verificarDespesasFixas(ganhos, despesasFixas) {
+  return 0.6 * ganhos;
+}
 
-  // Verificar se as despesas fixas ultrapassam 60% dos ganhos
-  if (despesasFixas > (0.6 * ganhos)) {
-    alert('Atenção: Despesas fixas ultrapassam 60% dos ganhos!');
-  }
-
+function distribuirDespesasVariaveis(despesasVariaveis) {
   const categorias = {
     'Lazer e Entretenimento': { min: 5, max: 10, valor: 0 },
     'Vestuário': { min: 3, max: 5, valor: 0 },
@@ -30,41 +33,33 @@ async function createCharts() {
     'Poupança e Investimentos': { min: 10, max: 20, valor: 0 }
   };
 
-  // Distribuindo despesas variáveis nas categorias
   despesasVariaveis.forEach(despesa => {
     if (categorias[despesa.categoria]) {
       categorias[despesa.categoria].valor += despesa.valor;
     }
   });
 
-  const labels = Object.keys(categorias);
-  const melhorCasoData = labels.map(label => (categorias[label].min / 100) * restante);
-  const atualData = labels.map(label => categorias[label].valor);
-  const alertas = labels.map((label, index) => atualData[index] > (categorias[label].max / 100) * restante);
+  return categorias;
+}
 
-  // Calcular melhor caso para despesas fixas (até 60% dos ganhos)
-  const melhorCasoDespesasFixas = 0.6 * ganhos;
-  const alertaDespesasFixas = despesasFixas > melhorCasoDespesasFixas;
-
-  // Criar gráfico para Despesas Fixas
-  const ctxDespesasFixas = document.getElementById('chartDespesasFixas').getContext('2d');
-  new Chart(ctxDespesasFixas, {
+function criarGrafico(ctx, label, melhorCaso, atual, alerta) {
+  new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ['Despesas Fixas'],
+      labels: [label],
       datasets: [
         {
           label: 'Melhor Caso',
-          data: [melhorCasoDespesasFixas],
+          data: [melhorCaso],
           backgroundColor: 'rgba(75, 192, 192, 0.2)',
-          borderColor: 'rgba(75, 192, 192, 1)',
+          borderColor: '#7FC396',
           borderWidth: 1
         },
         {
           label: 'Atual',
-          data: [despesasFixas],
-          backgroundColor: alertaDespesasFixas ? 'rgba(255, 99, 132, 0.2)' : 'rgba(54, 162, 235, 0.2)',
-          borderColor: alertaDespesasFixas ? 'rgba(255, 99, 132, 1)' : 'rgba(54, 162, 235, 1)',
+          data: [atual],
+          backgroundColor: alerta ? 'rgba(255, 99, 132, 0.2)' : 'rgba(54, 162, 235, 0.2)',
+          borderColor: alerta ? '#E2504C' : 'rgba(54, 162, 235, 1)',
           borderWidth: 1
         }
       ]
@@ -77,14 +72,30 @@ async function createCharts() {
       }
     }
   });
+}
 
-  // Criar picklist para Despesas Fixas
-  const picklistDespesasFixas = document.getElementById('picklistDespesasFixas');
-  picklistDespesasFixas.innerHTML = `<strong>Despesas Fixas</strong><br>Melhor Caso: R$ ${melhorCasoDespesasFixas.toFixed(2)}<br>Atual: R$ ${despesasFixas.toFixed(2)}`;
+function criarPicklist(elementId, label, melhorCaso, atual) {
+  const picklist = document.getElementById(elementId);
+  picklist.innerHTML = `<strong>${label}</strong><br>Melhor Caso: R$ ${melhorCaso.toFixed(2)}<br>Atual: R$ ${atual.toFixed(2)}`;
+}
 
-  // Criar gráficos e picklists para cada categoria de despesa variável
+async function createCharts() {
+  const items = await fetchData();
+  const { ganhos, despesasFixas, despesasVariaveis } = calcularValores(items);
+  const restante = ganhos - despesasFixas;
+
+  const melhorCasoDespesasFixas = verificarDespesasFixas(ganhos, despesasFixas);
+  const categorias = distribuirDespesasVariaveis(despesasVariaveis);
+
+  criarGrafico(document.getElementById('chartDespesasFixas').getContext('2d'), 'Despesas Fixas', melhorCasoDespesasFixas, despesasFixas, despesasFixas > melhorCasoDespesasFixas);
+  criarPicklist('picklistDespesasFixas', 'Despesas Fixas', melhorCasoDespesasFixas, despesasFixas);
+
   const chartsVariaveis = document.getElementById('chartsVariaveis');
-  labels.forEach((label, index) => {
+  Object.keys(categorias).forEach(label => {
+    const categoria = categorias[label];
+    const melhorCaso = (categoria.min / 100) * restante;
+    const alerta = categoria.valor > (categoria.max / 100) * restante;
+
     const chartWrapper = document.createElement('div');
     chartWrapper.classList.add('chart-container');
     chartWrapper.innerHTML = `
@@ -95,43 +106,9 @@ async function createCharts() {
     `;
     chartsVariaveis.appendChild(chartWrapper);
 
-    // Criar gráfico
-    const ctx = chartWrapper.querySelector(`#chart${label.replace(/\s/g, '')}`).getContext('2d');
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: [label],
-        datasets: [
-          {
-            label: 'Melhor Caso',
-            data: [melhorCasoData[index]],
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            borderColor: 'rgba(75, 192, 192, 1)',
-            borderWidth: 1
-          },
-          {
-            label: 'Atual',
-            data: [atualData[index]],
-            backgroundColor: alertas[index] ? 'rgba(255, 99, 132, 0.2)' : 'rgba(54, 162, 235, 0.2)',
-            borderColor: alertas[index] ? 'rgba(255, 99, 132, 1)' : 'rgba(54, 162, 235, 1)',
-            borderWidth: 1
-          }
-        ]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
-    });
-
-    // Criar picklist
-    const picklist = chartWrapper.querySelector(`#picklist${label.replace(/\s/g, '')}`);
-    picklist.innerHTML = `<strong>${label}</strong><br>Melhor Caso: R$ ${melhorCasoData[index].toFixed(2)}<br>Atual: R$ ${atualData[index].toFixed(2)}`;
+    criarGrafico(chartWrapper.querySelector(`#chart${label.replace(/\s/g, '')}`).getContext('2d'), label, melhorCaso, categoria.valor, alerta);
+    criarPicklist(`picklist${label.replace(/\s/g, '')}`, label, melhorCaso, categoria.valor);
   });
 }
 
-// Criar gráficos ao carregar a página
 createCharts();

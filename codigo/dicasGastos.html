@@ -6,17 +6,37 @@
   <title>Despesas Mensais</title>
   <link rel="stylesheet" href="dicasGastos.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://kit.fontawesome.com/398f9555e1.js" crossorigin="anonymous"></script>
+  <script src="dicasGastos.js"></script>
 </head>
 <body>
+  <header>
+    <h1>CoinCare</h1>
+    <nav>
+      <a href="#" class="inicio-link">
+        <i class="fa-solid fa-house"></i>
+        <span>Início</span>
+      </a>
+      <a href="#" class="inicio-link">
+        <i class="fa-solid fa-circle-left"></i>
+        <span>Sair</span>
+      </a>
+    </nav>
+  </header>
+
+  <h2>Dicas de gastos</h2>
   <div class="container">
-    <div class="chart-container">
-      <div class="chart-wrapper">
-        <canvas id="chartDespesasFixas"></canvas>
-        <div class="picklist" id="picklistDespesasFixas"></div>
-      </div>
+    <div id="chartDespesasFixasContainer" class="chart-container large">
+      <canvas id="chartDespesasFixas"></canvas>
+      <div class="picklist" id="picklistDespesasFixas"></div>
     </div>
-    <div id="chartsVariaveis" class="charts-grid"></div>
+    <div id="chartsVariaveis" class="charts-grid">
+      <!-- Gráficos adicionais serão adicionados aqui pelo JavaScript -->
+    </div>
   </div>
-  <script src="dicasGastos.js"></script>
+  <div id="popup-message" class="popup"></div>
+  <footer>
+    <p>© 2024 CoinCare. Todos os direitos reservados. | Política de Privacidade | Termos de Uso</p>
+  </footer>
 </body>
 </html>
