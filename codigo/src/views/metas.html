@@ -22,36 +22,45 @@
     <a href="#" class="c-header__logout">Sair</a>
   </header>
 
-  <main class="main">
-    <p class="main__text main__text--your-history">Suas metas</p>
+  <main class="content">
+    <p class="content__text content__title">Suas metas</p>
     <div>
-      <div class="c-card">
-        <div class="c-card__header">
-          <div class="c-card__info">
-            <p class="c-card__title">Viagem</p>
-            <span class="c-card__description">Viagem de fim de ano</span>
+      <div class="card">
+        <div class="card__header">
+          <div class="card__info">
+            <p class="card__title">Viagem</p>
+            <span class="card__description">Viagem de fim de ano</span>
           </div>
-          <div class="c-card__status">
-            <p class="c-card__status-text">Em andamento</p>
-          </div>
-        </div>
-        <div class="c-card__body">
-          <div class="c-card__goal">
-            <p class="c-card__goal-label">Objetivo</p>
-            <p class="c-card__goal-amount">R$ 2.000,00</p>
-          </div>
-          <div class="c-card__target">
-            <p class="c-card__target-label">Espero alcançar em</p>
-            <p class="c-card__target-date">31/DEZ</p>
-          </div>
-          <div class="c-card__monthly">
-            <p class="c-card__monthly-label">Ideal por mês</p>
-            <p class="c-card__monthly-amount">R$ 180,00</p>
+          <div class="card__status">
+            <p class="card__status-text">Em andamento</p>
           </div>
         </div>
-        <div class="c-card__footer">
-          <button class="c-card__button c-card__button--delete">Excluir</button>
-          <button class="c-card__button c-card__button--edit">Editar</button>
+        <div class="card__body">
+          <div>
+            <div class="card__goal">
+              <p class="card__goal-label">Objetivo</p>
+              <p class="card__goal-amount">R$ 2.000,00</p>
+            </div>
+            <div class="card__target">
+              <p class="card__target-label">Espero alcançar em</p>
+              <p class="card__target-date">31/DEZ</p>
+            </div>
+            <div class="card__monthly">
+              <p class="card__monthly-label">Ideal por mês</p>
+              <p class="card__monthly-amount">R$ 180,00</p>
+            </div>
+          </div>
+          <div class="card__progress-wrapper">
+            <div class="card__progress"></div>
+            <div>
+              <p class="card__current-amount">R$ 600,00</p>
+              <p class="card__remaining-amount">Faltam R$ 1.400,00</p>
+            </div>
+          </div>
+        </div>
+        <div class="card__footer">
+          <button class="card__button card__button--delete">Excluir</button>
+          <button class="card__button card__button--edit">Editar</button>
           <button class="c-button">Depositar</button>
         </div>
       </div>
@@ -63,9 +72,17 @@
       © 2024 Coin Care. Todos os direitos reservados. | Política de Privacidade | Termos de Uso
     </p>
   </footer>
+
+  <!-- Bootstrap -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
+
+  <!-- Barra de progresso -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/progressbar.js/1.0.1/progressbar.min.js"></script>
+
+  <!-- Script -->
+  <script src="../js/metas.js"></script>
 </body>
 
 </html>

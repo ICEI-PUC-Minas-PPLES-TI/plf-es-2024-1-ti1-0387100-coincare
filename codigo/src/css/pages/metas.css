@@ -6,67 +6,84 @@ body {
   height: 100vh;
 }
 
-.main {
+.content {
   flex: 1 1 0;
   font-family: Inter;
   padding: 0 3rem;
 }
 
-.c-card {
-  background-color: var(--color-gray-01);
-  border-radius: 1.25rem;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  padding: 1rem 2rem;
-  width: 38.75rem;
+.content__text {
+  color: var(--color-gray-10);
 }
 
-.c-card__header {
+.content__title {
+  font-size: 18pt;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background-color: var(--color-gray-01);
+  border-radius: 1.25rem;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 1rem 2rem;
+  width: 46rem;
+}
+
+.card__header {
   display: flex;
   justify-content: space-between;
   margin-bottom: 1rem;
 }
 
-.c-card__title {
+.card__title {
   color: var(--color-gray-10);
   font-size: 18pt;
   font-weight: bold;
 }
 
-.c-card__description {
+.card__description {
   color: var(--color-gray-07);
   font-size: 10pt;
   font-weight: bold;
 }
 
-.c-card__status-text {
+.card__status-text {
   color: var(--color-gray-10);
   font-size: 12pt;
   font-weight: bold;
 }
 
-.c-card__goal,
-.c-card__target,
-.c-card__monthly {
+.card__body {
+  align-items: center;
+  display: flex;
+  gap: 12rem;
+}
+
+.card__goal,
+.card__target,
+.card__monthly {
   margin-bottom: 1rem;
 }
 
-.c-card__goal-label,
-.c-card__target-label,
-.c-card__monthly-label {
+.card__goal-label,
+.card__target-label,
+.card__monthly-label {
   color: var(--color-gray-07);
   font-size: 12pt;
-  font-weight: bold;
+  font-weight: 500;
 }
 
-.c-card__goal-amount,
-.c-card__target-date,
-.c-card__monthly-amount {
+card__goal-amount,
+.card__target-date,
+.card__monthly-amount {
   color: var(--color-gray-10);
   font-size: 12pt;
-  font-weight: bold;
+  font-weight: 500;
 }
 
-.c-card__button {
+.card__button {
   background-color: inherit;
   border: none;
   font-size: 12pt;
@@ -75,10 +92,49 @@ body {
   margin-right: 2rem;
 }
 
-.c-card__button--delete {
+.card__button--delete {
   color: var(--color-red-01);
 }
 
-.c-card__button--edit {
+.card__button--edit {
   color: var(--color-green-10);
+}
+
+.card__button--deposit {
+  color: var(--color-blue-10);
+}
+
+.card__progress-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.card__progress {
+  height: 150px;
+  margin-bottom: 1rem;
+  position: relative;
+  width: 150px;
+}
+
+.card__current-amount {
+  color: var(--color-green-10);
+  font-weight: bold;
+  font-size: 18pt;
+}
+
+.card__remaining-amount {
+  font-weight: 500;
+  color: var(--color-gray-07);
+}
+
+.footer {
+  padding: 1rem;
+  text-align: center;
+  background-color: var(--color-gray-01);
+}
+
+.footer__text {
+  color: var(--color-gray-07);
+  font-size: 10pt;
 }
