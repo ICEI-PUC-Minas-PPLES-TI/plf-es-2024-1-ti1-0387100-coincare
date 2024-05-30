@@ -6,10 +6,20 @@ body {
   height: 100vh;
 }
 
+.modal-content {
+  font-family: Inter;
+}
+
 .content {
   flex: 1 1 0;
   font-family: Inter;
   padding: 0 3rem;
+}
+
+.content__header {
+  align-items: center;
+  display: flex;
+  margin-bottom: 2rem;
 }
 
 .content__text {
@@ -17,9 +27,9 @@ body {
 }
 
 .content__title {
-  font-size: 18pt;
+  font-size: 20pt;
   font-weight: bold;
-  margin-bottom: 2rem;
+  margin-right: 2rem;
 }
 
 .card {
@@ -75,7 +85,7 @@ body {
   font-weight: 500;
 }
 
-card__goal-amount,
+.card__goal-amount,
 .card__target-date,
 .card__monthly-amount {
   color: var(--color-gray-10);
@@ -88,8 +98,8 @@ card__goal-amount,
   border: none;
   font-size: 12pt;
   font-weight: bold;
-  padding: 0;
   margin-right: 2rem;
+  padding: 0;
 }
 
 .card__button--delete {
@@ -105,8 +115,8 @@ card__goal-amount,
 }
 
 .card__progress-wrapper {
-  display: flex;
   align-items: center;
+  display: flex;
   gap: 1.5rem;
 }
 
@@ -119,22 +129,11 @@ card__goal-amount,
 
 .card__current-amount {
   color: var(--color-green-10);
-  font-weight: bold;
   font-size: 18pt;
+  font-weight: bold;
 }
 
 .card__remaining-amount {
+  color: var(--color-gray-07);
   font-weight: 500;
-  color: var(--color-gray-07);
-}
-
-.footer {
-  padding: 1rem;
-  text-align: center;
-  background-color: var(--color-gray-01);
-}
-
-.footer__text {
-  color: var(--color-gray-07);
-  font-size: 10pt;
 }

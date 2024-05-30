@@ -23,7 +23,10 @@
   </header>
 
   <main class="content">
-    <p class="content__text content__title">Suas metas</p>
+    <div class="content__header">
+      <p class="content__text content__title">Suas metas</p>
+      <button class="c-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+ Incluir</button>
+    </div>
     <div>
       <div class="card">
         <div class="card__header">
@@ -72,6 +75,55 @@
       © 2024 Coin Care. Todos os direitos reservados. | Política de Privacidade | Termos de Uso
     </p>
   </footer>
+
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Inclusão de nova meta</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="description" class="col-form-label">Descrição:</label>
+              <input type="text" class="form-control" id="description">
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="saldo-inicial" class="col-form-label">Saldo inicial:</label>
+                <div class="input-group">
+                  <span class="input-group-text">R$</span>
+                  <input type="text" class="form-control" id="saldo-inicial" aria-label="Saldo inicial">
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="meta" class="col-form-label">Meta:</label>
+                <div class="input-group">
+                  <span class="input-group-text">R$</span>
+                  <input type="text" class="form-control" id="meta" aria-label="Saldo inicial">
+                </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="date" class="col-form-label">Espero alcançar em:</label>
+              <input type="date" class="form-control" id="date">
+            </div>
+            <div class="mb-3">
+              <label for="observacoes" class="col-form-label">Observações:</label>
+              <textarea class="form-control" id="observacoes"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          <button type="button" class="c-button">Gravar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Bootstrap -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

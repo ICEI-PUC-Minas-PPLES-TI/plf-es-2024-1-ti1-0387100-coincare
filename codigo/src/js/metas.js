@@ -11,7 +11,7 @@ var bar = new ProgressBar.Circle(progress, {
   },
   from: { color: '#7FC396', width: 7 },
   to: { color: '#7FC396', width: 7 },
-  step: function(state, circle) {
+  step: function (state, circle) {
     circle.path.setAttribute('stroke', state.color);
     circle.path.setAttribute('stroke-width', state.width);
 

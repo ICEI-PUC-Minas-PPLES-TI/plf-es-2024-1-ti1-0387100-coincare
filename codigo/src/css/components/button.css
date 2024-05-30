@@ -2,12 +2,12 @@
 
 .c-button {
   background-color: var(--color-green-10);
-  border-radius: 1.25rem;
+  border-radius: 6px;
   border: none;
   color: var(--color-green-01);
   cursor: pointer;
   font-weight: 600;
-  padding: .5rem 1.5rem;
+  padding: .6rem 2rem;
 
   &:hover {
     background-color: var(--color-green-12);
