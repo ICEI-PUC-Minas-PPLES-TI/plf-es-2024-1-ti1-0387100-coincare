@@ -1,7 +1,7 @@
 @import url(../utils/palet_colors.css);
 
 .c-input-date {
-  border-radius: 1.25rem;
+  border-radius: 6px;
   border: 1px solid var(--color-gray-12);
   color: var(--color-gray-07);
   padding: .5rem 1.5rem;
