@@ -3,7 +3,7 @@
     {
       "id": 1,
       "nome": "Salário",
-      "valor": 2000.00,
+      "valor": 2000,
       "categoria": "Renda",
       "dia": "18",
       "mesAno": "2024-05",
@@ -12,7 +12,7 @@
     {
       "id": 2,
       "nome": "Aluguel",
-      "valor": 1500.00,
+      "valor": 1500,
       "categoria": "Moradia",
       "dia": "05",
       "mesAno": "2024-01",
@@ -21,7 +21,7 @@
     {
       "id": 3,
       "nome": "Supermercado",
-      "valor": 450.00,
+      "valor": 450,
       "categoria": "Alimentação",
       "dia": "10",
       "mesAno": "2024-01",
@@ -30,7 +30,7 @@
     {
       "id": 4,
       "nome": "Transporte",
-      "valor": 120.00,
+      "valor": 120,
       "categoria": "Transporte",
       "dia": "19",
       "mesAno": "2024-05",
@@ -39,7 +39,7 @@
     {
       "id": 5,
       "nome": "Freelance",
-      "valor": 800.00,
+      "valor": 800,
       "categoria": "Renda Extra",
       "dia": "20",
       "mesAno": "2024-01",
@@ -48,7 +48,7 @@
     {
       "id": 6,
       "nome": "Cinema",
-      "valor": 60.00,
+      "valor": 60,
       "categoria": "Lazer",
       "dia": "25",
       "mesAno": "2024-01",
@@ -57,7 +57,7 @@
     {
       "id": 7,
       "nome": "Conta de Luz",
-      "valor": 100.00,
+      "valor": 100,
       "categoria": "Serviços",
       "dia": "28",
       "mesAno": "2024-01",
@@ -66,7 +66,7 @@
     {
       "id": 8,
       "nome": "Internet",
-      "valor": 80.00,
+      "valor": 80,
       "categoria": "Serviços",
       "dia": "03",
       "mesAno": "2024-01",
@@ -75,7 +75,7 @@
     {
       "id": 9,
       "nome": "Academia",
-      "valor": 100.00,
+      "valor": 100,
       "categoria": "Saúde",
       "dia": "07",
       "mesAno": "2024-01",
@@ -84,7 +84,7 @@
     {
       "id": 10,
       "nome": "Venda de Produtos",
-      "valor": 250.00,
+      "valor": 250,
       "categoria": "Renda Extra",
       "dia": "18",
       "mesAno": "2024-01",
@@ -93,7 +93,7 @@
     {
       "id": 11,
       "nome": "Internet",
-      "valor": 80.00,
+      "valor": 80,
       "categoria": "Serviços",
       "dia": "03",
       "mesAno": "2024-02",
@@ -102,7 +102,7 @@
     {
       "id": 12,
       "nome": "Compra de Livro",
-      "valor": 20.00,
+      "valor": 20,
       "categoria": "Educação",
       "dia": "15",
       "mesAno": "2024-05",
@@ -111,7 +111,7 @@
     {
       "id": 13,
       "nome": "Jantar Fora",
-      "valor": 70.00,
+      "valor": 70,
       "categoria": "Alimentação",
       "dia": "22",
       "mesAno": "2024-03",
@@ -120,7 +120,7 @@
     {
       "id": 14,
       "nome": "Presente",
-      "valor": 30.00,
+      "valor": 30,
       "categoria": "Outros",
       "dia": "10",
       "mesAno": "2024-04",
@@ -129,7 +129,7 @@
     {
       "id": 15,
       "nome": "Concerto de Carro",
-      "valor": 200.00,
+      "valor": 200,
       "categoria": "Veículo",
       "dia": "05",
       "mesAno": "2024-02",
@@ -138,7 +138,7 @@
     {
       "id": 16,
       "nome": "Salário",
-      "valor": 2200.00,
+      "valor": 2200,
       "categoria": "Renda",
       "dia": "18",
       "mesAno": "2024-06",
@@ -147,7 +147,7 @@
     {
       "id": 17,
       "nome": "Lanche",
-      "valor": 15.00,
+      "valor": 15,
       "categoria": "Alimentação",
       "dia": "08",
       "mesAno": "2024-03",
@@ -156,7 +156,7 @@
     {
       "id": 18,
       "nome": "Presente de Aniversário",
-      "valor": 50.00,
+      "valor": 50,
       "categoria": "Outros",
       "dia": "15",
       "mesAno": "2024-04",
@@ -165,7 +165,7 @@
     {
       "id": 19,
       "nome": "Roupas",
-      "valor": 120.00,
+      "valor": 120,
       "categoria": "Vestuário",
       "dia": "20",
       "mesAno": "2024-03",
@@ -174,7 +174,7 @@
     {
       "id": 20,
       "nome": "Freelance",
-      "valor": 500.00,
+      "valor": 500,
       "categoria": "Renda Extra",
       "dia": "10",
       "mesAno": "2024-02",
@@ -183,7 +183,7 @@
     {
       "id": 21,
       "nome": "Jogos de Tabuleiro",
-      "valor": 40.00,
+      "valor": 40,
       "categoria": "Lazer",
       "dia": "12",
       "mesAno": "2024-03",
@@ -192,7 +192,7 @@
     {
       "id": 22,
       "nome": "Café da Manhã",
-      "valor": 25.00,
+      "valor": 25,
       "categoria": "Alimentação",
       "dia": "01",
       "mesAno": "2024-02",
@@ -201,7 +201,7 @@
     {
       "id": 23,
       "nome": "Presente de Casamento",
-      "valor": 100.00,
+      "valor": 100,
       "categoria": "Outros",
       "dia": "20",
       "mesAno": "2024-05",
@@ -210,7 +210,7 @@
     {
       "id": 24,
       "nome": "Taxa Bancária",
-      "valor": 10.00,
+      "valor": 10,
       "categoria": "Serviços Financeiros",
       "dia": "05",
       "mesAno": "2024-02",
@@ -219,7 +219,7 @@
     {
       "id": 25,
       "nome": "Presente de Natal",
-      "valor": 80.00,
+      "valor": 80,
       "categoria": "Outros",
       "dia": "25",
       "mesAno": "2024-12",
@@ -228,7 +228,7 @@
     {
       "id": 26,
       "nome": "Gasolina",
-      "valor": 70.00,
+      "valor": 70,
       "categoria": "Veículo",
       "dia": "15",
       "mesAno": "2024-06",
@@ -237,7 +237,7 @@
     {
       "id": 27,
       "nome": "Cinema",
-      "valor": 50.00,
+      "valor": 50,
       "categoria": "Lazer",
       "dia": "10",
       "mesAno": "2024-04",
@@ -246,7 +246,7 @@
     {
       "id": 28,
       "nome": "Telefone",
-      "valor": 60.00,
+      "valor": 60,
       "categoria": "Serviços",
       "dia": "20",
       "mesAno": "2024-03",
@@ -255,7 +255,7 @@
     {
       "id": 29,
       "nome": "Almoço",
-      "valor": 20.00,
+      "valor": 20,
       "categoria": "Alimentação",
       "dia": "12",
       "mesAno": "2024-02",
@@ -264,11 +264,31 @@
     {
       "id": 30,
       "nome": "Presente de Amigo Secreto",
-      "valor": 25.00,
+      "valor": 25,
       "categoria": "Outros",
       "dia": "15",
       "mesAno": "2024-12",
       "tipo": "despesas_variaveis"
+    }
+  ],
+  "metas": [
+    {
+      "id": 1,
+      "descricao": "Viagem",
+      "saldoInicial": 0,
+      "meta": 2000,
+      "alcancarEm": "2024-12-31",
+      "status": "Em andamento",
+      "observacoes": "Economizar para uma viagem de férias",
+      "movimentacoes": [
+        {
+          "id": 1,
+          "valor": 200,
+          "tipo": "Entrada",
+          "data": "2024-05-30",
+          "descricao": "Depósito inicial"
+        }
+      ]
     }
   ]
 }
