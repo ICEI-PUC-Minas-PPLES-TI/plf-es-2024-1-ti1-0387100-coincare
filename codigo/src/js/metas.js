@@ -74,7 +74,7 @@ async function criarCards() {
 
       const cardTarget = criarElemento('div', 'card__target');
       const cardTargetLabel = criarElemento('p', 'card__target-label', 'Espero alcançar em');
-      const cardTargetDate = criarElemento('p', 'card__target-date', dateFns.format(new Date(meta.alcancarEm), 'dd/MM/yyyy'));
+      const cardTargetDate = criarElemento('p', 'card__target-date', dateFns.format(dateFns.parseISO(meta.alcancarEm), 'dd/MM/yyyy'));
       cardTarget.append(cardTargetLabel, cardTargetDate);
 
       const cardMonthly = criarElemento('div', 'card__monthly');

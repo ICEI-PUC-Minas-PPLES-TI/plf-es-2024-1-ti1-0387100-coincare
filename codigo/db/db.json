@@ -273,22 +273,14 @@
   ],
   "metas": [
     {
-      "id": 1,
       "descricao": "Viagem",
       "saldoInicial": 0,
-      "meta": 2000,
+      "meta": 50000,
       "alcancarEm": "2024-12-31",
       "status": "Em andamento",
-      "observacoes": "Economizar para uma viagem de férias",
-      "movimentacoes": [
-        {
-          "id": 1,
-          "valor": 200,
-          "tipo": "Entrada",
-          "data": "2024-05-30",
-          "descricao": "Depósito inicial"
-        }
-      ]
+      "observacoes": "Viagem de fim de ano",
+      "movimentacoes": [],
+      "id": 1
     }
   ]
 }
