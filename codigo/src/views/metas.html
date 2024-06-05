@@ -27,7 +27,7 @@
       <p class="content__text content__title">Suas metas</p>
       <button class="c-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+ Incluir</button>
     </div>
-    <div>
+    <div id="card-wrapper">
       <div class="card">
         <div class="card__header">
           <div class="card__info">
@@ -39,7 +39,7 @@
           </div>
         </div>
         <div class="card__body">
-          <div>
+          <div class="card__body-container">
             <div class="card__goal">
               <p class="card__goal-label">Objetivo</p>
               <p class="card__goal-amount">R$ 2.000,00</p>
@@ -55,7 +55,7 @@
           </div>
           <div class="card__progress-wrapper">
             <div class="card__progress"></div>
-            <div>
+            <div class="card__prgress-money">
               <p class="card__current-amount">R$ 600,00</p>
               <p class="card__remaining-amount">Faltam R$ 1.400,00</p>
             </div>
@@ -129,6 +129,9 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
+
+  <!-- Date FNS -->
+  <script src="https://cdn.jsdelivr.net/npm/date-fns@3.6.0/cdn.min.js"></script>
 
   <!-- Barra de progresso -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/progressbar.js/1.0.1/progressbar.min.js"></script>

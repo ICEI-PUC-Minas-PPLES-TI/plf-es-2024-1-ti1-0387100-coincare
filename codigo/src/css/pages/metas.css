@@ -32,11 +32,18 @@ body {
   margin-right: 2rem;
 }
 
+#card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
 .card {
   background-color: var(--color-gray-01);
   border-radius: 1.25rem;
   border: none;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-bottom: 2rem;
   padding: 1rem 2rem;
   width: 46rem;
 }
