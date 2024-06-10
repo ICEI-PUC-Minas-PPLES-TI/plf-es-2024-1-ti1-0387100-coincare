@@ -4,11 +4,19 @@ const metaC = document.querySelector('#meta');
 const alcancarEm = document.querySelector('#alcancar-em');
 const observacao = document.querySelector('#observacoes');
 const salvarBtn = document.querySelector('.c-button-save');
+
+const descricaoDeposito = document.querySelector('#descricao-deposit');
+const valorDeposito = document.querySelector('#valor-deposit');
+const tipoDeposito = document.querySelector('#tipo-deposit');
+const dataDeposito = document.querySelector('#data-deposit');
+const depositarBtn = document.querySelector('.c-button-deposit');
+
 const incluirBtn = document.querySelector('.c-button[data-bs-toggle="modal"]');
 const cardsContainer = document.querySelector('#card-wrapper');
 
 const urlBase = 'http://localhost:3000';
 let editingMetaId = null;
+let currentMetaId = null;
 
 function limparFormulario() {
   descricao.value = '';
@@ -104,6 +112,16 @@ async function confirmarExclusao(metaId) {
   }
 }
 
+function editarMeta(meta) {
+  descricao.value = meta.descricao;
+  saldoInicial.value = meta.saldoInicial;
+  metaC.value = meta.meta;
+  alcancarEm.value = meta.alcancarEm;
+  observacao.value = meta.observacoes;
+  editingMetaId = meta.id;
+  const modal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
+  modal.show();
+}
 
 async function buscarMetas() {
   const res = await fetch(`${urlBase}/metas`);
@@ -120,11 +138,21 @@ function criarElemento(tag, classNames, innerText = '') {
   return elemento;
 }
 
+function calcularSaldoAtual(meta) {
+  return meta.movimentacoes.reduce((saldo, mov) => {
+    return mov.tipo === 'e' ? saldo + mov.valor : saldo - mov.valor;
+  }, meta.saldoInicial);
+}
+
 async function criarCards() {
   cardsContainer.innerHTML = '';
   try {
     const metas = await buscarMetas();
     metas.forEach(meta => {
+      const saldoAtual = calcularSaldoAtual(meta);
+      const faltando = meta.meta - saldoAtual;
+      const progresso = saldoAtual / meta.meta;
+
       const card = criarElemento('div', 'card');
       card.setAttribute('data-index', meta.id);
 
@@ -162,16 +190,16 @@ async function criarCards() {
       const cardProgressWrapper = criarElemento('div', 'card__progress-wrapper');
       const cardProgress = criarElemento('div', 'card__progress');
       const cardProgressMoney = criarElemento('div', 'card__progress-money');
-      const cardCurrentAmount = criarElemento('p', 'card__current-amount', 'R$ 600,00');
-      const cardRemainingAmount = criarElemento('p', 'card__remaining-amount', 'Faltam R$ 1.400,00');
+      const cardCurrentAmount = criarElemento('p', 'card__current-amount', saldoAtual.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }));
+      const cardRemainingAmount = criarElemento('p', 'card__remaining-amount', `Faltam ${faltando.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`);
       cardProgressMoney.append(cardCurrentAmount, cardRemainingAmount);
       cardProgressWrapper.append(cardProgress, cardProgressMoney);
 
       const cardFooter = criarElemento('div', 'card__footer');
       const cardBtnExcluir = criarElemento('button', 'card__button card__button--delete', 'Excluir');
       const cardBtnEditar = criarElemento('button', 'card__button card__button--edit', 'Editar');
-      const cardBtnCriar = criarElemento('button', 'c-button', 'Depositar');
-      cardFooter.append(cardBtnExcluir, cardBtnEditar, cardBtnCriar);
+      const cardBtnDepositar = criarElemento('button', 'c-button', 'Depositar');
+      cardFooter.append(cardBtnExcluir, cardBtnEditar, cardBtnDepositar);
 
       cardBodyContainer.append(cardGoal, cardTarget, cardMonthly);
       cardBody.append(cardBodyContainer, cardProgressWrapper);
@@ -181,52 +209,73 @@ async function criarCards() {
 
       cardBtnExcluir.addEventListener('click', () => confirmarExclusao(meta.id));
       cardBtnEditar.addEventListener('click', () => editarMeta(meta));
-    });
+      cardBtnDepositar.addEventListener('click', () => depositar(meta));
 
-    iniciarProgresso();
+      iniciarProgresso(cardProgress, progresso);
+    });
   } catch (error) {
     console.error(error.message);
   }
 }
 
-function iniciarProgresso() {
-  const progressElements = document.querySelectorAll('.card__progress');
-  progressElements.forEach(progress => {
-    const bar = new ProgressBar.Circle(progress, {
-      color: '#717171',
-      strokeWidth: 7,
-      trailWidth: 7,
-      easing: 'easeInOut',
-      duration: 1400,
-      text: {
-        autoStyleContainer: false
-      },
-      from: { color: '#7FC396', width: 7 },
-      to: { color: '#7FC396', width: 7 },
-      step: function (state, circle) {
-        circle.path.setAttribute('stroke', state.color);
-        circle.path.setAttribute('stroke-width', state.width);
+function iniciarProgresso(elemento, valorProgresso) {
+  const bar = new ProgressBar.Circle(elemento, {
+    color: '#717171',
+    strokeWidth: 7,
+    trailWidth: 7,
+    easing: 'easeInOut',
+    duration: 1400,
+    text: {
+      autoStyleContainer: false
+    },
+    from: { color: '#7FC396', width: 7 },
+    to: { color: '#7FC396', width: 7 },
+    step: function (state, circle) {
+      circle.path.setAttribute('stroke', state.color);
+      circle.path.setAttribute('stroke-width', state.width);
 
-        const value = Math.round(circle.value() * 100);
-        circle.setText(value === 0 ? '' : `${value}%`);
-      }
-    });
-    bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
-    bar.text.style.fontSize = '2rem';
-
-    bar.animate(0.6);
+      const value = Math.round(circle.value() * 100);
+      circle.setText(value === 0 ? '' : `${value}%`);
+    }
   });
+  bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
+  bar.text.style.fontSize = '2rem';
+
+  bar.animate(valorProgresso);
 }
 
-function editarMeta(meta) {
-  descricao.value = meta.descricao;
-  saldoInicial.value = meta.saldoInicial;
-  metaC.value = meta.meta;
-  alcancarEm.value = meta.alcancarEm;
-  observacao.value = meta.observacoes;
-  editingMetaId = meta.id;
-  const modal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
+function depositar(meta) {
+  currentMetaId = meta.id;
+  const modal = new bootstrap.Modal(document.getElementById('modalDeposit'));
   modal.show();
+}
+
+async function gravarDeposito(metaId, deposito) {
+  try {
+    const res = await fetch(`${urlBase}/metas/${metaId}`);
+    if (!res.ok) throw new Error('Meta não encontrada');
+    const meta = await res.json();
+
+    const novaMovimentacao = {
+      id: meta.movimentacoes.length ? meta.movimentacoes[meta.movimentacoes.length - 1].id + 1 : 1,
+      ...deposito
+    };
+    meta.movimentacoes.push(novaMovimentacao);
+
+    const atualizarRes = await fetch(`${urlBase}/metas/${metaId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(meta),
+    });
+    if (!atualizarRes.ok) throw new Error('Erro ao atualizar a meta');
+    const metaAtualizada = await atualizarRes.json();
+    console.log('Movimentação adicionada com sucesso!', metaAtualizada);
+    criarCards();
+  } catch (error) {
+    console.error('Erro ao gravar depósito:', error);
+  }
 }
 
 salvarBtn.addEventListener('click', () => {
@@ -247,6 +296,17 @@ salvarBtn.addEventListener('click', () => {
   } else {
     criarMeta(meta);
   }
+});
+
+depositarBtn.addEventListener('click', () => {
+  const deposito = {
+    descricao: descricaoDeposito.value,
+    valor: +valorDeposito.value,
+    tipo: tipoDeposito.value,
+    data: dataDeposito.value
+  }
+
+  gravarDeposito(currentMetaId, deposito);
 });
 
 incluirBtn.addEventListener('click', () => {
