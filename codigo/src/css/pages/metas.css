@@ -3,7 +3,7 @@
 body {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .modal-content {
@@ -14,6 +14,7 @@ body {
   flex: 1 1 0;
   font-family: Inter;
   padding: 0 3rem;
+  overflow-y: auto
 }
 
 .content__header {
@@ -143,4 +144,28 @@ body {
 .card__remaining-amount {
   color: var(--color-gray-07);
   font-weight: 500;
+}
+
+.custom-swal-container {
+  font-family: 'Inter', sans-serif;
+}
+
+.custom-swal-title {
+  font-size: 1.5rem;
+}
+
+.custom-swal-text {
+  font-size: 1rem;
+}
+
+.custom-swal-confirm-button {
+  background-color: var(--color-red-01);
+  color: white;
+  font-size: 1rem;
+}
+
+.custom-swal-cancel-button {
+  background-color: #3085d6;
+  color: white;
+  font-size: 1rem;
 }

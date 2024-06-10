@@ -1,18 +1,22 @@
-// TO DO
-// Progresso em reais dinâmico
-// Ideal por mês dinâmico
-// Funcionalidade de excluir, editar e depositar
-// Círculo de progresso dinâmico
-
 const descricao = document.querySelector('#descricao');
 const saldoInicial = document.querySelector('#saldo-inicial');
 const metaC = document.querySelector('#meta');
 const alcancarEm = document.querySelector('#alcancar-em');
 const observacao = document.querySelector('#observacoes');
 const salvarBtn = document.querySelector('.c-button-save');
+const incluirBtn = document.querySelector('.c-button[data-bs-toggle="modal"]');
 const cardsContainer = document.querySelector('#card-wrapper');
 
 const urlBase = 'http://localhost:3000';
+let editingMetaId = null;
+
+function limparFormulario() {
+  descricao.value = '';
+  saldoInicial.value = '';
+  metaC.value = '';
+  alcancarEm.value = '';
+  observacao.value = '';
+}
 
 async function criarMeta(meta) {
   try {
@@ -25,10 +29,81 @@ async function criarMeta(meta) {
     });
     const data = await res.json();
     console.log('Meta inserida com sucesso!');
+    criarCards();
   } catch (error) {
     console.error('Erro ao inserir meta');
   }
 }
+
+async function atualizarMeta(meta) {
+  try {
+    const res = await fetch(`${urlBase}/metas/${meta.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(meta),
+    });
+    const data = await res.json();
+    console.log('Meta atualizada com sucesso!');
+    criarCards();
+  } catch (error) {
+    console.error('Erro ao atualizar meta');
+  }
+}
+
+async function excluirMeta(metaId) {
+  try {
+    await fetch(`${urlBase}/metas/${metaId}`, {
+      method: 'DELETE',
+    });
+    console.log('Meta excluída com sucesso!');
+    document.querySelector(`[data-index='${metaId}']`).remove();
+
+    Swal.fire({
+      title: 'Excluído!',
+      text: 'A meta foi excluída.',
+      icon: 'success',
+      showConfirmButton: true,
+      confirmButtonColor: '#7FC396',
+      customClass: {
+        container: 'custom-swal-container',
+        title: 'custom-swal-title',
+        text: 'custom-swal-text'
+      }
+    }
+    ).then(() => {
+      location.reload();
+    });
+  } catch (error) {
+    console.error('Erro ao excluir meta');
+  }
+}
+
+async function confirmarExclusao(metaId) {
+  const result = await Swal.fire({
+    title: 'Tem certeza?',
+    text: "Você não poderá reverter isso!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#C63637',
+    cancelButtonColor: '#6c757d',
+    confirmButtonText: 'Sim, excluir!',
+    cancelButtonText: 'Cancelar',
+    customClass: {
+      container: 'custom-swal-container',
+      title: 'custom-swal-title',
+      text: 'custom-swal-text',
+      confirmButton: 'custom-swal-confirm-button',
+      cancelButton: 'custom-swal-cancel-button'
+    }
+  });
+
+  if (result.isConfirmed) {
+    excluirMeta(metaId);
+  }
+}
+
 
 async function buscarMetas() {
   const res = await fetch(`${urlBase}/metas`);
@@ -46,10 +121,12 @@ function criarElemento(tag, classNames, innerText = '') {
 }
 
 async function criarCards() {
+  cardsContainer.innerHTML = '';
   try {
     const metas = await buscarMetas();
     metas.forEach(meta => {
       const card = criarElemento('div', 'card');
+      card.setAttribute('data-index', meta.id);
 
       const cardHeader = criarElemento('div', 'card__header');
       const cardInfo = criarElemento('div', 'card__info');
@@ -101,6 +178,9 @@ async function criarCards() {
       card.append(cardHeader, cardBody, cardFooter);
 
       cardsContainer.appendChild(card);
+
+      cardBtnExcluir.addEventListener('click', () => confirmarExclusao(meta.id));
+      cardBtnEditar.addEventListener('click', () => editarMeta(meta));
     });
 
     iniciarProgresso();
@@ -138,7 +218,16 @@ function iniciarProgresso() {
   });
 }
 
-window.addEventListener('load', criarCards);
+function editarMeta(meta) {
+  descricao.value = meta.descricao;
+  saldoInicial.value = meta.saldoInicial;
+  metaC.value = meta.meta;
+  alcancarEm.value = meta.alcancarEm;
+  observacao.value = meta.observacoes;
+  editingMetaId = meta.id;
+  const modal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
+  modal.show();
+}
 
 salvarBtn.addEventListener('click', () => {
   const meta = {
@@ -151,5 +240,18 @@ salvarBtn.addEventListener('click', () => {
     movimentacoes: [],
   };
 
-  criarMeta(meta);
+  if (editingMetaId) {
+    meta.id = editingMetaId;
+    atualizarMeta(meta);
+    editingMetaId = null;
+  } else {
+    criarMeta(meta);
+  }
 });
+
+incluirBtn.addEventListener('click', () => {
+  limparFormulario();
+  editingMetaId = null;
+});
+
+window.addEventListener('load', criarCards);

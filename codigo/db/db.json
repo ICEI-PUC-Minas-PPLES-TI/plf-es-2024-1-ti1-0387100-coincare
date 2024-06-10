@@ -271,16 +271,5 @@
       "tipo": "despesas_variaveis"
     }
   ],
-  "metas": [
-    {
-      "descricao": "Viagem",
-      "saldoInicial": 0,
-      "meta": 50000,
-      "alcancarEm": "2024-12-31",
-      "status": "Em andamento",
-      "observacoes": "Viagem de fim de ano",
-      "movimentacoes": [],
-      "id": 1
-    }
-  ]
+  "metas": []
 }
