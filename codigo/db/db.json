@@ -273,73 +273,23 @@
   ],
   "metas": [
     {
-      "descricao": "Reserva de emergência",
-      "saldoInicial": 0,
-      "meta": 5000,
-      "alcancarEm": "2024-08-10",
+      "descricao": "Reserva de Emergência",
+      "saldoInicial": 500,
+      "meta": 10000,
+      "alcancarEm": "2024-12-31",
       "status": "Em andamento",
       "observacoes": "",
-      "movimentacoes": [
-        {
-          "id": 1,
-          "valor": 200,
-          "tipo": "e",
-          "descricao": "depósito inicial"
-        },
-        {
-          "id": 2,
-          "descricao": "depósito inical",
-          "valor": 300,
-          "tipo": "e",
-          "data": "2024-06-08"
-        },
-        {
-          "id": 3,
-          "descricao": "teste",
-          "valor": 152,
-          "tipo": "e",
-          "data": "2024-06-08"
-        },
-        {
-          "id": 4,
-          "descricao": "teste",
-          "valor": 500,
-          "tipo": "s",
-          "data": "2024-06-07"
-        },
-        {
-          "id": 5,
-          "descricao": "teste",
-          "valor": 5000,
-          "tipo": "e",
-          "data": "2024-06-07"
-        },
-        {
-          "id": 6,
-          "descricao": "teste",
-          "valor": 152,
-          "tipo": "s",
-          "data": "2024-06-07"
-        }
-      ],
+      "movimentacoes": [],
       "id": 1
     },
     {
-      "descricao": "Viagem",
+      "descricao": "Reserva de Emergência",
       "saldoInicial": 0,
-      "meta": 50000,
-      "alcancarEm": "2024-12-12",
+      "meta": 5000,
+      "alcancarEm": "2024-06-01",
       "status": "Em andamento",
       "observacoes": "",
-      "movimentacoes": [
-        {
-          "id": 1,
-          "descricao": "teste",
-          "valor": 1,
-          "tipo": "e",
-          "data": "2024-06-01"
-        }
-      ],
+      "movimentacoes": [],
       "id": 2
     }
   ]

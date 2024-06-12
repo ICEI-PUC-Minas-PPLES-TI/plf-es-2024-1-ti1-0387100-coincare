@@ -1,3 +1,12 @@
+// TO DO
+// Ideal por mês
+// Regex no campo de moeda
+// Concluir meta quando atigit 100%
+// Alterar o título no modal de edição
+// Inserir o nome da meta no modal de depósito
+// Sugerir data atual no modal de depósito
+// Validação de campos
+
 const descricao = document.querySelector('#descricao');
 const saldoInicial = document.querySelector('#saldo-inicial');
 const metaC = document.querySelector('#meta');
@@ -235,7 +244,7 @@ function iniciarProgresso(elemento, valorProgresso) {
       circle.path.setAttribute('stroke-width', state.width);
 
       const value = Math.round(circle.value() * 100);
-      circle.setText(value === 0 ? '' : `${value}%`);
+      circle.setText(value === 0 ? '0%' : `${value}%`);
     }
   });
   bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
