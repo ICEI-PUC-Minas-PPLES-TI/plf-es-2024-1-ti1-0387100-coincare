@@ -327,7 +327,7 @@ salvarBtn.addEventListener('click', () => {
 depositarBtn.addEventListener('click', () => {
   const deposito = {
     descricao: descricaoDeposito.value,
-    valor: +valorDeposito.value,
+    valor: +valorDeposito.value.replace(",", "."),
     tipo: tipoDeposito.value,
     data: dataDeposito.value
   }
