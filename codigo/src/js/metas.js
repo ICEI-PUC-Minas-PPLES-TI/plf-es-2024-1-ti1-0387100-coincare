@@ -3,7 +3,7 @@
 // Regex no campo de moeda
 // Concluir meta quando atingir 100%
 // Alterar o título no modal de edição
-// Inserir o nome da meta no modal de depósito
+// Inserir o nome da meta no modal de depósito - OK
 // Sugerir data atual no modal de depósito - OK
 // Validação de campos
 
@@ -14,6 +14,7 @@ const alcancarEm = document.querySelector('#alcancar-em');
 const observacao = document.querySelector('#observacoes');
 const salvarBtn = document.querySelector('.c-button-save');
 
+const labelDeposito = document.querySelector('#modalDepositLabel');
 const descricaoDeposito = document.querySelector('#descricao-deposit');
 const valorDeposito = document.querySelector('#valor-deposit');
 const tipoDeposito = document.querySelector('#tipo-deposit');
@@ -136,7 +137,7 @@ function editarMeta(meta) {
   alcancarEm.value = meta.alcancarEm;
   observacao.value = meta.observacoes;
   editingMetaId = meta.id;
-  const modal = new bootstrap.Modal(document.getElementById('modalEdit'));
+  const modal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
   modal.show();
 }
 
@@ -263,6 +264,7 @@ function iniciarProgresso(elemento, valorProgresso) {
 
 function depositar(meta) {
   currentMetaId = meta.id;
+  labelDeposito.innerText = `Depósito: ${meta.descricao}`;
   dataDeposito.value = getCurrentDate();
   const modal = new bootstrap.Modal(document.getElementById('modalDeposit'));
   modal.show();
