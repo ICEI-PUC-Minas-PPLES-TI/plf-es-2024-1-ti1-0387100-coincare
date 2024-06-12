@@ -1,10 +1,10 @@
 // TO DO
 // Ideal por mês
 // Regex no campo de moeda
-// Concluir meta quando atigit 100%
+// Concluir meta quando atingir 100%
 // Alterar o título no modal de edição
 // Inserir o nome da meta no modal de depósito
-// Sugerir data atual no modal de depósito
+// Sugerir data atual no modal de depósito - OK
 // Validação de campos
 
 const descricao = document.querySelector('#descricao');
@@ -33,6 +33,14 @@ function limparFormulario() {
   metaC.value = '';
   alcancarEm.value = '';
   observacao.value = '';
+}
+
+function getCurrentDate() {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const day = String(today.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
 }
 
 async function criarMeta(meta) {
@@ -128,7 +136,7 @@ function editarMeta(meta) {
   alcancarEm.value = meta.alcancarEm;
   observacao.value = meta.observacoes;
   editingMetaId = meta.id;
-  const modal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
+  const modal = new bootstrap.Modal(document.getElementById('modalEdit'));
   modal.show();
 }
 
@@ -255,6 +263,7 @@ function iniciarProgresso(elemento, valorProgresso) {
 
 function depositar(meta) {
   currentMetaId = meta.id;
+  dataDeposito.value = getCurrentDate();
   const modal = new bootstrap.Modal(document.getElementById('modalDeposit'));
   modal.show();
 }

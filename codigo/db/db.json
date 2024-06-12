@@ -281,16 +281,6 @@
       "observacoes": "",
       "movimentacoes": [],
       "id": 1
-    },
-    {
-      "descricao": "Reserva de Emergência",
-      "saldoInicial": 0,
-      "meta": 5000,
-      "alcancarEm": "2024-06-01",
-      "status": "Em andamento",
-      "observacoes": "",
-      "movimentacoes": [],
-      "id": 2
     }
   ]
 }
