@@ -281,6 +281,16 @@
       "observacoes": "",
       "movimentacoes": [],
       "id": 1
+    },
+    {
+      "descricao": "Viagem",
+      "saldoInicial": 500,
+      "meta": 15000,
+      "alcancarEm": "2024-06-08",
+      "status": "Em andamento",
+      "observacoes": "",
+      "movimentacoes": [],
+      "id": 2
     }
   ]
 }

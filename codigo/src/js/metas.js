@@ -1,6 +1,6 @@
 // TO DO
 // Ideal por mês
-// Regex no campo de moeda
+// Regex no campo de moeda - OK
 // Concluir meta quando atingir 100%
 // Alterar o título no modal de edição
 // Inserir o nome da meta no modal de depósito - OK
@@ -27,6 +27,12 @@ const cardsContainer = document.querySelector('#card-wrapper');
 const urlBase = 'http://localhost:3000';
 let editingMetaId = null;
 let currentMetaId = null;
+
+function coinMask(e) {
+  let value = e.target.value.replace(/\D/g, '');
+  value = (value / 100).toFixed(2);
+  e.target.value = value.replace(".", ",");
+}
 
 function limparFormulario() {
   descricao.value = '';
@@ -301,8 +307,8 @@ async function gravarDeposito(metaId, deposito) {
 salvarBtn.addEventListener('click', () => {
   const meta = {
     descricao: descricao.value,
-    saldoInicial: +saldoInicial.value,
-    meta: +metaC.value,
+    saldoInicial: +saldoInicial.value.replace(",", "."),
+    meta: +metaC.value.replace(",", "."),
     alcancarEm: alcancarEm.value,
     status: 'Em andamento',
     observacoes: observacao.value,
@@ -335,3 +341,6 @@ incluirBtn.addEventListener('click', () => {
 });
 
 window.addEventListener('load', criarCards);
+saldoInicial.addEventListener('input', coinMask);
+metaC.addEventListener('input', coinMask);
+valorDeposito.addEventListener('input', coinMask);
