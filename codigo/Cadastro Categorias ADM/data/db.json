@@ -1,0 +1,29 @@
+{
+  "categorias": [
+    {
+      "id": "1",
+      "nome": "GASTOS FIXOS",
+      "percentual": 50
+    },
+    {
+      "id": "2",
+      "nome": "LAZER",
+      "percentual": 10
+    },
+    {
+      "id": "3",
+      "nome": "TRANSPORTE",
+      "percentual": 10
+    },
+    {
+      "id": "4",
+      "nome": "VIAGENS",
+      "percentual": 10
+    },
+    {
+      "id": "5",
+      "nome": "ECONOMIAS",
+      "percentual": 20
+    }
+  ]
+}

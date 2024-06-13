@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seu Título Aqui</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <nav>
+            <div id="logo">CoinCare</div>
+            <ul>
+                <li><a href="#">Início</a></li>
+                <li><a href="#">Sair</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="container cadastro">
+    <h2>Cadastro</h2>
+    <form>
+        <label for="nome-categoria">Nome:</label>
+        <input type="text" id="nome-categoria" name="nome-categoria" placeholder="Digite o nome da categoria">
+        
+        <label for="percentual-max">Percentual:</label>
+        <input type="number" id="percentual-max" name="percentual-max" placeholder="Digite o percentual máximo">
+        
+        <button type="button" id="adicionar">Adicionar</button>
+    </form>
+</section>
+
+<section class="container lista-categorias">
+    <h2>Lista de Categorias</h2>
+    <table id="categorias-table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Percentual</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Aqui serão inseridas as linhas de categorias via JavaScript -->
+        </tbody>
+    </table>
+</section>
+
+<!-- Script JavaScript -->
+<script src="script.js"></script>
+
+</body>
+</html>
