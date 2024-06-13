@@ -25,7 +25,7 @@
   <main class="content">
     <div class="content__header">
       <p class="content__text content__title">Suas metas</p>
-      <button class="c-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+ Incluir</button>
+      <button class="c-button c-button-incluir" data-bs-toggle="modal">+ Incluir</button>
     </div>
     <div id="card-wrapper"></div>
   </main>
@@ -46,7 +46,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form>
+          <form id="metaForm">
             <div class="mb-3">
               <label for="descricao" class="col-form-label">Descrição:</label>
               <input type="text" class="form-control descricao" id="descricao" required>
@@ -56,20 +56,21 @@
                 <label for="saldo-inicial" class="col-form-label">Saldo inicial:</label>
                 <div class="input-group">
                   <span class="input-group-text">R$</span>
-                  <input type="text" value="0,00" class="form-control" id="saldo-inicial" aria-label="Saldo inicial">
+                  <input type="text" value="0,00" class="form-control" id="saldo-inicial" aria-label="Saldo inicial"
+                    required>
                 </div>
               </div>
               <div class="col-md-6 mb-3">
                 <label for="meta" class="col-form-label">Meta:</label>
                 <div class="input-group">
                   <span class="input-group-text">R$</span>
-                  <input type="text" value="0,00" class="form-control" id="meta" aria-label="Saldo inicial">
+                  <input type="text" value="0,00" class="form-control" id="meta" aria-label="Saldo inicial" required>
                 </div>
               </div>
             </div>
             <div class="mb-3">
               <label for="alcancar-em" class="col-form-label">Espero alcançar em:</label>
-              <input type="date" class="form-control " id="alcancar-em">
+              <input type="date" class="form-control " id="alcancar-em" required>
             </div>
             <div class="mb-3">
               <label for="observacoes" class="col-form-label">Observações:</label>
@@ -79,7 +80,57 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-          <button type="button" class="c-button c-button-save" data-bs-dismiss="modal">Gravar</button>
+          <button type="button" class="c-button c-button-save" id="saveButton">Gravar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal edit -->
+  <div class="modal fade" id="modalEdit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="modalEditLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modalEditLabel">Edição de meta</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="formEdit">
+            <div class="mb-3">
+              <label for="descricao-edit" class="col-form-label">Descrição:</label>
+              <input type="text" class="form-control descricao" id="descricao-edit" required>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="saldo-inicial-edit" class="col-form-label">Saldo inicial:</label>
+                <div class="input-group">
+                  <span class="input-group-text">R$</span>
+                  <input type="text" value="0,00" class="form-control" id="saldo-inicial-edit" aria-label="Saldo inicial"
+                    required>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="meta-edit" class="col-form-label">Meta:</label>
+                <div class="input-group">
+                  <span class="input-group-text">R$</span>
+                  <input type="text" value="0,00" class="form-control" id="meta-edit" aria-label="Saldo inicial" required>
+                </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="alcancar-em-edit" class="col-form-label">Espero alcançar em:</label>
+              <input type="date" class="form-control " id="alcancar-em-edit" required>
+            </div>
+            <div class="mb-3">
+              <label for="observacoes-edit" class="col-form-label">Observações:</label>
+              <textarea class="form-control" id="observacoes-edit"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          <button type="button" class="c-button c-button-edit" id="saveButton">Gravar</button>
         </div>
       </div>
     </div>
@@ -95,7 +146,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form>
+          <form id="formDeposit">
             <div class="mb-3">
               <label for="descricao-deposit" class="col-form-label">Descrição:</label>
               <input type="text" class="form-control" id="descricao-deposit" required>
@@ -105,13 +156,13 @@
                 <label for="valor-deposit" class="col-form-label">Valor:</label>
                 <div class="input-group">
                   <span class="input-group-text">R$</span>
-                  <input type="text" value="0,00" class="form-control" id="valor-deposit" aria-label="Valor">
+                  <input type="text" placeholder="0,00" class="form-control" id="valor-deposit" aria-label="Valor" required>
                 </div>
               </div>
               <div class="col-md-6 mb-3">
                 <label for="tipo-deposit" class="col-form-label">Tipo:</label>
                 <div class="input-group">
-                  <select class="form-select" id="tipo-deposit" aria-label="Tipo">
+                  <select class="form-select" id="tipo-deposit" aria-label="Tipo" required>
                     <option selected>- Selecione -</option>
                     <option value="e">Entrada</option>
                     <option value="s">Saída</option>
@@ -121,17 +172,31 @@
             </div>
             <div class="mb-3">
               <label for="data-deposit" class="col-form-label">Data:</label>
-              <input type="date" class="form-control" id="data-deposit">
+              <input type="date" class="form-control" id="data-deposit" required>
             </div>
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-          <button type="button" class="c-button c-button-deposit" data-bs-dismiss="modal">Gravar</button>
+          <button type="button" class="c-button c-button-deposit">Gravar</button>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- <script>
+    document.getElementById('saveButton').addEventListener('click', function() {
+      var form = document.getElementById('metaForm');
+      if (form.checkValidity()) {
+        // Se o formulário for válido, feche o modal programaticamente
+        var modal = bootstrap.Modal.getInstance(document.getElementById('staticBackdrop'));
+        modal.hide();
+      } else {
+        // Se o formulário não for válido, mostre as mensagens de erro
+        form.reportValidity();
+      }
+    });
+  </script> -->
 
   <!-- Bootstrap -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

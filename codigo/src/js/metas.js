@@ -1,11 +1,10 @@
 // TO DO
-// Ideal por mês
-// Regex no campo de moeda - OK
-// Concluir meta quando atingir 100%
-// Alterar o título no modal de edição
-// Inserir o nome da meta no modal de depósito - OK
-// Sugerir data atual no modal de depósito - OK
-// Validação de campos
+// Ideal por mês (M)
+// Concluir meta quando atingir 100% (M)
+
+const form = document.getElementById('metaForm');
+const formEdit = document.getElementById('formEdit');
+const formDeposit = document.getElementById('formDeposit');
 
 const descricao = document.querySelector('#descricao');
 const saldoInicial = document.querySelector('#saldo-inicial');
@@ -14,6 +13,13 @@ const alcancarEm = document.querySelector('#alcancar-em');
 const observacao = document.querySelector('#observacoes');
 const salvarBtn = document.querySelector('.c-button-save');
 
+const descricaoEdit = document.querySelector('#descricao-edit');
+const saldoInicialEdit = document.querySelector('#saldo-inicial-edit');
+const metaEdit = document.querySelector('#meta-edit');
+const alcancarEmEdit = document.querySelector('#alcancar-em-edit');
+const observacaoEdit = document.querySelector('#observacoes-edit');
+const saveEditBtn = document.querySelector('.c-button-edit');
+
 const labelDeposito = document.querySelector('#modalDepositLabel');
 const descricaoDeposito = document.querySelector('#descricao-deposit');
 const valorDeposito = document.querySelector('#valor-deposit');
@@ -21,12 +27,13 @@ const tipoDeposito = document.querySelector('#tipo-deposit');
 const dataDeposito = document.querySelector('#data-deposit');
 const depositarBtn = document.querySelector('.c-button-deposit');
 
-const incluirBtn = document.querySelector('.c-button[data-bs-toggle="modal"]');
+const incluirBtn = document.querySelector('.c-button-incluir');
 const cardsContainer = document.querySelector('#card-wrapper');
 
 const urlBase = 'http://localhost:3000';
 let editingMetaId = null;
 let currentMetaId = null;
+let modalInstance;
 
 function coinMask(e) {
   let value = e.target.value.replace(/\D/g, '');
@@ -40,6 +47,12 @@ function limparFormulario() {
   metaC.value = '';
   alcancarEm.value = '';
   observacao.value = '';
+}
+
+function limparFormularioDeposito() {
+  descricaoDeposito.value = '';
+  valorDeposito.value = '';
+  dataDeposito.value = '';
 }
 
 function getCurrentDate() {
@@ -69,14 +82,21 @@ async function criarMeta(meta) {
 
 async function atualizarMeta(meta) {
   try {
-    const res = await fetch(`${urlBase}/metas/${meta.id}`, {
+    const res = await fetch(`${urlBase}/metas/${meta.id}`);
+    if (!res.ok) throw new Error('Meta não encontrada');
+    const metaExistente = await res.json();
+
+    meta.movimentacoes = metaExistente.movimentacoes;
+    meta.status = 'Em andamento';
+
+    const atualizarRes = await fetch(`${urlBase}/metas/${meta.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(meta),
     });
-    const data = await res.json();
+    const data = await atualizarRes.json();
     console.log('Meta atualizada com sucesso!');
     criarCards();
   } catch (error) {
@@ -103,8 +123,7 @@ async function excluirMeta(metaId) {
         title: 'custom-swal-title',
         text: 'custom-swal-text'
       }
-    }
-    ).then(() => {
+    }).then(() => {
       location.reload();
     });
   } catch (error) {
@@ -137,14 +156,14 @@ async function confirmarExclusao(metaId) {
 }
 
 function editarMeta(meta) {
-  descricao.value = meta.descricao;
-  saldoInicial.value = meta.saldoInicial;
-  metaC.value = meta.meta;
-  alcancarEm.value = meta.alcancarEm;
-  observacao.value = meta.observacoes;
+  descricaoEdit.value = meta.descricao;
+  saldoInicialEdit.value = meta.saldoInicial;
+  metaEdit.value = meta.meta;
+  alcancarEmEdit.value = meta.alcancarEm;
+  observacaoEdit.value = meta.observacoes;
   editingMetaId = meta.id;
-  const modal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
-  modal.show();
+  modalInstance = new bootstrap.Modal(document.getElementById('modalEdit'));
+  modalInstance.show();
 }
 
 async function buscarMetas() {
@@ -163,6 +182,7 @@ function criarElemento(tag, classNames, innerText = '') {
 }
 
 function calcularSaldoAtual(meta) {
+  if (!meta.movimentacoes) return meta.saldoInicial;
   return meta.movimentacoes.reduce((saldo, mov) => {
     return mov.tipo === 'e' ? saldo + mov.valor : saldo - mov.valor;
   }, meta.saldoInicial);
@@ -208,7 +228,7 @@ async function criarCards() {
 
       const cardMonthly = criarElemento('div', 'card__monthly');
       const cardMonthlyLabel = criarElemento('p', 'card__monthly-label', 'Ideal por mês');
-      const cardMonthlyAmount = criarElemento('p', 'card__monthly-amount', 'R$ 180,00');
+      const cardMonthlyAmount = criarElemento('p', 'card__monthly-amount', 'Ex.: R$ 180,00');
       cardMonthly.append(cardMonthlyLabel, cardMonthlyAmount);
 
       const cardProgressWrapper = criarElemento('div', 'card__progress-wrapper');
@@ -268,13 +288,21 @@ function iniciarProgresso(elemento, valorProgresso) {
   bar.animate(valorProgresso);
 }
 
+function openModalInclude() {
+  modalInstance = new bootstrap.Modal(document.getElementById('staticBackdrop'));
+  modalInstance.show();
+}
+
 function depositar(meta) {
+  limparFormularioDeposito();
   currentMetaId = meta.id;
   labelDeposito.innerText = `Depósito: ${meta.descricao}`;
-  dataDeposito.value = getCurrentDate();
-  const modal = new bootstrap.Modal(document.getElementById('modalDeposit'));
-  modal.show();
+  if (!modalInstance) {
+    modalInstance = new bootstrap.Modal(document.getElementById('modalDeposit'));
+  }
+  modalInstance.show();
 }
+
 
 async function gravarDeposito(metaId, deposito) {
   try {
@@ -305,40 +333,73 @@ async function gravarDeposito(metaId, deposito) {
 }
 
 salvarBtn.addEventListener('click', () => {
-  const meta = {
-    descricao: descricao.value,
-    saldoInicial: +saldoInicial.value.replace(",", "."),
-    meta: +metaC.value.replace(",", "."),
-    alcancarEm: alcancarEm.value,
-    status: 'Em andamento',
-    observacoes: observacao.value,
-    movimentacoes: [],
-  };
+  if (form.checkValidity()) {
+    const meta = {
+      descricao: descricao.value,
+      saldoInicial: +saldoInicial.value.replace(",", "."),
+      meta: +metaC.value.replace(",", "."),
+      alcancarEm: alcancarEm.value,
+      status: 'Em andamento',
+      observacoes: observacao.value,
+      movimentacoes: [],
+    };
 
-  if (editingMetaId) {
-    meta.id = editingMetaId;
-    atualizarMeta(meta);
-    editingMetaId = null;
+    if (editingMetaId) {
+      meta.id = editingMetaId;
+      atualizarMeta(meta);
+      editingMetaId = null;
+    } else {
+      criarMeta(meta);
+    }
+    modalInstance.hide();
+    modalInstance = null;
   } else {
-    criarMeta(meta);
+    form.reportValidity();
   }
-});
-
-depositarBtn.addEventListener('click', () => {
-  const deposito = {
-    descricao: descricaoDeposito.value,
-    valor: +valorDeposito.value.replace(",", "."),
-    tipo: tipoDeposito.value,
-    data: dataDeposito.value
-  }
-
-  gravarDeposito(currentMetaId, deposito);
 });
 
 incluirBtn.addEventListener('click', () => {
   limparFormulario();
+  openModalInclude();
   editingMetaId = null;
 });
+
+depositarBtn.addEventListener('click', () => {
+  if (formDeposit.checkValidity()) {
+    const deposito = {
+      descricao: descricaoDeposito.value,
+      valor: +valorDeposito.value.replace(",", "."),
+      tipo: tipoDeposito.value,
+      data: dataDeposito.value
+    };
+
+    gravarDeposito(currentMetaId, deposito);
+    modalInstance.hide();
+    modalInstance = null;
+  } else {
+    formDeposit.reportValidity();
+  }
+});
+
+saveEditBtn.addEventListener('click', () => {
+  if (formEdit.checkValidity()) {
+    const meta = {
+      descricao: descricaoEdit.value,
+      saldoInicial: +saldoInicialEdit.value.replace(",", "."),
+      meta: +metaEdit.value.replace(",", "."),
+      alcancarEm: alcancarEmEdit.value,
+      observacoes: observacaoEdit.value,
+    };
+
+    meta.id = editingMetaId;
+    atualizarMeta(meta);
+    modalInstance.hide();
+    modalInstance = null;
+  } else {
+    formEdit.reportValidity();
+  }
+});
+
 
 window.addEventListener('load', criarCards);
 saldoInicial.addEventListener('input', coinMask);
