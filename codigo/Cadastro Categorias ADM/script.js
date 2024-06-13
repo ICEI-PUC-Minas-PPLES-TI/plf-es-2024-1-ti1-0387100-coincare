@@ -20,7 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
             row.innerHTML = `
                 <td>${categoria.nome}</td>
                 <td>${categoria.percentual}%</td>
-                <td><button class="excluir" data-id="${categoria.id}">Excluir</button></td>
+                <td>
+                    <button class="editar" data-id="${categoria.id}">Editar</button>
+                    <button class="excluir" data-id="${categoria.id}">Excluir</button>
+                </td>
             `;
             categoriasTableBody.appendChild(row);
         });
@@ -29,6 +32,13 @@ document.addEventListener('DOMContentLoaded', () => {
             button.addEventListener('click', (event) => {
                 const id = event.target.dataset.id;
                 deleteCategoria(id);
+            });
+        });
+
+        document.querySelectorAll('.editar').forEach(button => {
+            button.addEventListener('click', (event) => {
+                const id = event.target.dataset.id;
+                editCategoria(id);
             });
         });
     }
@@ -57,7 +67,46 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    adicionarButton.addEventListener('click', () => {
+    function editCategoria(id) {
+        fetch(`${apiUrl}/${id}`)
+            .then(response => response.json())
+            .then(categoria => {
+                nomeCategoriaInput.value = categoria.nome;
+                percentualMaxInput.value = categoria.percentual;
+                adicionarButton.textContent = 'Salvar';
+                adicionarButton.removeEventListener('click', adicionarCategoria);
+                adicionarButton.addEventListener('click', () => salvarCategoria(id));
+            });
+    }
+
+    function salvarCategoria(id) {
+        const nome = nomeCategoriaInput.value;
+        const percentual = parseFloat(percentualMaxInput.value);
+
+        if (nome && !isNaN(percentual)) {
+            const categoria = { nome, percentual };
+            fetch(`${apiUrl}/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(categoria)
+            })
+            .then(response => response.json())
+            .then(() => {
+                adicionarButton.textContent = 'Adicionar';
+                adicionarButton.removeEventListener('click', salvarCategoria);
+                adicionarButton.addEventListener('click', adicionarCategoria);
+                fetchCategorias();
+                nomeCategoriaInput.value = '';
+                percentualMaxInput.value = '';
+            });
+        } else {
+            alert('Por favor, preencha todos os campos corretamente.');
+        }
+    }
+
+    function adicionarCategoria() {
         const nome = nomeCategoriaInput.value;
         const percentual = parseFloat(percentualMaxInput.value);
 
@@ -68,7 +117,9 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             alert('Por favor, preencha todos os campos corretamente.');
         }
-    });
+    }
+
+    adicionarButton.addEventListener('click', adicionarCategoria);
 
     fetchCategorias();
 });
