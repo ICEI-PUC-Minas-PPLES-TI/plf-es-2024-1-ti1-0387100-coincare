@@ -1,15 +1,6 @@
 {
   "items": [
     {
-      "id": "kgnak53c5",
-      "nome": "Salário",
-      "valor": 20,
-      "categoria": "Trabalho",
-      "dia": 1,
-      "mesAno": "2024-01",
-      "tipo": "ganhos"
-    },
-    {
       "id": "7s8iyuhj7",
       "nome": "Cartão",
       "valor": 3,
@@ -26,6 +17,15 @@
       "dia": 10,
       "mesAno": "2024-01",
       "tipo": "despesas_fixas"
+    },
+    {
+      "id": "bcep3c323",
+      "nome": "Abc",
+      "valor": 12,
+      "categoria": "Adultos",
+      "dia": 1,
+      "mesAno": "2024-03",
+      "tipo": "ganhos"
     }
   ]
 }
