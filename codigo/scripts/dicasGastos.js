@@ -89,12 +89,12 @@ function exibirResumo(tipo, ganhos, despesasFixas, categorias) {
 
   resumoContainer.innerHTML = `
     <div>
-      <h2>Resumo para ${tipo}<h2>
+      <h2>Resumo para ${tipo}</h2>
       <div id="detalhes">
       <p>Melhor Caso: R$ ${melhorCaso.toFixed(2)}</p>
       <p>Pior Caso: R$ ${piorCaso.toFixed(2)}</p>
       <p>Caso Atual: R$ ${casoAtual.toFixed(2)}</p>
-      <div>
+      </div>
     </div>
   `;
 }
