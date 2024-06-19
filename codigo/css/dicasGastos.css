@@ -1,26 +1,10 @@
-:root {
-  --primary-color: #7FC396;
-  --secondary-color: #FFFFFF;
-  --error-color: #E2504C;
-  --info-color: #D4EAFE;
-  --font-family: 'Arial', sans-serif;
-  --font-size-base: 16px;
-  --font-size-large: 22px;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
 html, body {
   height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
-  font-family: var(--font-family);
-  background-color: var(--secondary-color);
+  font-family: Arial, sans-serif;
+  background-color: #FFFFFF;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,19 +14,20 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--primary-color);
+  background-color: #7FC396;
   padding: 10px 20px;
   width: 100%;
+  box-sizing: border-box;
 }
 
 header h1 {
   margin: 0;
-  color: var(--secondary-color);
+  color: #FFFFFF;
 }
 
 header nav a {
   margin-left: 20px;
-  color: var(--secondary-color);
+  color: #FFFFFF;
   text-decoration: none;
 }
 
@@ -52,19 +37,25 @@ header nav a {
   justify-content: center;
 }
 
-#chartUnificado {
-  max-width: 700px;
-  margin-right: 20px;
+.chart-container {
+  width: 70%;
+}
+
+
+#title {
+  text-align: center;
+  font-size: 40px;
 }
 
 #resumoTotal {
+  margin-left: 40px;
   padding: 12px;
   border-radius: 15px;
-  background-color: var(--primary-color);
+  background-color: #7FC396;
 }
 
 #picklistDiv {
-  font-size: 1rem;
+  font-size: medium;
   padding-bottom: 10px;
   padding: 10px;
   margin-bottom: 10px;
@@ -73,63 +64,50 @@ header nav a {
 h2 {
   padding-bottom: 10px;
   font-weight: bold;
-  font-size: var(--font-size-large);
-  color: var(--secondary-color);
+  font-size: 22px;
+  color: #FFFFFF;
   text-align: center;
 }
 
 #tipoSelecao {
-  background-color: var(--secondary-color);
+
+  background-color: #FFFFFF;
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 10px;
-  font-size: 1rem;
-  color: #000; 
+  font-size: 15px;
+  color: #000000; 
   width: 100%;
+  box-sizing: border-box; 
   cursor: pointer;
 }
 
 #resumoContainer {
   border-radius: 8px;
+  box-sizing: border-box;
   margin-bottom: 20px;
   padding: 10px;
-  font-size: 1.25rem;
+  font-size: 20px;
 }
 
-#detalhes {
-  background-color: var(--secondary-color);
+#detalhes{
+  background-color: #FFFFFF;
   margin-bottom: 20px;
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 8px;
-  font-size: 1rem;
-  color: #000;
+  font-size: medium;
+  color: #000000;
   font-weight: normal;
 }
 
 footer {
   text-align: center;
-  font-size: 0.875rem;
+  font-size: 14px;
   color: #aaa;
   padding: 10px;
   width: 100%;
-}
-
-@media (max-width: 768px) {
-  .chart-container.large {
-    width: 100%;
-    margin-right: 0;
-    margin-bottom: 20px;
-  }
-
-  .resumo-container {
-    width: 100%;
-  }
-
-  .container {
-    flex-direction: column;
-    align-items: center;
-  }
+  box-sizing: border-box;
 }
 
 .popup {
@@ -144,20 +122,20 @@ footer {
   z-index: 1000;
   max-width: 300px;
   text-align: center;
-  font-size: 1rem;
+  font-size: 16px;
 }
 
 .popup.success {
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
+  background-color:#7FC396;
+  color: #FFFFFF;
 }
 
 .popup.error {
-  background-color: var(--error-color);
-  color: var(--secondary-color);
+  background-color:#E2504C;
+  color: #FFFFFF;
 }
 
 .popup.info {
-  background-color: var(--info-color);
-  color: #000;
-}
+  background-color:#D4EAFE;
+  color: #000000;
+} 

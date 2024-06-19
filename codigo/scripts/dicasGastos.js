@@ -130,38 +130,33 @@ async function createCharts() {
   });
 
   const chartElement = document.getElementById('chartUnificado');
-  if (chartElement) {
-    const ctx = chartElement.getContext('2d');
-    criarGrafico(
-      ctx,
-      labels,
-      [
-        {
-          label: 'Melhor Caso',
-          data: melhorCasoData,
-          backgroundColor: 'rgba(75, 192, 192, 0.2)',
-          borderColor: '#7FC396',
-          borderWidth: 1
-        },
-        {
-          label: 'Atual',
-          data: atualData,
-          backgroundColor: backgroundColors,
-          borderColor: borderColors,
-          borderWidth: 1
-        }
-      ],
-      true
-    );
-  } else {
-    console.error('Element with id "chartUnificado" not found.');
-  }
+  const ctx = chartElement.getContext('2d');
+  criarGrafico(
+    ctx,
+    labels,
+    [
+      {
+        label: 'Melhor Caso',
+        data: melhorCasoData,
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        borderColor: '#7FC396',
+        borderWidth: 1
+      },
+      {
+        label: 'Atual',
+        data: atualData,
+        backgroundColor: backgroundColors,
+        borderColor: borderColors,
+        borderWidth: 1
+      }
+    ],
+    true
+  );
 
   tipoSelecao.addEventListener('change', () => {
     exibirResumo(tipoSelecao.value, ganhos, despesasFixas, categorias);
   });
 
-  // Exibe o resumo inicial
   exibirResumo(tipoSelecao.value, ganhos, despesasFixas, categorias);
 }
 
