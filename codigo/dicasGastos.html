@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="css/dicasGastos.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://kit.fontawesome.com/398f9555e1.js" crossorigin="anonymous"></script>
-  <script src="scripts/dicasGastos.js"></script>
 </head>
 <body>
   <header>
@@ -24,19 +23,40 @@
     </nav>
   </header>
 
-  <h2>Dicas de gastos</h2>
-  <div class="container">
-    <div id="chartDespesasFixasContainer" class="chart-container large">
-      <canvas id="chartDespesasFixas"></canvas>
-      <div class="picklist" id="picklistDespesasFixas"></div>
+  <main>
+    <h2>Dicas de gastos</h2>
+    <div class="container">
+      
+      <div id="chartUnificadoContainer" class="chart-container large">
+        <canvas id="chartUnificado"></canvas>
+      </div>
+
+      <div id="resumoTotal">
+
+        <div id="picklistDiv" class="picklist-container">
+          <h2>Selecione o tipo de gasto</h2>
+
+          <select id="tipoSelecao">
+            <option value="ganhos">Ganhos</option>
+            <option value="despesas_fixas">Despesas Fixas</option>
+            <option value="Lazer e Entretenimento">Lazer e Entretenimento</option>
+            <option value="Vestuário">Vestuário</option>
+            <option value="Despesas Pessoais">Despesas Pessoais</option>
+            <option value="Poupança e Investimentos">Poupança e Investimentos</option>
+          </select>
+
+        </div>
+
+        <div id="resumoContainer" class="resumo-container"></div>
+      </div>
+
     </div>
-    <div id="chartsVariaveis" class="charts-grid">
-      <!-- Gráficos adicionais serão adicionados aqui pelo JavaScript -->
-    </div>
-  </div>
-  <div id="popup-message" class="popup"></div>
+    <div id="popup-message" class="popup"></div>
+  </main>
+  
   <footer>
-    <p>© 2024 CoinCare. Todos os direitos reservados. | Política de Privacidade | Termos de Uso</p>
+    <p>© 2024 CoinCare. Todos os direitos reservados. | <a href="#">Política de Privacidade</a> | <a href="#">Termos de Uso</a></p>
   </footer>
+  <script src="scripts/dicasGastos.js"></script>
 </body>
 </html>

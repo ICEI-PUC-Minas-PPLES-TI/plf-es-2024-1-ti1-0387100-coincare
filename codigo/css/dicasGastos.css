@@ -1,10 +1,26 @@
+:root {
+  --primary-color: #7FC396;
+  --secondary-color: #FFFFFF;
+  --error-color: #E2504C;
+  --info-color: #D4EAFE;
+  --font-family: 'Arial', sans-serif;
+  --font-size-base: 16px;
+  --font-size-large: 22px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html, body {
   height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
-  background-color: #FFFFFF;
+  font-family: var(--font-family);
+  background-color: var(--secondary-color);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,88 +30,103 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #7FC396;
+  background-color: var(--primary-color);
   padding: 10px 20px;
   width: 100%;
-  box-sizing: border-box;
 }
 
 header h1 {
   margin: 0;
-  color: #FFFFFF;
+  color: var(--secondary-color);
 }
 
 header nav a {
   margin-left: 20px;
-  color: #FFFFFF;
+  color: var(--secondary-color);
   text-decoration: none;
 }
 
 .container {
   width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
 }
 
-.chart-container.large {
-  max-width: 1200px;
-  width: 550px;
-  margin-bottom: 20px;
+#chartUnificado {
+  max-width: 700px;
+  margin-right: 20px;
 }
 
-.chart-container.large canvas {
-  width: 100% !important;
+#resumoTotal {
+  padding: 12px;
+  border-radius: 15px;
+  background-color: var(--primary-color);
 }
 
-.chart-container {
-  width: 20%;
-  margin-bottom: 20px;
-}
-
-
-.picklist {
-  margin-top: 10px;
-  font-size: 14px;
-  color: #555;
-  background: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+#picklistDiv {
+  font-size: 1rem;
+  padding-bottom: 10px;
   padding: 10px;
+  margin-bottom: 10px;
+}
+
+h2 {
+  padding-bottom: 10px;
+  font-weight: bold;
+  font-size: var(--font-size-large);
+  color: var(--secondary-color);
   text-align: center;
 }
 
-.charts-grid {
+#tipoSelecao {
+  background-color: var(--secondary-color);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 1rem;
+  color: #000; 
   width: 100%;
-  display: flex;
-  justify-content: space-evenly;
+  cursor: pointer;
 }
 
-.chart-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+#resumoContainer {
+  border-radius: 8px;
+  margin-bottom: 20px;
+  padding: 10px;
+  font-size: 1.25rem;
+}
+
+#detalhes {
+  background-color: var(--secondary-color);
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #000;
+  font-weight: normal;
 }
 
 footer {
   text-align: center;
-  font-size: 14px;
+  font-size: 0.875rem;
   color: #aaa;
   padding: 10px;
   width: 100%;
-  box-sizing: border-box;
 }
 
 @media (max-width: 768px) {
-  .chart-container.large canvas {
-    height: 300px !important;
+  .chart-container.large {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 20px;
   }
 
-  .chart-container {
+  .resumo-container {
     width: 100%;
   }
 
-  .charts-grid {
+  .container {
     flex-direction: column;
     align-items: center;
   }
@@ -113,20 +144,20 @@ footer {
   z-index: 1000;
   max-width: 300px;
   text-align: center;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .popup.success {
-  background-color:#7FC396;
-  color: #FFFFFF;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
 }
 
 .popup.error {
-  background-color:#E2504C;
-  color: #FFFFFF;
+  background-color: var(--error-color);
+  color: var(--secondary-color);
 }
 
 .popup.info {
-  background-color:#D4EAFE;
-  color: #000000;
+  background-color: var(--info-color);
+  color: #000;
 }

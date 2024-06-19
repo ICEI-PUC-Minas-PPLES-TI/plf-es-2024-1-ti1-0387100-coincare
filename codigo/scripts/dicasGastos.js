@@ -1,5 +1,7 @@
 const apiUrl = 'http://localhost:3000/items';
 const popupMessage = document.getElementById('popup-message');
+const tipoSelecao = document.getElementById('tipoSelecao');
+const resumoContainer = document.getElementById('resumoContainer');
 
 async function fetchData() {
   try {
@@ -21,8 +23,8 @@ function calcularValores(items) {
   return { ganhos, despesasFixas, despesasVariaveis };
 }
 
-function verificarDespesasFixas(ganhos, despesasFixas) {
-  return 0.6 * ganhos;
+function verificarDespesasFixas(ganhos) {
+  return Math.max(0, 0.6 * ganhos);
 }
 
 function distribuirDespesasVariaveis(despesasVariaveis) {
@@ -42,41 +44,59 @@ function distribuirDespesasVariaveis(despesasVariaveis) {
   return categorias;
 }
 
-function criarGrafico(ctx, label, melhorCaso, atual, alerta) {
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: [label],
-      datasets: [
-        {
-          label: 'Melhor Caso',
-          data: [melhorCaso],
-          backgroundColor: 'rgba(75, 192, 192, 0.2)',
-          borderColor: '#7FC396',
-          borderWidth: 1
+function criarGrafico(ctx, labels, dataSets, isLarge = false) {
+  try {
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: dataSets
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
         },
-        {
-          label: 'Atual',
-          data: [atual],
-          backgroundColor: alerta ? 'rgba(255, 99, 132, 0.2)' : 'rgba(54, 162, 235, 0.2)',
-          borderColor: alerta ? '#E2504C' : 'rgba(54, 162, 235, 1)',
-          borderWidth: 1
-        }
-      ]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
+        maintainAspectRatio: !isLarge
       }
-    }
-  });
+    });
+  } catch (error) {
+    alert('Erro ao criar gráfico.');
+  }
 }
 
-function criarPicklist(elementId, label, melhorCaso, atual) {
-  const picklist = document.getElementById(elementId);
-  picklist.innerHTML = `<strong>${label}</strong><br>Melhor Caso: R$ ${melhorCaso.toFixed(2)}<br>Atual: R$ ${atual.toFixed(2)}`;
+function exibirResumo(tipo, ganhos, despesasFixas, categorias) {
+  let melhorCaso, piorCaso, casoAtual;
+
+  if (tipo === 'ganhos') {
+    melhorCaso = ganhos;
+    piorCaso = 0;
+    casoAtual = ganhos;
+  } else if (tipo === 'despesas_fixas') {
+    melhorCaso = verificarDespesasFixas(ganhos);
+    piorCaso = despesasFixas > melhorCaso ? despesasFixas : 0;
+    casoAtual = despesasFixas;
+  } else {
+    const categoria = categorias[tipo];
+    if (categoria) {
+      const restante = ganhos - despesasFixas;
+      melhorCaso = (categoria.min / 100) * restante;
+      piorCaso = (categoria.max / 100) * restante;
+      casoAtual = categoria.valor;
+    }
+  }
+
+  resumoContainer.innerHTML = `
+    <div>
+      <h2>Resumo para ${tipo}<h2>
+      <div id="detalhes">
+      <p>Melhor Caso: R$ ${melhorCaso.toFixed(2)}</p>
+      <p>Pior Caso: R$ ${piorCaso.toFixed(2)}</p>
+      <p>Caso Atual: R$ ${casoAtual.toFixed(2)}</p>
+      <div>
+    </div>
+  `;
 }
 
 async function createCharts() {
@@ -84,31 +104,65 @@ async function createCharts() {
   const { ganhos, despesasFixas, despesasVariaveis } = calcularValores(items);
   const restante = ganhos - despesasFixas;
 
-  const melhorCasoDespesasFixas = verificarDespesasFixas(ganhos, despesasFixas);
+  const melhorCasoDespesasFixas = verificarDespesasFixas(ganhos);
   const categorias = distribuirDespesasVariaveis(despesasVariaveis);
 
-  criarGrafico(document.getElementById('chartDespesasFixas').getContext('2d'), 'Despesas Fixas', melhorCasoDespesasFixas, despesasFixas, despesasFixas > melhorCasoDespesasFixas);
-  criarPicklist('picklistDespesasFixas', 'Despesas Fixas', melhorCasoDespesasFixas, despesasFixas);
+  const labels = ['Despesas Fixas'];
+  const melhorCasoData = [melhorCasoDespesasFixas];
+  const atualData = [despesasFixas];
+  const backgroundColors = [
+    despesasFixas > melhorCasoDespesasFixas ? 'rgba(255, 99, 132, 0.2)' : 'rgba(54, 162, 235, 0.2)'
+  ];
+  const borderColors = [
+    despesasFixas > melhorCasoDespesasFixas ? '#E2504C' : 'rgba(54, 162, 235, 1)'
+  ];
 
-  const chartsVariaveis = document.getElementById('chartsVariaveis');
   Object.keys(categorias).forEach(label => {
     const categoria = categorias[label];
     const melhorCaso = (categoria.min / 100) * restante;
     const alerta = categoria.valor > (categoria.max / 100) * restante;
 
-    const chartWrapper = document.createElement('div');
-    chartWrapper.classList.add('chart-container');
-    chartWrapper.innerHTML = `
-      <div class="chart-wrapper">
-        <canvas id="chart${label.replace(/\s/g, '')}"></canvas>
-        <div class="picklist" id="picklist${label.replace(/\s/g, '')}"></div>
-      </div>
-    `;
-    chartsVariaveis.appendChild(chartWrapper);
-
-    criarGrafico(chartWrapper.querySelector(`#chart${label.replace(/\s/g, '')}`).getContext('2d'), label, melhorCaso, categoria.valor, alerta);
-    criarPicklist(`picklist${label.replace(/\s/g, '')}`, label, melhorCaso, categoria.valor);
+    labels.push(label);
+    melhorCasoData.push(melhorCaso);
+    atualData.push(categoria.valor);
+    backgroundColors.push(alerta ? 'rgba(255, 99, 132, 0.2)' : 'rgba(54, 162, 235, 0.2)');
+    borderColors.push(alerta ? '#E2504C' : 'rgba(54, 162, 235, 1)');
   });
+
+  const chartElement = document.getElementById('chartUnificado');
+  if (chartElement) {
+    const ctx = chartElement.getContext('2d');
+    criarGrafico(
+      ctx,
+      labels,
+      [
+        {
+          label: 'Melhor Caso',
+          data: melhorCasoData,
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          borderColor: '#7FC396',
+          borderWidth: 1
+        },
+        {
+          label: 'Atual',
+          data: atualData,
+          backgroundColor: backgroundColors,
+          borderColor: borderColors,
+          borderWidth: 1
+        }
+      ],
+      true
+    );
+  } else {
+    console.error('Element with id "chartUnificado" not found.');
+  }
+
+  tipoSelecao.addEventListener('change', () => {
+    exibirResumo(tipoSelecao.value, ganhos, despesasFixas, categorias);
+  });
+
+  // Exibe o resumo inicial
+  exibirResumo(tipoSelecao.value, ganhos, despesasFixas, categorias);
 }
 
 createCharts();
