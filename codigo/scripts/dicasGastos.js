@@ -2,16 +2,15 @@ const apiUrl = 'http://localhost:3000/items';
 const popupMessage = document.getElementById('popup-message');
 const tipoSelecao = document.getElementById('tipoSelecao');
 const resumoContainer = document.getElementById('resumoContainer');
+const mesAnoSelecionado = document.getElementById('dataSelecao');
+let chart;
 
 async function fetchData() {
   try {
-    const response = await fetch(apiUrl);
-    if (!response.ok) {
-      throw new Error('Erro ao carregar dados');
-    }
+    const response = await fetch(`${apiUrl}?mesAno=${mesAnoSelecionado.value}`);
     return await response.json();
   } catch (error) {
-    alert('Erro ao carregar dados.');
+    showPopup('Erro ao carregar dados.', 'error');
     return [];
   }
 }
@@ -46,7 +45,10 @@ function distribuirDespesasVariaveis(despesasVariaveis) {
 
 function criarGrafico(ctx, labels, dataSets, isLarge = false) {
   try {
-    new Chart(ctx, {
+    if (chart) {
+      chart.destroy();
+    }
+    chart = new Chart(ctx, {
       type: 'bar',
       data: {
         labels: labels,
@@ -62,7 +64,7 @@ function criarGrafico(ctx, labels, dataSets, isLarge = false) {
       }
     });
   } catch (error) {
-    alert('Erro ao criar gráfico.');
+    showPopup('Erro ao carregar gráfico item.', 'error');
   }
 }
 
@@ -100,11 +102,35 @@ function exibirResumo(tipo, ganhos, despesasFixas, categorias) {
 }
 
 async function createCharts() {
+
+  if (!mesAnoSelecionado.value) {
+    showPopup('Por favor, selecione um mês e ano.', 'error');
+    return;
+  }
+
   const items = await fetchData();
   const { ganhos, despesasFixas, despesasVariaveis } = calcularValores(items);
   const restante = ganhos - despesasFixas;
 
-  const melhorCasoDespesasFixas = verificarDespesasFixas(ganhos);
+  if (ganhos === 0) {
+    showPopup('Nenhum ganho registrado para o mês selecionado.', 'error');
+    if (chart) {
+      chart.destroy();
+    }
+    resumoContainer.innerHTML = `
+      <div>
+        <h2>Resumo para ganhos</h2>
+        <div id="detalhes">
+          <p>Melhor Caso: R$ 0.00</p>
+          <p>Pior Caso: R$ 0.00</p>
+          <p>Caso Atual: R$ 0.00</p>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+ const melhorCasoDespesasFixas = verificarDespesasFixas(ganhos);
   const categorias = distribuirDespesasVariaveis(despesasVariaveis);
 
   const labels = ['Despesas Fixas'];
@@ -131,33 +157,49 @@ async function createCharts() {
 
   const chartElement = document.getElementById('chartUnificado');
   const ctx = chartElement.getContext('2d');
-  criarGrafico(
-    ctx,
-    labels,
-    [
-      {
-        label: 'Melhor Caso',
-        data: melhorCasoData,
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-        borderColor: '#7FC396',
-        borderWidth: 1
-      },
-      {
-        label: 'Atual',
-        data: atualData,
-        backgroundColor: backgroundColors,
-        borderColor: borderColors,
-        borderWidth: 1
-      }
-    ],
-    true
-  );
 
-  tipoSelecao.addEventListener('change', () => {
+  if (ctx) {
+    criarGrafico(
+      ctx,
+      labels,
+      [
+        {
+          label: 'Melhor Caso',
+          data: melhorCasoData,
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          borderColor: '#7FC396',
+          borderWidth: 1
+        },
+        {
+          label: 'Atual',
+          data: atualData,
+          backgroundColor: backgroundColors,
+          borderColor: borderColors,
+          borderWidth: 1
+        }
+      ],
+      true
+    );
+
     exibirResumo(tipoSelecao.value, ganhos, despesasFixas, categorias);
-  });
-
-  exibirResumo(tipoSelecao.value, ganhos, despesasFixas, categorias);
+  } else {
+    showPopup('Elemento do gráfico não encontrado.', 'error');
+  }
 }
 
-createCharts();
+tipoSelecao.addEventListener('change', () => {
+  createCharts();
+});
+
+mesAnoSelecionado.addEventListener('change', () => {
+  createCharts();
+});
+
+function showPopup(message, type) {
+  popupMessage.className = `popup ${type}`;
+  popupMessage.innerText = message;
+  popupMessage.style.display = 'block';
+  setTimeout(() => {
+      popupMessage.style.display = 'none';
+  }, 3000);
+}

@@ -13,7 +13,7 @@
   <header>
     <h1>CoinCare</h1>
     <nav>
-      <a href="#" class="inicio-link">
+      <a href="landingPage.html" class="inicio-link">
         <i class="fa-solid fa-house"></i>
         <span>Início</span>
       </a>
@@ -34,9 +34,13 @@
 
       <div id="resumoTotal">
 
+        <div id="dataSelecaoDiv">
+          <h2>Selecione a data</h2>
+          <input type="month" id="dataSelecao" />
+        </div>
+
         <div id="picklistDiv" class="picklist-container">
           <h2>Selecione o tipo de gasto</h2>
-
           <select id="tipoSelecao">
             <option value="ganhos">Ganhos</option>
             <option value="despesas_fixas">Despesas Fixas</option>
@@ -45,7 +49,6 @@
             <option value="Despesas Pessoais">Despesas Pessoais</option>
             <option value="Poupança e Investimentos">Poupança e Investimentos</option>
           </select>
-
         </div>
 
         <div id="resumoContainer" class="resumo-container"></div>

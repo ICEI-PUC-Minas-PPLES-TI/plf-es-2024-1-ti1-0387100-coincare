@@ -3,15 +3,42 @@
     {
       "id": "7s8iyuhj7",
       "nome": "Cartão",
-      "valor": 3,
-      "categoria": "Poupança e Investimentos",
+      "valor": 10,
+      "categoria": "Lazer e Entretenimento",
       "dia": 1,
       "mesAno": "2024-01",
       "tipo": "despesas_variaveis"
     },
     {
       "id": "305y8y50p",
-      "nome": "Aluguel do irmão",
+      "nome": "Vestuário",
+      "valor": 10,
+      "categoria": "Vestuário",
+      "dia": 10,
+      "mesAno": "2024-01",
+      "tipo": "despesas_variaveis"
+    },
+    {
+      "id": "bcep3c323",
+      "nome": "Abc",
+      "valor": 10,
+      "categoria": "Despesas Pessoais",
+      "dia": 1,
+      "mesAno": "2024-01",
+      "tipo": "despesas_variaveis"
+    },
+    {
+      "id": "305y8y50p",
+      "nome": "Poupança e Investimentos",
+      "valor": 10,
+      "categoria": "Poupança e Investimentos",
+      "dia": 10,
+      "mesAno": "2024-01",
+      "tipo": "despesas_variaveis"
+    },
+    {
+      "id": "305y8y50p",
+      "nome": "Despesas Pessoais",
       "valor": 10,
       "categoria": "Casa",
       "dia": 10,
@@ -19,12 +46,21 @@
       "tipo": "despesas_fixas"
     },
     {
-      "id": "bcep3c323",
-      "nome": "Abc",
-      "valor": 12,
-      "categoria": "Adultos",
-      "dia": 1,
-      "mesAno": "2024-03",
+      "id": "305y8y50p",
+      "nome": "Despesas Pessoais",
+      "valor": 100,
+      "categoria": "Casa",
+      "dia": 10,
+      "mesAno": "2024-01",
+      "tipo": "ganhos"
+    },
+    {
+      "id": "305y8y50p",
+      "nome": "Tigrinho",
+      "valor": 100,
+      "categoria": "Ganhos",
+      "dia": 10,
+      "mesAno": "2024-01",
       "tipo": "ganhos"
     }
   ]

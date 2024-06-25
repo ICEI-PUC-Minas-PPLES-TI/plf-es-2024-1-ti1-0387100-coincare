@@ -125,17 +125,27 @@ footer {
   font-size: 16px;
 }
 
-.popup.success {
-  background-color:#7FC396;
-  color: #FFFFFF;
-}
-
 .popup.error {
   background-color:#E2504C;
   color: #FFFFFF;
 }
 
+.popup.success {
+  background-color:#7FC396;
+  color: #FFFFFF;
+}
+
+
 .popup.info {
   background-color:#D4EAFE;
   color: #000000;
-} 
+}
+
+#dataSelecao{
+  justify-content: center;
+}
+
+#dataSelecaoDiv{
+  display: flex; 
+  flex-direction: column;
+}
