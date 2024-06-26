@@ -1,4 +1,4 @@
-const apiUrl = 'http://localhost:3000/items';
+const apiUrl = '/items';
 const popupMessage = document.getElementById('popup-message');
 const tipoSelecao = document.getElementById('tipoSelecao');
 const resumoContainer = document.getElementById('resumoContainer');
