@@ -4,7 +4,11 @@
   "description": "Mantenha neste diretório todo o código fonte do projeto.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "json-server -w JsonServer/db.json"
+  },
+  "dependencies": {
+    "json-server": "^0.17.4"
   },
   "keywords": [],
   "author": "",
