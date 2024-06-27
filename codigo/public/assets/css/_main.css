@@ -11,3 +11,6 @@
 /* CSS das páginas */
 @import url(pages/movement-history.css);
 @import url(pages/metas.css);
+@import url(pages/dicasGastos.css);
+@import url(pages/landingPage.css);
+@import url(pages/stylesCadastroGasto.css);

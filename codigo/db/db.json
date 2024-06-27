@@ -269,6 +269,24 @@
       "dia": "15",
       "mesAno": "2024-12",
       "tipo": "despesas_variaveis"
+    },
+    {
+      "id": "rl7yw6872",
+      "nome": "SALARIO",
+      "valor": 8000,
+      "categoria": "Sa",
+      "dia": 10,
+      "mesAno": "2024-08",
+      "tipo": "ganhos"
+    },
+    {
+      "id": "lfax259i2",
+      "nome": "teste",
+      "valor": 123,
+      "categoria": "1",
+      "dia": 12,
+      "mesAno": "2024-12",
+      "tipo": "ganhos"
     }
   ],
   "metas": [
@@ -293,7 +311,7 @@
     {
       "descricao": "Viagem de fim de ano",
       "saldoInicial": 0,
-      "meta": 3000,
+      "meta": 8000,
       "alcancarEm": "2024-12-31",
       "observacoes": "Viagem de férias",
       "id": 2,
@@ -316,6 +334,13 @@
           "id": 3,
           "descricao": "Inclusão teste",
           "valor": 50,
+          "tipo": "e",
+          "data": "2024-06-27"
+        },
+        {
+          "id": 4,
+          "descricao": "teste",
+          "valor": 800,
           "tipo": "e",
           "data": "2024-06-27"
         }

@@ -1,4 +1,4 @@
-html, body {
+/* html, body {
   height: 100%;
   width: 100%;
   margin: 0;
@@ -8,9 +8,9 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
+} */
 
-header {
+/* header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,18 +18,18 @@ header {
   padding: 10px 20px;
   width: 100%;
   box-sizing: border-box;
-}
-
+} */
+/* 
 header h1 {
   margin: 0;
   color: #FFFFFF;
-}
+} */
 
-header nav a {
+/* header nav a {
   margin-left: 20px;
   color: #FFFFFF;
   text-decoration: none;
-}
+} */
 
 .container {
   width: 100%;
@@ -65,7 +65,7 @@ h2 {
   padding-bottom: 10px;
   font-weight: bold;
   font-size: 22px;
-  color: #FFFFFF;
+  color: #2E2E2E;
   text-align: center;
 }
 

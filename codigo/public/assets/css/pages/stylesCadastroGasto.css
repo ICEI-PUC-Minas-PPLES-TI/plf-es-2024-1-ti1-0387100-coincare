@@ -1,28 +1,41 @@
-* {
+/* * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
+} */
 
-html, body {
+/* html, body {
     height: 100%;
     width: 100%;
     font-family: Arial, sans-serif;
     background-color: #FFFFFF;
     justify-content: center;
     align-items: center;
-}
+} */
 
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .main {
+    flex: 1 1 0;
+    font-family: Inter;
+    padding: 0 3rem;
+    justify-content: center;
+    align-items: center;
+  }
 
-header {
+/* header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #7FC396;
     padding: 10px 20px;
-}
+} */
 
-header h1 {
+/* header h1 {
     margin: 0;
     color: #FFFFFF;
 }
@@ -31,12 +44,12 @@ header nav a {
     margin-left: 20px;
     color: #FFFFFF;
     text-decoration: none;
-}
+} */
 
-main {
+/* main {
     padding: 10px 20px;
     flex: 1;
-}
+} */
 
 h2 {
     margin-top: 0;
@@ -139,13 +152,13 @@ h3 {
     border-radius: 50%;
 }
 
-footer {
+/* footer {
     text-align: center;
     font-size: 14px;
     color: #aaa;
     margin: 20px;
     padding: 10px;
-}
+} */
 
 /* Modal */
 .modal {

@@ -1,4 +1,4 @@
-html, body {
+/* html, body {
     height: 100%;
     width: 100%;
     margin: 0;
@@ -8,9 +8,9 @@ html, body {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
+  } */
   
-  header {
+  /* header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -29,8 +29,8 @@ html, body {
     margin-left: 20px;
     color: #FFFFFF;
     text-decoration: none;
-  }
-  
+  } */
+/*   
   body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -38,14 +38,32 @@ html, body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-}
+} */
 
-main {
+/* main {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
+} */
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.main {
+  flex: 1 1 0;
+  font-family: Inter;
+  padding: 0 3rem;
+}
+
+.main-landingPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card-container {
@@ -55,16 +73,17 @@ main {
     max-width: 1200px;
 }
 
-.card {
+.card-landingPage {
     background-color: #e0f7e9;
     padding: 20px;
+    height: 6rem;
     border-radius: 10px;
     text-align: center;
     flex: 1;
     margin: 10px;
 }
 
-.card p {
+.card-landingPage p {
     font-size: 1em;
     margin-bottom: 20px;
 }
@@ -78,6 +97,7 @@ main {
     text-decoration: none;
     border-radius: 5px;
     font-size: 1em;
+    margin-top: 1rem;
     transition: background-color 0.3s;
 }
 
