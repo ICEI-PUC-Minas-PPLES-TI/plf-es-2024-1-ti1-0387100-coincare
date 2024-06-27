@@ -43,16 +43,17 @@ function coinMask(e) {
 
 function limparFormulario() {
   descricao.value = '';
-  saldoInicial.value = '';
-  metaC.value = '';
+  saldoInicial.value = '0,00';
+  metaC.value = '0,00';
   alcancarEm.value = '';
   observacao.value = '';
 }
 
 function limparFormularioDeposito() {
   descricaoDeposito.value = '';
-  valorDeposito.value = '';
-  dataDeposito.value = '';
+  valorDeposito.value = '0,00';
+  tipoDeposito.value = 'default';
+  dataDeposito.value = getCurrentDate();
 }
 
 function getCurrentDate() {
@@ -227,7 +228,7 @@ async function criarCards() {
       cardTarget.append(cardTargetLabel, cardTargetDate);
 
       const cardMonthly = criarElemento('div', 'card__monthly');
-      const cardMonthlyLabel = criarElemento('p', 'card__monthly-label', 'Ideal por mês');
+      const cardMonthlyLabel = criarElemento('p', 'card__monthly-label', 'Ideal por mês (dev)');
       const cardMonthlyAmount = criarElemento('p', 'card__monthly-amount', 'Ex.: R$ 180,00');
       cardMonthly.append(cardMonthlyLabel, cardMonthlyAmount);
 
@@ -242,7 +243,7 @@ async function criarCards() {
       const cardFooter = criarElemento('div', 'card__footer');
       const cardBtnExcluir = criarElemento('button', 'card__button card__button--delete', 'Excluir');
       const cardBtnEditar = criarElemento('button', 'card__button card__button--edit', 'Editar');
-      const cardBtnDepositar = criarElemento('button', 'c-button', 'Depositar');
+      const cardBtnDepositar = criarElemento('button', 'c-button', 'Lançar movto');
       cardFooter.append(cardBtnExcluir, cardBtnEditar, cardBtnDepositar);
 
       cardBodyContainer.append(cardGoal, cardTarget, cardMonthly);
@@ -334,6 +335,10 @@ async function gravarDeposito(metaId, deposito) {
 
 salvarBtn.addEventListener('click', () => {
   if (form.checkValidity()) {
+    if (metaC.value == '0,00') {
+      alert('Não foi possível gravar pois a meta está definida como zero!');
+      return false;
+    }
     const meta = {
       descricao: descricao.value,
       saldoInicial: +saldoInicial.value.replace(",", "."),
@@ -366,6 +371,14 @@ incluirBtn.addEventListener('click', () => {
 
 depositarBtn.addEventListener('click', () => {
   if (formDeposit.checkValidity()) {
+    if (valorDeposito.value == '0,00') {
+      alert('Não é possível lançar movimentação com valor zerado!');
+      return false;
+    }
+    if (tipoDeposito.value == 'default') {
+      alert('Selecione qual o tipo de movimentação você está lançando!');
+      return;
+    }
     const deposito = {
       descricao: descricaoDeposito.value,
       valor: +valorDeposito.value.replace(",", "."),
@@ -383,6 +396,10 @@ depositarBtn.addEventListener('click', () => {
 
 saveEditBtn.addEventListener('click', () => {
   if (formEdit.checkValidity()) {
+    if (metaEdit.value == '0,00') {
+      alert('Não foi possível gravar pois a meta está definida como zero!');
+      return false;
+    }
     const meta = {
       descricao: descricaoEdit.value,
       saldoInicial: +saldoInicialEdit.value.replace(",", "."),
@@ -400,8 +417,9 @@ saveEditBtn.addEventListener('click', () => {
   }
 });
 
-
 window.addEventListener('load', criarCards);
 saldoInicial.addEventListener('input', coinMask);
 metaC.addEventListener('input', coinMask);
+saldoInicialEdit.addEventListener('input', coinMask);
+metaEdit.addEventListener('input', coinMask);
 valorDeposito.addEventListener('input', coinMask);
