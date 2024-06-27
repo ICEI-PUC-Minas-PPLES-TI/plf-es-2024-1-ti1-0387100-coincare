@@ -101,14 +101,14 @@ h2 {
   font-weight: normal;
 }
 
-footer {
+/* footer {
   text-align: center;
   font-size: 14px;
   color: #aaa;
   padding: 10px;
   width: 100%;
   box-sizing: border-box;
-}
+} */
 
 .popup {
   display: none;
