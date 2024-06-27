@@ -271,5 +271,56 @@
       "tipo": "despesas_variaveis"
     }
   ],
-  "metas": []
+  "metas": [
+    {
+      "descricao": "Reserva de emergência",
+      "saldoInicial": 58.9,
+      "meta": 10000,
+      "alcancarEm": "2025-06-01",
+      "observacoes": "Reserva de emergência",
+      "id": 1,
+      "movimentacoes": [
+        {
+          "id": 1,
+          "descricao": "Depósito inicial",
+          "valor": 4400,
+          "tipo": "e",
+          "data": "2024-06-13"
+        }
+      ],
+      "status": "Em andamento"
+    },
+    {
+      "descricao": "Viagem de fim de ano",
+      "saldoInicial": 0,
+      "meta": 3000,
+      "alcancarEm": "2024-12-31",
+      "observacoes": "Viagem de férias",
+      "id": 2,
+      "movimentacoes": [
+        {
+          "id": 1,
+          "descricao": "Depósito inicial",
+          "valor": 320,
+          "tipo": "e",
+          "data": "2024-06-13"
+        },
+        {
+          "id": 2,
+          "descricao": "Retirada",
+          "valor": 320,
+          "tipo": "s",
+          "data": "2024-06-13"
+        },
+        {
+          "id": 3,
+          "descricao": "Inclusão teste",
+          "valor": 50,
+          "tipo": "e",
+          "data": "2024-06-27"
+        }
+      ],
+      "status": "Em andamento"
+    }
+  ]
 }
