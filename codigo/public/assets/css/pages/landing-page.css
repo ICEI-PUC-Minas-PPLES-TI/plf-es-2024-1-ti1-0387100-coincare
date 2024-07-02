@@ -67,3 +67,8 @@ body {
 .c-button{
   font-size: 1.2rem;
 }
+
+a {
+  text-decoration: none;
+  color: var(--color-green-01);
+}

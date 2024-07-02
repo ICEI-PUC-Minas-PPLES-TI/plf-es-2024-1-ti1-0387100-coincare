@@ -1,5 +1,5 @@
 // Página inicial de Login
-const LOGIN_URL = "/codigo/public/login.html";
+const LOGIN_URL = "/login.html";
 const apiUrl = '/usuarios';
 
 // Objeto para o banco de dados de usuários baseado em JSON
