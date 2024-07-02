@@ -1,35 +1,47 @@
-body {
+/* body {
     background-color: #f4f4f4;
     font-family: "Verdana", sans-serif;
     color: #333;
     margin: 0;
     padding: 0;
     text-align: center;
-}
+} */
 
-header {
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .main {
+    flex: 1 1 0;
+    font-family: Inter;
+    padding: 0 3rem;
+  }
+
+/* header {
     background-color: #7FC396;
     color: #fff;
     padding: 10px;
-}
+} */
 
-nav {
+/* nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
+} */
 
-#logo {
+/* #logo {
     font-size: 20px;
-}
+} */
 
-nav ul {
+/* nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-}
+} */
 
-nav ul li {
+/* nav ul li {
     display: inline;
     margin-left: 20px; 
 }
@@ -45,7 +57,7 @@ nav a {
 
 nav a:hover {
     text-decoration: underline;
-}
+} */
 
 .container {
     margin-top: 20px;

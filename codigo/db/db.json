@@ -287,6 +287,15 @@
       "dia": 12,
       "mesAno": "2024-12",
       "tipo": "ganhos"
+    },
+    {
+      "id": "ew09bvpco",
+      "nome": "Teste",
+      "valor": 200,
+      "categoria": "A",
+      "dia": 12,
+      "mesAno": "2024-12",
+      "tipo": "ganhos"
     }
   ],
   "metas": [
