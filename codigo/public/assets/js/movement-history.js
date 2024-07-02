@@ -157,11 +157,18 @@ function orderByF(typeOrder, data) {
   populateTable(data);
 }
 
+function getUserId() {
+  const user = sessionStorage.getItem('usuarioCorrente');
+  const userObject = JSON.parse(user);
+  return userObject.id;
+}
+
 async function getAll() {
   loadingMessage.style.display = 'block';
 
   try {
-    const response = await fetch(URL_BASE);
+    const userId = getUserId();
+    const response = await fetch(`${URL_BASE}?userId=${userId}`);
 
     if (!response.ok) throw new Error('Não foi possível carregar os dados!');
 

@@ -32,6 +32,12 @@ window.addEventListener('click', (event) => {
     }
 });
 
+function getUserId() {
+    const user = sessionStorage.getItem('usuarioCorrente');
+    const userObject = JSON.parse(user);
+    return userObject.id;
+  }
+
 function handleAdicionarClick(event) {
     event.preventDefault();
 
@@ -45,6 +51,7 @@ function handleAdicionarClick(event) {
     const valor = parseFloat(inputGroup.querySelector('.valor').value);
     const categoria = inputGroup.querySelector('.categoria').value;
     const dia = parseInt(inputGroup.querySelector('.dia').value);
+    const userId = getUserId();
 
     if (!nome || isNaN(valor) || !categoria || isNaN(dia) || dia < 1 || dia > 31) {
         showPopup('Por favor, preencha todos os campos corretamente.', 'error');
@@ -52,7 +59,7 @@ function handleAdicionarClick(event) {
     }
 
     const tipo = this.dataset.tipo;
-    const data = { id: generateId(), nome, valor, categoria, dia, mesAno: mesAnoInput.value, tipo };
+    const data = { id: generateId(), nome, valor, categoria, dia, mesAno: mesAnoInput.value, tipo, userId: userId };
 
     saveItem(data);
     clearInputFields(inputGroup);
@@ -87,10 +94,11 @@ function generateId() {
 
 async function updateGrafico() {
     const mesAnoSelecionado = mesAnoInput.value;
+    const userId = getUserId();
     if (!mesAnoSelecionado) return;
 
     try {
-        const response = await fetch(`${apiUrl}?mesAno=${mesAnoSelecionado}`);
+        const response = await fetch(`${apiUrl}?userId=${userId}&mesAno=${mesAnoSelecionado}`);
         const items = await response.json();
 
         ganhosTotal = items.filter(item => item.tipo === 'ganhos').reduce((acc, item) => acc + item.valor, 0);
@@ -141,6 +149,7 @@ function renderGrafico(ganhos, gastos) {
 
 async function handleVerMaisClick() {
     const tipo = this.dataset.tipo;
+    const userId = getUserId();
     const mesAnoSelecionado = mesAnoInput.value;
 
     if (!mesAnoSelecionado) {
@@ -149,7 +158,7 @@ async function handleVerMaisClick() {
     }
 
     try {
-        const response = await fetch(`${apiUrl}?mesAno=${mesAnoSelecionado}&tipo=${tipo}`);
+        const response = await fetch(`${apiUrl}?userId=${userId}&mesAno=${mesAnoSelecionado}&tipo=${tipo}`);
         const items = await response.json();
 
         itemsList.innerHTML = '';
@@ -252,6 +261,7 @@ function enableEditMode(itemElement, itemId) {
 async function saveItemEdit(itemElement, itemId) {
     const inputs = itemElement.querySelectorAll('.input-field');
     const originalItem = JSON.parse(itemElement.dataset.item);
+    const userId = getUserId();
 
     const updatedItem = {
         id: itemId,
@@ -260,7 +270,8 @@ async function saveItemEdit(itemElement, itemId) {
         categoria: inputs[2].value,
         dia: parseInt(inputs[3].value, 10),
         mesAno: originalItem.mesAno,
-        tipo: originalItem.tipo
+        tipo: originalItem.tipo,
+        userId: userId
     };
 
     try {

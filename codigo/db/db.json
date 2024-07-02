@@ -295,7 +295,58 @@
       "categoria": "A",
       "dia": 12,
       "mesAno": "2024-12",
-      "tipo": "ganhos"
+      "tipo": "ganhos",
+      "userId": 1
+    },
+    {
+      "id": "23lq9pw9j",
+      "nome": "teste",
+      "valor": 123,
+      "categoria": "a",
+      "dia": 12,
+      "mesAno": "2024-08",
+      "tipo": "ganhos",
+      "userId": "8e4ea767-7c93-4a30-9485-42739a01b753"
+    },
+    {
+      "id": "rsmsbctl9",
+      "nome": "Teste despesa variável",
+      "valor": 500,
+      "categoria": "A",
+      "dia": 2,
+      "mesAno": "2024-07",
+      "tipo": "despesas_variaveis",
+      "userId": "8e4ea767-7c93-4a30-9485-42739a01b753"
+    },
+    {
+      "id": "nb2byiyk9",
+      "nome": "Teste despesa fixa",
+      "valor": 500,
+      "categoria": "A",
+      "dia": 2,
+      "mesAno": "2024-07",
+      "tipo": "despesas_fixas",
+      "userId": "8e4ea767-7c93-4a30-9485-42739a01b753"
+    },
+    {
+      "id": "kzywuqugo",
+      "nome": "teste ganho",
+      "valor": 120,
+      "categoria": "a",
+      "dia": 2,
+      "mesAno": "2024-07",
+      "tipo": "ganhos",
+      "userId": "37a78512-46a9-4b6e-b455-c80d10a9eba8"
+    },
+    {
+      "id": "jxgzs0gms",
+      "nome": "teste",
+      "valor": 10,
+      "categoria": "a",
+      "dia": 12,
+      "mesAno": "2024-07",
+      "tipo": "despesas_variaveis",
+      "userId": "37a78512-46a9-4b6e-b455-c80d10a9eba8"
     }
   ],
   "metas": [
@@ -364,6 +415,13 @@
       "senha": "123",
       "nome": "teste",
       "email": "a"
+    },
+    {
+      "id": "37a78512-46a9-4b6e-b455-c80d10a9eba8",
+      "login": "admin",
+      "senha": "123",
+      "nome": "admin",
+      "email": "admin"
     }
   ]
 }
