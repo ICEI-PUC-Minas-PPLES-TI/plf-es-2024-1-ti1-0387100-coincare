@@ -1,56 +1,63 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page</title>
-    <link rel="stylesheet" href="./assets/css/_main.css">
-    <script src="https://kit.fontawesome.com/398f9555e1.js" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CoinCare</title>
+
+  <link rel="stylesheet" href="./assets/css/utils/reset.css">
+  <link rel="stylesheet" href="./assets/css/components/header.css">
+  <link rel="stylesheet" href="./assets/css/components/button.css">
+  <link rel="stylesheet" href="./assets/css/components/footer.css">
+  <link rel="stylesheet" href="./assets/css/pages/landing-page.css">
 </head>
+
 <body>
   <header class="c-header">
-    <a href="landingPage.html" class="c-header__coincare">CoinCare</a>
-    <a href="#" class="inicio-link">
-      <i class="fa-solid fa-circle-left"></i>
-      <span>Sair</span>
-    </a>
+    <a href="#" class="c-header__coincare">CoinCare</a>
+    <div class="acessar-criar-conta">
+      <a href="./pages/home.html">Acessar minha conta</a>
+      <a href="#">Criar conta</a>
+    </div>
   </header>
-    <main class="main main-landingPage">
-        <div class="card-container">
-            <div class="card-landingPage">
-                <p>ACOMPANHE SEU HISTÓRICO MENSAL</p>
-                <a href="./pages/movement-history.html" class="body-link">
-                    <i class="fa-solid fa-toolbox"></i>
-                    <span>Histórico</span>
-                  </a>
-            </div>
-            <div class="card-landingPage">
-                <p>REGISTRE SEUS GANHOS E GASTOS</p>
-                <a href="./pages/cadastroGastos.html" class="body-link">
-                    <i class="fa-solid fa-wallet"></i>
-                    <span>Registrar finanças</span>
-                  </a>
-            </div>
-            <div class="card-landingPage">
-                <p>OBTENHA DICAS DO SEU CONSUMO</p>
-                <a href="./pages/dicasGastos.html" class="body-link">
-                    <i class="fa-solid fa-chart-column"></i>
-                    <span>Dicas</span>
-                  </a>
-            </div>
-            <div class="card-landingPage">
-              <p>REGISTRE SUAS METAS</p>
-              <a href="./pages/metas.html" class="body-link">
-                  <i class="fa-solid fa-toolbox"></i>
-                  <span>Metas</span>
-                </a>
-          </div>
-        </div>
-    </main>
-    <footer class="c-footer">
-      <p class="c-footer__text">
-        © 2024 Coin Care. Todos os direitos reservados. | Política de Privacidade | Termos de Uso
-      </p>
-    </footer>
+  <main class="main">
+    <section class="principal">
+      <div>
+        <h1>Esqueça as planilhas</h1>
+        <p>Sistema de controle financeiro pessoal para você acompanhar sua movimentação de maneira
+          simples e intuitiva.</p>
+
+      </div>
+    </section>
+    <section class="features">
+      <div class="feature">
+        <h2>Rastreie Gastos</h2>
+        <p>Veja para onde seu dinheiro está indo e identifique áreas onde você pode economizar.</p>
+      </div>
+      <div class="feature">
+        <h2>Obtenha Dicas</h2>
+        <p>Com base em sua movimentação, oferecemos dicas para alocar melhor o seu dinheiro.</p>
+      </div>
+      <div class="feature">
+        <h2>Acompanhe suas Metas</h2>
+        <p>Registre metas e acompanhe o seu progesso.</p>
+      </div>
+      <div class="feature">
+        <h2>Amplie seu conhecimento financeiro</h2>
+        <p>Oferecemos uma série de conteúdos para você melhorar o seu conhecimento na área.</p>
+      </div>
+    </section>
+    <section class="button-content">
+      <button class="c-button">Cadastre-se</button>
+    </section>
+    
+  </main>
+  <footer class="c-footer">
+    <p class="c-footer__text">
+      © 2024 Coin Care. Todos os direitos reservados. | Política de Privacidade | Termos de Uso
+    </p>
+  </footer>
 </body>
+
 </html>
