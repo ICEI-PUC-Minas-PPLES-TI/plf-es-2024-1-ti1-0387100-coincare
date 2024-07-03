@@ -1,4 +1,4 @@
-const apiUrl = 'http://localhost:3000/items';
+const apiUrl = '/items';
 const mesAnoInput = document.getElementById('mes-ano');
 const modal = document.getElementById('modal');
 const closeModal = document.querySelector('.close');

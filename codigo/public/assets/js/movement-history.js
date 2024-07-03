@@ -11,7 +11,7 @@ const spanRevenueTotalizer = document.querySelector('.main__total-value--revenue
 const spanExpenseFixedTotalizer = document.querySelector('.main__total-value--expense-fixed');
 const spanVariableExpenseTotalizer = document.querySelector('.main__total-value--variable-expense');
 
-const URL_BASE = 'http://localhost:3000/items';
+const URL_BASE = '/items';
 
 theadElement.style.display = 'none';
 loadingMessage.style.display = 'none';

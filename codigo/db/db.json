@@ -86,6 +86,13 @@
           "valor": 4400,
           "tipo": "e",
           "data": "2024-06-13"
+        },
+        {
+          "id": 2,
+          "descricao": "teste",
+          "valor": 80,
+          "tipo": "e",
+          "data": "2024-07-03"
         }
       ],
       "status": "Em andamento"

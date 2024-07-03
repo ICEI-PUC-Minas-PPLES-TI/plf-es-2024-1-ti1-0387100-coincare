@@ -30,7 +30,7 @@ const depositarBtn = document.querySelector('.c-button-deposit');
 const incluirBtn = document.querySelector('.c-button-incluir');
 const cardsContainer = document.querySelector('#card-wrapper');
 
-const urlBase = 'http://localhost:3000';
+//const urlBase = 'http://localhost:3000';
 let editingMetaId = null;
 let currentMetaId = null;
 let modalInstance;
@@ -66,7 +66,7 @@ function getCurrentDate() {
 
 async function criarMeta(meta) {
   try {
-    const res = await fetch(`${urlBase}/metas`, {
+    const res = await fetch(`/metas`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -83,14 +83,14 @@ async function criarMeta(meta) {
 
 async function atualizarMeta(meta) {
   try {
-    const res = await fetch(`${urlBase}/metas/${meta.id}`);
+    const res = await fetch(`/metas/${meta.id}`);
     if (!res.ok) throw new Error('Meta não encontrada');
     const metaExistente = await res.json();
 
     meta.movimentacoes = metaExistente.movimentacoes;
     meta.status = 'Em andamento';
 
-    const atualizarRes = await fetch(`${urlBase}/metas/${meta.id}`, {
+    const atualizarRes = await fetch(`/metas/${meta.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -107,7 +107,7 @@ async function atualizarMeta(meta) {
 
 async function excluirMeta(metaId) {
   try {
-    await fetch(`${urlBase}/metas/${metaId}`, {
+    await fetch(`/metas/${metaId}`, {
       method: 'DELETE',
     });
     console.log('Meta excluída com sucesso!');
@@ -168,7 +168,7 @@ function editarMeta(meta) {
 }
 
 async function buscarMetas() {
-  const res = await fetch(`${urlBase}/metas`);
+  const res = await fetch(`/metas`);
   if (!res.ok) throw new Error('Não foi possível buscar as metas');
   return res.json();
 }
@@ -307,7 +307,7 @@ function depositar(meta) {
 
 async function gravarDeposito(metaId, deposito) {
   try {
-    const res = await fetch(`${urlBase}/metas/${metaId}`);
+    const res = await fetch(`/metas/${metaId}`);
     if (!res.ok) throw new Error('Meta não encontrada');
     const meta = await res.json();
 
@@ -317,7 +317,7 @@ async function gravarDeposito(metaId, deposito) {
     };
     meta.movimentacoes.push(novaMovimentacao);
 
-    const atualizarRes = await fetch(`${urlBase}/metas/${metaId}`, {
+    const atualizarRes = await fetch(`/metas/${metaId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
