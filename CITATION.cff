@@ -2,26 +2,26 @@ cff-version: 1.0.1
 message: "Please cite this software using these metadata."
 title: CoinCare
 authors:
-  - family-names: "Limonge"
-    given-names: "Francielle Moura"
-  - family-names: "dos Santos Riegert"
-    given-names: "Gustavo Henrique"
-  - family-names: "Vitorino Batista Silva"
-    given-names: "Ítalo"
-  - family-names: "Neves Soares"
-    given-names: "Thalles Luiz"
-  - name-suffix: "Professor"
-    affiliation: "PUC Minas"
-    family-names: "Silva Tavares"
-    given-names: "Cleiton"
-  - name-suffix: "Professor"
-    affiliation: "PUC Minas"
-    family-names: "Vieira Carneiro"
-    given-names: "Rommel"
+  - family-names: Limonge
+    given-names: Francielle Moura
+  - family-names: dos Santos Riegert
+    given-names: Gustavo Henrique
+  - family-names: Vitorino Batista Silva
+    given-names: Ítalo
+  - family-names: Neves Soares
+    given-names: Thalles Luiz
+  - name-suffix: Professor
+    affiliation: PUC Minas
+    family-names: Silva Tavares
+    given-names: Cleiton
+  - name-suffix: Professor
+    affiliation: PUC Minas
+    family-names: Vieira Carneiro
+    given-names: Rommel
 keywords:
-  - "Controle financeiro"
-  - "Finanças"
-repository-code: "https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2024-1-ti1-0387100-coincare"
+  - Controle financeiro
+  - Finanças
+repository-code: https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2024-1-ti1-0387100-coincare
 license: CC-BY-4.0
 version: 1.0.0
-date-released: 2024-07-02
+date-released: 2024-07-03
